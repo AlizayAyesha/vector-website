@@ -2,22 +2,24 @@
 // /waitlist, /llms.txt) on 12 Nov 2026. Lines marked "new" are original
 // supporting copy written for this redesign in Vector's voice — review before launch.
 
-export const LIVE = "https://vectoros.one";
+import { CALENDLY, LIVE, SIGN_IN } from "./site";
+export { LIVE };
 
 export const nav = [
-  { label: "Software", href: `${LIVE}/software` },
-  { label: "Examples", href: `${LIVE}/gallery` },
-  { label: "Pricing", href: `${LIVE}/pricing` },
+  { label: "Software", href: "/software" },
+  { label: "Examples", href: "/gallery" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 export const ctas = {
-  // On the live site "Book a demo" opens a Calendly dialog on the homepage.
-  bookDemo: `${LIVE}/`,
-  joinBeta: `${LIVE}/download`,
-  emailUpdates: `${LIVE}/waitlist`,
-  openWorkspace: `${LIVE}/`,
-  gallery: `${LIVE}/gallery`,
-  software: `${LIVE}/software`,
+  // Opens Vector's real Calendly scheduler in a dialog (see components/BookDemo.tsx); the href is the no-JS fallback.
+  bookDemo: CALENDLY,
+  joinBeta: "/download",
+  emailUpdates: "/waitlist",
+  openWorkspace: "/#workspace",
+  gallery: "/gallery",
+  software: "/software",
+  signIn: SIGN_IN,
 };
 
 export const hero = {
@@ -88,12 +90,12 @@ export const recordings = [
 
 // Authoritative status from vectoros.one/software and /llms.txt
 export const tools = [
-  { name: "Rhino", status: "Available", href: `${LIVE}/software/rhino` },
-  { name: "Blender", status: "Available", href: `${LIVE}/ai/blender` },
-  { name: "Revit", status: "Available", href: `${LIVE}/software/revit` },
-  { name: "Maxsurf Complete", status: "Available", href: `${LIVE}/ai/maxsurf` },
-  { name: "Grasshopper", status: "In development", href: `${LIVE}/ai/grasshopper` },
-  { name: "Autodesk Dynamo", status: "In development", href: `${LIVE}/ai/dynamo` },
+  { name: "Rhino", status: "Available", href: "/software/rhino" },
+  { name: "Blender", status: "Available", href: "/ai/blender" },
+  { name: "Revit", status: "Available", href: "/software/revit" },
+  { name: "Maxsurf Complete", status: "Available", href: "/ai/maxsurf" },
+  { name: "Grasshopper", status: "In development", href: "/ai/grasshopper" },
+  { name: "Autodesk Dynamo", status: "In development", href: "/ai/dynamo" },
 ] as const;
 
 export const faq = [
@@ -125,28 +127,28 @@ export const footer = {
     {
       h: "Explore",
       links: [
-        ["Product", `${LIVE}/product`],
-        ["AI workflows", `${LIVE}/ai`],
-        ["Software", `${LIVE}/software`],
-        ["Examples", `${LIVE}/gallery`],
+        ["Product", "/product"],
+        ["AI workflows", "/ai"],
+        ["Software", "/software"],
+        ["Examples", "/gallery"],
       ],
     },
     {
       h: "Resources",
       links: [
-        ["Pricing", `${LIVE}/pricing`],
-        ["Guides", `${LIVE}/tutorials`],
-        ["Support", `${LIVE}/support`],
-        ["Release notes", `${LIVE}/releases`],
+        ["Pricing", "/pricing"],
+        ["Guides", "/tutorials"],
+        ["Support", "/support"],
+        ["Release notes", "/releases"],
       ],
     },
     {
       h: "Vector OS",
       links: [
-        ["Join the beta", `${LIVE}/download`],
-        ["Email updates", `${LIVE}/waitlist`],
-        ["Privacy", `${LIVE}/privacy`],
-        ["Terms", `${LIVE}/terms`],
+        ["Join the beta", "/download"],
+        ["Email updates", "/waitlist"],
+        ["Privacy", "/privacy"],
+        ["Terms", "/terms"],
       ],
     },
   ],
