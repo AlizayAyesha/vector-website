@@ -44,7 +44,7 @@ export default function AutoTour() {
   };
 
   return (
-    <div data-tour-control className="fixed bottom-5 left-5 z-40 flex items-center gap-3 motion-reduce:hidden">
+    <div data-tour-control className="fixed bottom-5 left-5 z-40 hidden items-center gap-3 md:flex motion-reduce:hidden">
       <button
         type="button"
         onClick={() => (state === "playing" ? setState("idle") : start())}

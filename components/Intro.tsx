@@ -154,7 +154,7 @@ export default function Intro() {
             ref={(el) => {
               phraseRefs.current[i] = el;
             }}
-            className="pointer-events-none absolute left-1/2 top-1/2 w-[min(90vw,40rem)] text-center opacity-0"
+            className="pointer-events-none absolute left-1/2 top-[21%] w-[min(90vw,40rem)] text-center opacity-0 md:top-1/2"
           >
             <p className="phrase text-balance text-[clamp(1.9rem,4vw,3.6rem)] font-semibold leading-[1.04] tracking-[-0.04em]">
               {ph.text.split(" ").map((w, k) => (

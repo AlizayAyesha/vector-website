@@ -510,3 +510,19 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
+/* demo viewport on light CAD backgrounds (Rhino rendered, SOLIDWORKS) */
+.demo-vp[data-light="1"] .vp-ink {
+  color: #1f2328;
+}
+.demo-vp .vp-ink {
+  transition: color 0.4s ease;
+}
+
+/* small screens: floating 3D callouts collapse to their anchor dot; text moves to the caption panel */
+@media (max-width: 767px) {
+  .demo-vp .anchor-label,
+  .demo-vp .anchor-line {
+    display: none;
+  }
+}
