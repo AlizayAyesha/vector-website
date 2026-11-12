@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const indexable = process.env.NEXT_PUBLIC_SITE_INDEXABLE === "true";
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -7,6 +9,10 @@ const nextConfig: NextConfig = {
   agentRules: false,
   images: {
     remotePatterns: [{ protocol: "https", hostname: "vectoros.one", pathname: "/assets/**" }],
+  },
+  async headers() {
+    // Preview deployments send X-Robots-Tag as a second guard (see lib/site.ts for the launch switch).
+    return indexable ? [] : [{ source: "/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }];
   },
 };
 
