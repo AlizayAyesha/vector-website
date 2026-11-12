@@ -114,9 +114,11 @@ export type CoreOpts = {
   tools: readonly Tool[];
   /** HTML labels, one per tool; the scene positions and fades them each frame. */
   labels: { current: (HTMLElement | null)[] };
+  /** HTML logo marks, one per tool; centred inside each hexagon and sized to it. */
+  logos?: { current: (HTMLElement | null)[] };
 };
 
-export function createCoreScene({ progress, tools, labels }: CoreOpts) {
+export function createCoreScene({ progress, tools, labels, logos }: CoreOpts) {
   return ({ scene, camera, pointer, reducedMotion, renderer }: SceneContext): SceneHandle => {
     scene.fog = new THREE.Fog(0x000000, 12, 32);
     lights(scene);
@@ -322,6 +324,19 @@ export function createCoreScene({ progress, tools, labels }: CoreOpts) {
             const h = renderer.domElement.clientHeight;
             el.style.transform = `translate(-50%, 0) translate(${((tmp.x + 1) / 2) * w}px, ${((1 - tmp.y) / 2) * h}px)`;
             el.style.opacity = String(k);
+          }
+          const le = logos?.current[i];
+          if (le) {
+            const w = renderer.domElement.clientWidth;
+            const h = renderer.domElement.clientHeight;
+            tmp.copy(n.pos).applyMatrix4(net.matrixWorld).project(camera);
+            const cx = ((tmp.x + 1) / 2) * w;
+            const cy = ((1 - tmp.y) / 2) * h;
+            tmp.copy(n.pos).add(new THREE.Vector3(0.15 * (0.6 + 0.4 * k), 0, 0)).applyMatrix4(net.matrixWorld).project(camera);
+            const size = Math.abs(((tmp.x + 1) / 2) * w - cx) * 2;
+            le.style.width = le.style.height = `${size.toFixed(1)}px`;
+            le.style.transform = `translate(-50%, -50%) translate(${cx}px, ${cy}px)`;
+            le.style.opacity = String(k * (n.live ? 1 : 0.75));
           }
         });
         net.updateMatrixWorld();

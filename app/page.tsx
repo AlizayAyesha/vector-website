@@ -7,6 +7,7 @@ import Intro from "@/components/Intro";
 import Demo from "@/components/demo/Demo";
 import { Logo } from "@/components/Logo";
 import { ctas, footer, tools } from "@/lib/content";
+import { ToolLogo } from "@/components/ToolLogo";
 
 const Arrow = () => (
   <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
@@ -74,7 +75,12 @@ export default function Home() {
                     tabIndex={i >= tools.length ? -1 : undefined}
                     className="flex min-w-[16rem] items-center justify-between gap-6 rounded-2xl border border-line bg-card px-6 py-5 transition-colors hover:bg-card-2"
                   >
-                    <span className="text-lg font-medium tracking-tight">{t.name}</span>
+                    <span className="flex items-center gap-3.5">
+                      <span className="flex size-10 items-center justify-center rounded-xl border border-line bg-black">
+                        <ToolLogo name={t.name} className="size-6" wordSize="10px" />
+                      </span>
+                      <span className="text-lg font-medium tracking-tight">{t.name}</span>
+                    </span>
                     <span
                       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs ${
                         t.status === "Available" ? "bg-fg text-black" : "border border-dashed border-line text-muted"
@@ -156,7 +162,7 @@ export default function Home() {
         </div>
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-6 text-xs text-muted">
           <span>© 2026 Vector OS</span>
-          <span>Software and vendor names identify the tools discussed; they do not imply endorsement.</span>
+          <span className="max-w-xl">Rhino, Grasshopper, Blender, Revit, Autodesk Dynamo, Maxsurf and SOLIDWORKS are trademarks of their respective owners. Logos and names indicate compatibility only and do not imply endorsement.</span>
         </div>
         <div className="pointer-events-none select-none overflow-hidden px-6" aria-hidden="true">
           <p className="mx-auto max-w-6xl translate-y-[18%] bg-gradient-to-b from-white/[0.09] to-transparent bg-clip-text text-[22vw] font-semibold leading-none tracking-[-0.06em] text-transparent">

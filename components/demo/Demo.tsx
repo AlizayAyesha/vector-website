@@ -4,25 +4,16 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, 
 import { ctas } from "@/lib/content";
 import { Logo } from "../Logo";
 import { DemoCanvas } from "../Lazy3D";
-import { demo } from "./copy";
-import { BUILD, CHAPTERS, CHECK, OUTRO, WIN, chapterAt, ease, lerp, lin } from "./timeline";
+import { TRACK_UI, demo } from "./copy";
+import { CHAPTERS, OUTRO, TRACKS, WIN, cardClock, chapterAt, ease, lerp, lin, localQ, pageAt, trackAt, type TrackId } from "./timeline";
+import { ANCHOR_TEXT, GRID, STEPS, gridKey } from "./tracks/meta";
+import { ToolLogo } from "../ToolLogo";
 import type { DemoLabels } from "./demoScene";
 
 /* ---------- helpers ---------- */
 const vis = (a: number, b: number, p: number, f = 0.012) => ease(a, a + f, p) * (1 - ease(b - f, b, p));
 const tw = (text: string, a: number, b: number, p: number) => text.slice(0, Math.round(text.length * lin(a, b, p)));
 const fade = (k: number, y = 10): CSSProperties => ({ opacity: k, transform: `translateY(${(1 - k) * y}px)` });
-
-const STATIC_LINES = [
-  "Describe the job in plain words.",
-  "Review a step-by-step plan before anything runs.",
-  "Your own rules and references are read first.",
-  "Work is routed to the right tool, with your approval.",
-  "The model is built in your software, station by station.",
-  "Results are checked; issues are flagged and fixed with you.",
-  "Inspect sections and details in place.",
-  "Properties and a report are ready for review.",
-];
 
 export default function Demo() {
   const [reduced, setReduced] = useState(false);
@@ -36,22 +27,34 @@ export default function Demo() {
   return reduced ? <DemoStatic /> : <DemoPinned />;
 }
 
-/* ---------- reduced-motion fallback: static chapter cards ---------- */
+/* ---------- reduced-motion fallback: static track cards ---------- */
 function DemoStatic() {
   return (
     <section id="demo" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28" aria-label="Product demo">
       <p className="eyebrow">Illustrative demo · sample data</p>
-      <h2 className="mt-4 max-w-2xl text-4xl font-semibold tracking-tight md:text-6xl">Hull to structure, step by step.</h2>
-      <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {CHAPTERS.map((c, i) => (
-          <li key={c.n} className="rounded-3xl border border-line bg-card p-6">
-            <p className="font-mono text-xs text-muted">
-              {c.n} · {c.k.toUpperCase()}
-            </p>
-            <p className="mt-6 text-lg font-medium leading-snug tracking-tight">{STATIC_LINES[i]}</p>
-          </li>
+      <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight md:text-6xl">Three projects, step by step.</h2>
+      <p className="mt-4 max-w-2xl text-muted">Ask, plan, check your references and connect your tools. Then each job is built in place, checked and reviewed.</p>
+      <div className="mt-12 grid gap-4 lg:grid-cols-3">
+        {TRACKS.map((t) => (
+          <div key={t.id} className="rounded-3xl border border-line bg-card p-6">
+            <div className="flex items-center justify-between">
+              <p className="text-lg font-semibold">{t.label}</p>
+              <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
+                {t.id === "mech" ? "SOLIDWORKS · recorded" : <><ToolLogo name="Rhino" className="size-3.5" /> Rhino</>}
+              </span>
+            </div>
+            <p className="mt-1 font-mono text-[11px] text-muted">{TRACK_UI[t.id].file}</p>
+            <ol className="mt-5 space-y-3">
+              {STEPS[t.id].map((s, i) => (
+                <li key={s.title} className="flex gap-3 text-sm">
+                  <span className="font-mono text-[11px] text-muted">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-fg/90">{s.title}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
         ))}
-      </ol>
+      </div>
       <div className="mt-12 flex flex-wrap items-center gap-3">
         <p className="mr-4 text-2xl font-semibold tracking-tight">{demo.outro}</p>
         <a href={ctas.bookDemo} className="btn-primary">Book a demo</a>
@@ -110,7 +113,7 @@ function DemoPinned() {
       last = now;
       if (el && !document.hidden) {
         const total = el.offsetHeight - window.innerHeight;
-        acc += (total / 75) * dt; // whole demo ≈ 75 s
+        acc += (total / 115) * dt; // whole demo ≈ 115 s
         if (acc >= 1) {
           const step = Math.floor(acc);
           acc -= step;
@@ -139,13 +142,22 @@ function DemoPinned() {
 
   const isActive = useCallback(() => progress.current > WIN.in[0] - 0.01 && progress.current < 0.985, [progress]);
 
+  const pc = cardClock(p);
+  const seek = useCallback((i: number) => {
+    const el = section.current;
+    if (!el) return;
+    const total = el.offsetHeight - window.innerHeight;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: top + total * pageAt(i, 0.004), behavior: "instant" as ScrollBehavior });
+  }, []);
+
   const ch = chapterAt(p);
   const chapter = CHAPTERS[ch];
   const winK = ease(WIN.in[0], WIN.in[1], p);
   const outro = ease(OUTRO, OUTRO + 0.03, p);
 
   return (
-    <section ref={section} id="demo" className="relative h-[1000vh]" aria-label="Illustrative product demo: hull to structure">
+    <section ref={section} id="demo" className="relative h-[1500vh]" aria-label="Illustrative product demo: hull, façade and mechanical assembly">
       <div className="sticky top-0 h-svh overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,#0d0d0e_0%,#000_70%)]" />
 
@@ -163,10 +175,10 @@ function DemoPinned() {
         {/* stage */}
         <div className="absolute inset-x-0 bottom-[78px] top-[128px] flex items-center justify-center px-3 md:bottom-[84px] md:top-[140px]">
           {/* card phase */}
-          <div className="relative h-full w-[min(560px,94vw)]" style={{ opacity: 1 - ease(0.285, 0.305, p), transform: `scale(${1 + ease(0.285, 0.31, p) * 0.15})` }}>
-            <ChatCard p={p} />
-            <ResearchCard p={p} />
-            <GraphCard p={p} />
+          <div className="relative h-full w-[min(560px,94vw)]" style={{ opacity: 1 - ease(0.285, 0.305, pc), transform: `scale(${1 + ease(0.285, 0.31, pc) * 0.15})`, visibility: pc > 0.32 ? "hidden" : "visible" }}>
+            <ChatCard p={pc} />
+            <ResearchCard p={pc} />
+            <GraphCard p={pc} />
           </div>
 
           {/* workspace window */}
@@ -174,7 +186,7 @@ function DemoPinned() {
             className="absolute inset-y-0 left-1/2 w-[min(1240px,96vw)]"
             style={{ opacity: winK * (1 - outro), transform: `translateX(-50%) scale(${lerp(0.6, 1, winK)})`, pointerEvents: winK > 0.5 ? "auto" : "none" }}
           >
-            <Workspace p={p} labels={labels}>
+            <Workspace p={p} labels={labels} seek={seek}>
               <DemoCanvas progress={progress} labels={labels} isActive={isActive} />
             </Workspace>
           </div>
@@ -361,140 +373,224 @@ function GraphCard({ p }: { p: number }) {
   return (
     <div className="absolute inset-x-0 top-1/2" style={{ opacity: k, transform: `translateY(-50%) scale(${lerp(0.96, 1, ease(0.226, 0.24, p))})` }}>
       <div className="rounded-3xl border border-line bg-[#0b0b0c]/95 p-4 md:p-6">
-        <svg viewBox="0 0 560 300" className="h-auto w-full" role="img" aria-label="Vector OS routes the approved plan to Maxsurf, then the hull to Rhino">
+        <svg viewBox="0 0 560 300" className="h-auto w-full" role="img" aria-label="Vector OS routes the approved plan to Maxsurf and Rhino; the SOLIDWORKS job is a recorded project">
           {edge("M142 150 H218", 76, e1)}
-          {edge("M342 150 C 380 150, 380 80, 398 80", 110, e2)}
-          {edge("M460 110 V190", 80, e3)}
+          {edge("M342 150 C 372 150, 372 56, 398 56", 130, e2)}
+          {edge("M342 150 H398", 56, e2)}
+          {edge("M342 150 C 372 150, 372 244, 398 244", 130, e3, true)}
           <text x="180" y="138" textAnchor="middle" fill="#a1a1aa" fontSize="10" fontFamily="ui-monospace, monospace">plan</text>
-          <text x="352" y="104" textAnchor="middle" fill="#a1a1aa" fontSize="10" fontFamily="ui-monospace, monospace">stations</text>
-          <text x="498" y="154" textAnchor="start" fill="#a1a1aa" fontSize="10" fontFamily="ui-monospace, monospace">hull</text>
+          <text x="366" y="92" textAnchor="middle" fill="#a1a1aa" fontSize="10" fontFamily="ui-monospace, monospace">hull</text>
+          <text x="372" y="143" textAnchor="middle" fill="#a1a1aa" fontSize="10" fontFamily="ui-monospace, monospace">façade</text>
+          <text x="364" y="216" textAnchor="middle" fill="#a1a1aa" fontSize="10" fontFamily="ui-monospace, monospace">assembly</text>
           <g transform="translate(80 150)">
             <rect x="-62" y="-30" width="124" height="60" rx="16" fill="#f4f4f5" />
             <path transform="translate(-52 -10) scale(0.026)" d="M 252 338 L 453 338 C 472 338 488 349 498 367 L 706 796 C 718 819 721 835 716 855 C 713 875 706 891 693 911 L 656 968 C 650 977 647 981 640 981 C 612 981 585 961 568 929 L 252 338 Z M 999 409 L 839 409 C 823 409 815 420 807 436 L 667 666 C 662 676 662 683 667 694 L 715 789 C 726 811 733 836 721 863 L 999 409 Z" fill="#000" />
             <text x="14" y="5" textAnchor="middle" fill="#000" fontSize="13" fontWeight="700">Vector OS</text>
           </g>
           {node(280, 150, approved ? "Approved ✓" : "Your approval", "BEFORE NATIVE WORK", e1 >= 1)}
-          {node(460, 80, "Maxsurf", "AVAILABLE", e2 > 0)}
-          {node(460, 220, "Rhino", "AVAILABLE", e3 > 0)}
+          {node(460, 56, "Maxsurf", "AVAILABLE", e2 > 0, <text x="-44" y="5" textAnchor="middle" fill="#f4f4f5" fontSize="10" fontWeight="700">MS</text>)}
+          {node(460, 150, "Rhino", "AVAILABLE", e2 > 0, <image href="/logos/rhino.svg" x="-54" y="-10" width="20" height="20" style={{ filter: "brightness(0) invert(1)" }} />)}
+          {node(460, 244, "SOLIDWORKS", "RECORDED PROJECT", e3 > 0)}
         </svg>
-        <p className="mt-2 text-center text-xs text-muted">Connector status from the Vector OS software directory. Availability depends on your build.</p>
+        <p className="mt-2 text-center text-xs text-muted">Connector status from the Vector OS software directory. SOLIDWORKS appears as a recorded project, not a listed connector.</p>
       </div>
     </div>
   );
 }
 
-/* ---------- 05–08: workspace window ---------- */
-function Workspace({ p, labels, children }: { p: number; labels: DemoLabels; children: ReactNode }) {
-  const ch = chapterAt(p);
-  const stepKeys = ["05", "06", "07", "08"];
-  const activeStep = stepKeys[Math.max(0, ch - 4)];
-  const framesBuilt = Math.min(18, Math.floor(lin(...BUILD.frames, p) * 19.5));
-  const layersOn = [BUILD.grid[0], BUILD.keel[0], BUILD.frames[0], BUILD.longs[0], BUILD.shell[0]].map((a) => p > a);
-  const setLabel = (k: string) => (el: HTMLDivElement | null) => {
+/* ---------- 05–08: workspace window with three tracks ---------- */
+function Badge({ on, children }: { on: boolean; children: ReactNode }) {
+  return (
+    <span className={`flex items-center gap-1.5 rounded-md border px-2 py-0.5 transition-colors duration-300 ${on ? "border-fg text-fg" : "border-line text-muted"}`}>{children}</span>
+  );
+}
+
+function Workspace({ p, labels, seek, children }: { p: number; labels: DemoLabels; seek: (i: number) => void; children: ReactNode }) {
+  const ti = trackAt(p);
+  const t = TRACKS[ti];
+  const q = localQ(p, ti);
+  const ui = TRACK_UI[t.id];
+  const steps = STEPS[t.id];
+  let si = 0;
+  steps.forEach((s, i) => {
+    if (q >= s.q[0]) si = i;
+  });
+  const ready = ease(0.9, 0.91, p);
+  const setLabel = (k: string) => (el: HTMLElement | SVGElement | null) => {
     labels.current[k] = el;
   };
 
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-[#070707] shadow-[0_50px_160px_-40px_rgba(0,0,0,1)]">
       {/* title bar */}
-      <div className="flex items-center gap-3 border-b border-line bg-[#0c0c0d] px-4 py-2.5">
-        <div className="flex gap-1.5" aria-hidden="true">
+      <div className="flex items-center gap-3 border-b border-line bg-[#0c0c0d] px-3 py-2 md:px-4">
+        <div className="hidden gap-1.5 sm:flex" aria-hidden="true">
           <span className="size-2.5 rounded-full bg-[#2a2a2d]" /><span className="size-2.5 rounded-full bg-[#2a2a2d]" /><span className="size-2.5 rounded-full bg-[#2a2a2d]" />
         </div>
-        <div className="flex min-w-0 items-center gap-2 text-xs md:text-[13px]">
+        <div className="hidden min-w-0 items-center gap-2 text-[13px] lg:flex">
           <Logo className="size-3.5 shrink-0" />
           <span className="truncate font-medium">Vector workspace</span>
-          <span className="hidden truncate text-muted sm:inline">— {demo.project}</span>
         </div>
-        <div className="ml-auto flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em]">
-          <span className={`rounded-md border px-2 py-0.5 ${p < BUILD.frames[0] ? "border-fg text-fg" : "border-line text-muted"}`}>Maxsurf</span>
-          <span className="text-muted">→</span>
-          <span className={`rounded-md border px-2 py-0.5 ${p >= BUILD.frames[0] ? "border-fg text-fg" : "border-line text-muted"}`}>Rhino</span>
+        <div role="tablist" aria-label="Demo track" className="flex items-center gap-0.5 rounded-lg border border-line bg-black/60 p-0.5 md:mx-auto">
+          {TRACKS.map((tr, i) => (
+            <button
+              key={tr.id}
+              type="button"
+              role="tab"
+              aria-selected={i === ti}
+              onClick={() => seek(i)}
+              className={`rounded-md px-2.5 py-1 text-[11px] font-medium transition-colors duration-300 md:px-3.5 md:text-xs ${i === ti ? "bg-fg text-black" : "text-muted hover:text-fg"}`}
+            >
+              {tr.label}
+            </button>
+          ))}
+        </div>
+        <div className="ml-auto flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] md:ml-0">
+          {t.id === "hull" && (
+            <>
+              <Badge on={q < 0.16}><ToolLogo name="Maxsurf" className="size-3.5" wordSize="6.5px" /><span className="hidden sm:inline">Maxsurf</span></Badge>
+              <span className="text-muted">→</span>
+              <Badge on={q >= 0.16}><ToolLogo name="Rhino" className="size-3.5" /><span className="hidden sm:inline">Rhino</span></Badge>
+            </>
+          )}
+          {t.id === "facade" && (
+            <Badge on><ToolLogo name="Rhino" className="size-3.5" /><span>Rhino 8</span></Badge>
+          )}
+          {t.id === "mech" && (
+            <Badge on><span>SOLIDWORKS</span><span className="hidden text-muted sm:inline">· recorded project</span></Badge>
+          )}
         </div>
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col md:flex-row">
         {/* step sidebar */}
-        <aside className="relative shrink-0 border-b border-line bg-[#0a0a0b] px-5 py-4 md:w-64 md:border-b-0 md:border-r md:px-6 md:py-7">
-          <div className="relative h-[88px] md:h-[210px]">
-            {stepKeys.map((k) => {
-              const s = demo.steps[k];
-              const on = k === activeStep;
+        <aside className="relative shrink-0 border-b border-line bg-[#0a0a0b] px-4 py-3 md:w-64 md:border-b-0 md:border-r md:px-6 md:py-6">
+          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">{ui.file}</p>
+          <div className="relative mt-2 h-[78px] md:mt-4 md:h-[176px]">
+            {steps.map((s, i) => {
+              const on = i === si;
               return (
-                <div key={k} className="absolute inset-0 transition-all duration-500" style={{ opacity: on ? 1 : 0, transform: `translateY(${on ? 0 : 12}px)` }} aria-hidden={!on}>
-                  <p className="font-mono text-[11px] text-muted">STEP {k}</p>
-                  <h3 className="mt-1.5 text-lg font-semibold leading-tight tracking-tight md:mt-3 md:text-2xl">{s.title}</h3>
-                  <p className="mt-1.5 text-[13px] leading-snug text-muted md:mt-3 md:text-sm md:leading-relaxed">{s.body}</p>
+                <div key={s.title} className="absolute inset-0 transition-all duration-500" style={{ opacity: on ? 1 : 0, transform: `translateY(${on ? 0 : i < si ? -10 : 10}px)` }} aria-hidden={!on}>
+                  <p className="font-mono text-[11px] text-muted">
+                    STEP {String(i + 1).padStart(2, "0")} / {String(steps.length).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-1 text-base font-semibold leading-tight tracking-tight md:mt-2.5 md:text-xl">{s.title}</h3>
+                  <p className="mt-1 line-clamp-2 text-[12.5px] leading-snug text-muted md:mt-2.5 md:line-clamp-none md:text-[13px] md:leading-relaxed">{s.body}</p>
                 </div>
               );
             })}
           </div>
-          <ol className="mt-6 hidden space-y-2.5 md:block">
-            {stepKeys.map((k, i) => (
-              <li key={k} className={`flex items-center gap-3 text-sm transition-colors ${k === activeStep ? "text-fg" : "text-muted/60"}`}>
-                <span className="relative h-px w-6 overflow-hidden bg-line">
-                  <span className="absolute inset-y-0 left-0 bg-fg" style={{ width: `${lin(CHAPTERS[4 + i].a, CHAPTERS[4 + i].b, p) * 100}%` }} />
+          <ol className="mt-4 hidden space-y-2 md:block">
+            {steps.map((s, i) => (
+              <li key={s.title} className={`flex items-center gap-3 text-[12.5px] leading-tight transition-colors ${i === si ? "text-fg" : i < si ? "text-muted" : "text-muted/45"}`}>
+                <span className="relative h-px w-5 shrink-0 overflow-hidden bg-line">
+                  <span className="absolute inset-y-0 left-0 bg-fg" style={{ width: `${lin(s.q[0], s.q[1], q) * 100}%` }} />
                 </span>
-                {CHAPTERS[4 + i].k}
+                <span className="truncate">{s.title.replace(/\.$/, "")}</span>
               </li>
             ))}
           </ol>
         </aside>
 
         {/* viewport */}
-        <div className="relative min-h-0 flex-1 bg-[radial-gradient(ellipse_at_50%_30%,#141416_0%,#060606_75%)]">
+        <div className="relative min-h-0 flex-1 overflow-hidden bg-[radial-gradient(ellipse_at_50%_30%,#151517_0%,#060606_75%)]">
           {children}
+          <div ref={setLabel("fade")} className="pointer-events-none absolute inset-0 bg-[#060606] opacity-0" />
 
-          {/* anchored labels (positioned by the scene) */}
+          {/* anchored labels + grid labels (positioned by the scene) */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-            <Anchor refFn={setLabel("flag")} text="Station 9 · spacing 1.29 m > 0.70 m" strong />
-            <Anchor refFn={setLabel("shell")} text="Shell plate · 6 mm" />
-            <Anchor refFn={setLabel("web")} text="Frame web · 150 × 8 + flange" />
-            <Anchor refFn={setLabel("stiff")} text="Stiffener · L 75 × 50 × 6" below />
-            <Anchor refFn={setLabel("keel")} text="Keel bar" below />
+            {Object.entries(ANCHOR_TEXT).map(([k, a]) => (
+              <Anchor key={k} refFn={setLabel(k)} text={a.text} strong={a.strong} below={a.below} />
+            ))}
+            {(Object.keys(GRID) as TrackId[]).flatMap((id) =>
+              GRID[id].labels.map((l, i) => (
+                <div key={gridKey(id, i)} ref={setLabel(gridKey(id, i))} className="absolute left-0 top-0 opacity-0">
+                  <span className="absolute -translate-x-1/2 whitespace-nowrap font-mono text-[9.5px] tracking-[0.08em] text-muted/80">{l[2]}</span>
+                </div>
+              )),
+            )}
           </div>
 
-          {/* layers + properties */}
-          <div className="absolute left-3 top-3 hidden w-52 overflow-hidden rounded-xl border border-line bg-black/70 text-xs backdrop-blur md:block">
-            <p className="border-b border-line px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">Layers</p>
+          {/* model tree */}
+          <div className="absolute left-3 top-3 hidden w-48 overflow-hidden rounded-xl border border-line bg-black/70 text-xs backdrop-blur md:block">
+            <p className="flex items-center justify-between border-b border-line px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+              Model tree <span className="tabular-nums">{ui.tree.filter(([, a]) => q >= a).length}/{ui.tree.length}</span>
+            </p>
             <ul className="space-y-1.5 px-3 py-2.5">
-              {demo.layers.map((l, i) => (
-                <li key={l} className={`flex items-center justify-between transition-colors duration-300 ${layersOn[i] ? "text-fg" : "text-muted/50"}`}>
-                  <span className="flex items-center gap-2">
-                    <span className={`size-1.5 rounded-full ${layersOn[i] ? "bg-fg" : "bg-line"}`} />
-                    {l}
-                  </span>
-                  {l === "Frames" && layersOn[i] && <span className="font-mono text-[10px] text-muted">{framesBuilt + (p > CHECK.fix[1] ? 1 : 0)}</span>}
-                </li>
-              ))}
-            </ul>
-            <div className={`grid transition-[grid-template-rows] duration-500 ${p > 0.815 ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
-            <div className="overflow-hidden">
-            <p className="border-y border-line px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">Properties</p>
-            <dl className="space-y-1.5 px-3 py-2.5">
-              {demo.props.map(([k2, v], i) => {
-                const filled = p > 0.83 + i * 0.012;
+              {ui.tree.map(([l, a]) => {
+                const on = q >= a;
                 return (
-                  <div key={k2} className="flex items-center justify-between gap-2">
-                    <dt className="text-muted">{k2}</dt>
-                    <dd className={`truncate font-mono text-[11px] transition-all duration-500 ${filled ? "text-fg" : "text-muted/40"}`}>
-                      {filled ? v : <span className="inline-block h-2 w-10 rounded bg-line/70 align-middle" />}
-                    </dd>
-                  </div>
+                  <li key={l} className={`flex items-center gap-2 transition-colors duration-300 ${on ? "text-fg" : "text-muted/45"}`}>
+                    <span className={`size-1.5 rounded-full transition-colors duration-300 ${on ? "bg-fg" : "bg-line"}`} />
+                    {l}
+                  </li>
                 );
               })}
+            </ul>
+          </div>
+
+          {/* gizmo + view */}
+          <div className="absolute right-3 top-3 flex items-start gap-2" aria-hidden="true">
+            <span className="mt-1 hidden rounded-md border border-line bg-black/60 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-muted sm:inline">Perspective · shaded</span>
+            <svg viewBox="0 0 48 48" className="size-12 rounded-full border border-line bg-black/60">
+              <circle cx="24" cy="24" r="2" fill="#f4f4f5" />
+              {(["x", "y", "z"] as const).map((a) => (
+                <g key={a}>
+                  <line ref={setLabel(`g${a}`)} x1="24" y1="24" x2="24" y2="24" stroke={a === "x" ? "#f4f4f5" : a === "y" ? "#a1a1aa" : "#71717a"} strokeWidth="1.6" strokeLinecap="round" />
+                  <text ref={setLabel(`g${a}t`)} x="24" y="24" textAnchor="middle" fill="#a1a1aa" fontSize="7" fontFamily="ui-monospace, monospace">
+                    {a === "y" ? "Z" : a === "z" ? "Y" : "X"}
+                  </text>
+                </g>
+              ))}
+            </svg>
+          </div>
+
+          {/* stats card at the end of each track */}
+          <div className="absolute bottom-12 right-3 hidden w-[200px] overflow-hidden md:block rounded-xl border border-line bg-black/75 text-xs backdrop-blur transition-all duration-500 md:bottom-14" style={{ opacity: q > 0.84 && ready < 0.5 ? 1 : 0, transform: `translateY(${q > 0.84 ? 0 : 10}px)` }}>
+            <p className="border-b border-line px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">{t.label} · summary</p>
+            <dl className="grid grid-cols-2 gap-x-3 gap-y-2 px-3 py-2.5">
+              {ui.stats.map(([k, v]) => (
+                <div key={k}>
+                  <dt className="text-[10px] text-muted">{k}</dt>
+                  <dd className="font-mono text-base tabular-nums text-fg">{v}</dd>
+                </div>
+              ))}
             </dl>
-            </div>
+          </div>
+
+          {/* 08 ready: summary across the three tracks */}
+          <div className="absolute inset-0 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm" style={{ opacity: ready, pointerEvents: "none" }}>
+            <div className="w-full max-w-xl rounded-2xl border border-line bg-[#0b0b0c] p-5 md:p-6" style={fade(ready, 14)}>
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">Review report · sample data</p>
+              <div className="mt-4 grid grid-cols-3 gap-3">
+                {TRACKS.map((tr) => (
+                  <div key={tr.id} className="rounded-xl border border-line bg-card p-3">
+                    <p className="text-sm font-semibold">{tr.label}</p>
+                    <ul className="mt-2 space-y-1 font-mono text-[10.5px] text-muted">
+                      {TRACK_UI[tr.id].stats.slice(0, 3).map(([k, v]) => (
+                        <li key={k} className="flex justify-between gap-1"><span className="truncate">{k}</span><span className="text-fg">{v}</span></li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-[13px] text-muted">Checks passed against your references. One fix applied with your approval. You decide what happens next.</p>
             </div>
           </div>
 
-          {/* status line + mobile chip */}
-          <p className="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-[0.12em] text-muted/80">
-            Rhino · sample data · {p < CHECK.fix[1] ? `${framesBuilt}/19 frames` : "19/19 frames"}
-          </p>
+          {/* status line: coordinates + scale bar */}
+          <div className="pointer-events-none absolute bottom-3 left-3 flex items-end gap-4 font-mono text-[10px] text-muted/85" aria-hidden="true">
+            <div>
+              <div className="flex items-end gap-1.5">
+                <span ref={setLabel("scale")} className="block h-1.5 border-x border-b border-fg/80" style={{ width: 60 }} />
+                <span ref={setLabel("scaleText")}>1 m</span>
+              </div>
+            </div>
+            <span ref={setLabel("coord")} className="hidden tabular-nums md:inline" />
+          </div>
           <div className="absolute bottom-3 right-3 hidden gap-1 rounded-lg border border-line bg-black/60 p-1 md:flex" aria-hidden="true">
-            {["M3 8h10M8 3v10", "M2 12 8 4l6 8", "M3 3h10v10H3z"].map((d) => (
-              <span key={d} className="flex size-7 items-center justify-center rounded-md text-muted">
+            {["M3 8h10M8 3v10", "M2 12 8 4l6 8", "M3 3h10v10H3z", "M8 2v12M2 8h12M4 4l8 8"].map((d) => (
+              <span key={d} className="flex size-6 items-center justify-center rounded-md text-muted">
                 <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.4"><path d={d} /></svg>
               </span>
             ))}
@@ -502,36 +598,47 @@ function Workspace({ p, labels, children }: { p: number; labels: DemoLabels; chi
         </div>
 
         {/* assistant panel */}
-        <aside className="hidden w-72 shrink-0 flex-col border-l border-line bg-[#0a0a0b] lg:flex">
+        <aside className="hidden w-72 shrink-0 flex-col border-l border-line bg-[#0a0a0b] xl:flex">
           <p className="flex items-center gap-2 border-b border-line px-4 py-3 text-xs font-medium">
             <Logo className="size-3.5" /> Assistant
-            <span className="ml-auto flex items-center gap-1.5 font-mono text-[10px] text-muted"><span className="live-dot !size-1.5" />working</span>
+            <span className="ml-auto flex items-center gap-1.5 font-mono text-[10px] text-muted"><span className="live-dot !size-1.5" />{p > 0.9 ? "done" : "working"}</span>
           </p>
           <div className="flex min-h-0 flex-1 flex-col justify-end gap-2.5 overflow-hidden p-3 text-[13px] leading-snug">
-            <Msg at={0.335} p={p}>
-              Plan approved. Building in Rhino…
-              <div className="mt-2 h-1 overflow-hidden rounded-full bg-line"><div className="h-full bg-fg" style={{ width: `${(framesBuilt / 18) * 100}%` }} /></div>
-              <p className="mt-1 font-mono text-[10px] text-muted">Frames {framesBuilt} / 18 · station 9 pending</p>
+            <Msg at={0.234} until={0.455} p={p}>Plan approved. Reading the faired hull from Maxsurf…</Msg>
+            <Msg at={pageAt(0, 0.17)} until={0.455} p={p}>Hull surface transferred to Rhino. Cutting decks at +1.20, +2.40 and +3.60.</Msg>
+            <Msg at={pageAt(0, 0.46)} until={0.455} p={p}>
+              Building frames and members…
+              <div className="mt-2 h-1 overflow-hidden rounded-full bg-line"><div className="h-full bg-fg" style={{ width: `${lin(0.45, 0.67, q) * 100 * (ti === 0 ? 1 : 0)}%` }} /></div>
+              <p className="mt-1 font-mono text-[10px] text-muted">Frames {ti === 0 ? Math.round(lin(0.45, 0.6, q) * 48) : 48} / 48</p>
             </Msg>
-            <Msg at={0.53} p={p}>Shell generated. Running checks against your rule set…</Msg>
-            <Msg at={0.59} p={p} flag>
-              <p className="font-medium">Station 9 · frame spacing 1.29 m exceeds your 0.70 m rule.</p>
-              <p className="mt-1 text-muted">Proposed fix: add a frame at station 9.</p>
+            <Msg at={pageAt(0, 0.7)} until={0.455} p={p} flag>
+              <p className="font-medium">Top deck · FR 21–24 have no deck beams.</p>
+              <p className="mt-1 text-muted">Proposed fix: add 4 deck beams to match the arrangement.</p>
               <div className="mt-2 flex gap-1.5">
-                <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${p > 0.625 ? "bg-fg text-black" : "border border-line"}`}>Approve</span>
+                <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${q > 0.745 || ti > 0 ? "bg-fg text-black" : "border border-line"}`}>Approve</span>
                 <span className="rounded-full border border-line px-2.5 py-1 text-[11px] text-muted">Skip</span>
               </div>
             </Msg>
-            <Msg at={0.625} p={p} user>Approve</Msg>
-            <Msg at={0.66} p={p}>Fixed. Spacing is 0.65 m at every station. ✓</Msg>
-            <Msg at={0.725} p={p}>Section at station 6: shell 6 mm, frame web 150 × 8, L 75 × 50 × 6 stiffeners.</Msg>
-            <Msg at={0.845} p={p}>
+            <Msg at={pageAt(0, 0.745)} until={0.455} p={p} user>Approve</Msg>
+            <Msg at={pageAt(0, 0.79)} until={0.455} p={p}>Fixed. Deck beams at every frame. ✓</Msg>
+
+            <Msg at={pageAt(1, 0.02)} until={0.69} p={p}>Concept surface received · 12 bays × 5 floors on the curve.</Msg>
+            <Msg at={pageAt(1, 0.3)} until={0.69} p={p}>Glazing placed: 60 vision panels, 60 spandrels.</Msg>
+            <Msg at={pageAt(1, 0.47)} until={0.69} p={p}>Framing done: 13 mullions, 132 transoms. Isolating bay 07, level 3.</Msg>
+            <Msg at={pageAt(1, 0.74)} until={0.69} p={p}>Nominal 28 mm build-up (8 / 12 / 8) matches your façade spec. ✓</Msg>
+
+            <Msg at={pageAt(2, 0.02)} until={0.905} p={p}>Opening the recorded SOLIDWORKS assembly. Checking the imported chassis…</Msg>
+            <Msg at={pageAt(2, 0.27)} until={0.905} p={p}>Mounting profile fully defined · 40 mm tab, Ø 22 bore.</Msg>
+            <Msg at={pageAt(2, 0.43)} until={0.905} p={p}>Bushing seated in the clevis. Clearance OK. ✓</Msg>
+            <Msg at={pageAt(2, 0.7)} until={0.905} p={p}>Wheel stack: tyre → rim → hub → disc → caliper.</Msg>
+
+            <Msg at={0.905} p={p}>
               <p className="font-medium">Review report</p>
               <ul className="mt-1.5 space-y-1 font-mono text-[11px] text-muted">
-                <li className="flex justify-between"><span>Frame spacing</span><span className="text-fg">✓</span></li>
-                <li className="flex justify-between"><span>Plate minimums</span><span className="text-fg">✓</span></li>
+                <li className="flex justify-between"><span>Hull · frame arrangement</span><span className="text-fg">✓</span></li>
+                <li className="flex justify-between"><span>Façade · build-up</span><span className="text-fg">✓</span></li>
+                <li className="flex justify-between"><span>Mechanical · interfaces</span><span className="text-fg">✓</span></li>
                 <li className="flex justify-between"><span>Fixes applied</span><span className="text-fg">1</span></li>
-                <li className="flex justify-between"><span>Frames</span><span className="text-fg">19</span></li>
               </ul>
               <span className="mt-2 inline-block rounded-full bg-fg px-2.5 py-1 text-[11px] font-semibold text-black">Open report</span>
             </Msg>
@@ -543,9 +650,9 @@ function Workspace({ p, labels, children }: { p: number; labels: DemoLabels; chi
   );
 }
 
-function Msg({ at, p, children, user, flag }: { at: number; p: number; children: ReactNode; user?: boolean; flag?: boolean }) {
-  const k = ease(at, at + 0.01, p);
-  if (k <= 0) return null;
+function Msg({ at, until = 2, p, children, user, flag }: { at: number; until?: number; p: number; children: ReactNode; user?: boolean; flag?: boolean }) {
+  const k = ease(at, at + 0.006, p);
+  if (k <= 0 || p >= until) return null;
   return (
     <div className={`rounded-xl px-3 py-2.5 ${user ? "self-end bg-card-2" : flag ? "border border-fg/60 bg-[#121213]" : "border border-line bg-[#101011]"}`} style={fade(k, 8)}>
       {flag && <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-fg">⚠ Self-check</p>}

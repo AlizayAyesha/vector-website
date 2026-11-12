@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import { ctas, hero, intro, tools } from "@/lib/content";
+import { ToolLogo } from "./ToolLogo";
 import { CoreCanvas } from "./Lazy3D";
 import { T, ramp } from "./three/coreScene";
 
@@ -18,6 +19,7 @@ export default function Intro() {
   const hintRef = useRef<HTMLDivElement>(null);
   const progress = useMemo(() => ({ current: 0 }), []);
   const labels = useMemo(() => ({ current: [] as (HTMLElement | null)[] }), []);
+  const logos = useMemo(() => ({ current: [] as (HTMLElement | null)[] }), []);
 
   useEffect(() => {
     let raf = 0;
@@ -75,11 +77,26 @@ export default function Intro() {
       <div className="sticky top-0 h-svh overflow-hidden">
         {/* 3D */}
         <div className="absolute inset-0">
-          <CoreCanvas progress={progress} tools={tools} labels={labels} />
+          <CoreCanvas progress={progress} tools={tools} labels={labels} logos={logos} />
         </div>
         {/* vignette keeps type readable over the scene */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_45%,transparent_30%,rgba(0,0,0,0.75)_100%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent" />
+
+        {/* tool logos, centred in each hexagon by the scene */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          {tools.map((t, i) => (
+            <div
+              key={t.name}
+              ref={(el) => {
+                logos.current[i] = el;
+              }}
+              className="absolute left-0 top-0 flex size-6 items-center justify-center opacity-0 [container-type:size]"
+            >
+              <ToolLogo name={t.name} className="size-full" wordSize="38cqw" />
+            </div>
+          ))}
+        </div>
 
         {/* tool labels, positioned by the scene every frame */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">

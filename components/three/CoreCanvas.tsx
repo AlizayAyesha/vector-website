@@ -8,10 +8,11 @@ type Props = {
   progress: { current: number };
   tools: readonly Tool[];
   labels: { current: (HTMLElement | null)[] };
+  logos?: { current: (HTMLElement | null)[] };
 };
 
-export default function CoreCanvas({ progress, tools, labels }: Props) {
-  const setup = useMemo(() => createCoreScene({ progress, tools, labels }), [progress, tools, labels]);
+export default function CoreCanvas({ progress, tools, labels, logos }: Props) {
+  const setup = useMemo(() => createCoreScene({ progress, tools, labels, logos }), [progress, tools, labels, logos]);
   return (
     <Stage
       setup={setup}

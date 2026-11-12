@@ -43,3 +43,20 @@ Recording posters and videos are hot-linked from vectoros.one (`/assets/...`). V
 - No testimonials (none provided).
 - “Book a demo” links to the vectoros.one homepage, where the Calendly dialog lives. Swap in the direct Calendly URL if you have it.
 - Light theme, analytics, CSP headers and the in-page studio demo from the live site are not ported.
+
+## Product demo: three tracks (brief 3)
+
+The pinned demo (`components/demo/`) runs 01 Ask → 04 Connect as cards, then the Vector workspace window
+plays three real-time Three.js tracks chained in one scroll (tabs in the title bar jump between them):
+
+| Track | Follows the live recording | Built in |
+| --- | --- | --- |
+| Hull | "Hull to structure": Maxsurf profile → hull surface in Rhino → decks → frames, web frames, deck beams, longitudinals, keel, bulkhead → self-check flag + fix → orbit with dimensions | `tracks/hullTrack.ts` |
+| Façade | "Façade review · Rhino 8": concept wireframe → glazing + spandrels → mullions/transoms → select bay → exploded layered assembly (IGU, profiles, isolators, brackets) → component model + counts | `tracks/facadeTrack.ts` |
+| Mechanical | recorded SOLIDWORKS project: space-frame chassis → dimensioned mounting sketch → clevis + bushing → upright, wishbones, spring/damper → exploded wheel stack → complete car | `tracks/mechTrack.ts` |
+
+`demoScene.ts` orchestrates them (environment lighting, ACES tone mapping, contact shadows, fog per camera
+distance, cross-fade between tracks) and drives the HUD (axis gizmo, coordinates, scale bar, grid labels,
+3D dimension lines and anchored callouts). All geometry and numbers are sample data.
+
+Tool logos live in `public/logos/` (sources in `public/logos/SOURCES.md`), rendered white via `components/ToolLogo.tsx`.

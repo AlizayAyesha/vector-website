@@ -14,7 +14,7 @@ function DemoCanvas({ progress, labels, isActive }: Props) {
       className="absolute inset-0"
       fov={32}
       isActive={isActive}
-      label="Illustrative 3D viewport: a workboat hull is built station by station, checked, and cut to show a structural section"
+      label="Illustrative 3D viewport: a ship block, a curved façade and a wheel-corner assembly are built and reviewed step by step"
     />
   );
 }

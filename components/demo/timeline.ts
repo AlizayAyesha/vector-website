@@ -11,32 +11,38 @@ export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 export type Chapter = { n: string; k: string; a: number; b: number };
 
 export const CHAPTERS: Chapter[] = [
-  { n: "01", k: "Ask", a: 0.0, b: 0.09 },
-  { n: "02", k: "Plan", a: 0.09, b: 0.16 },
-  { n: "03", k: "Standards", a: 0.16, b: 0.23 },
-  { n: "04", k: "Connect", a: 0.23, b: 0.31 },
-  { n: "05", k: "Build", a: 0.31, b: 0.57 },
-  { n: "06", k: "Self-check", a: 0.57, b: 0.68 },
-  { n: "07", k: "Detail", a: 0.68, b: 0.81 },
-  { n: "08", k: "Ready", a: 0.81, b: 0.92 },
+  { n: "01", k: "Ask", a: 0.0, b: 0.06 },
+  { n: "02", k: "Plan", a: 0.06, b: 0.11 },
+  { n: "03", k: "Standards", a: 0.11, b: 0.16 },
+  { n: "04", k: "Connect", a: 0.16, b: 0.215 },
+  { n: "05", k: "Hull", a: 0.215, b: 0.455 },
+  { n: "06", k: "Façade", a: 0.455, b: 0.69 },
+  { n: "07", k: "Mechanical", a: 0.69, b: 0.9 },
+  { n: "08", k: "Ready", a: 0.9, b: 0.93 },
 ];
 
-export const OUTRO = 0.92;
+export const OUTRO = 0.93;
+
+/** The card phase (01–04) was authored on a 0..0.31 clock; this maps the page clock onto it. */
+export const CARD_SCALE = 0.31 / 0.215;
+export const cardClock = (p: number) => p * CARD_SCALE;
 
 /** Window (workspace) phase. */
-export const WIN = { in: [0.285, 0.335] as const };
+export const WIN = { in: [0.198, 0.232] as const };
 
-/** Build sub-steps (inside chapter 05). */
-export const BUILD = {
-  grid: [0.31, 0.33] as const,
-  keel: [0.325, 0.35] as const,
-  frames: [0.345, 0.48] as const,
-  longs: [0.47, 0.52] as const,
-  shell: [0.51, 0.565] as const,
-};
+export type TrackId = "hull" | "facade" | "mech";
+export const TRACKS: { id: TrackId; label: string; a: number; b: number }[] = [
+  { id: "hull", label: "Hull", a: 0.232, b: 0.45 },
+  { id: "facade", label: "Façade", a: 0.46, b: 0.685 },
+  { id: "mech", label: "Mechanical", a: 0.695, b: 0.9 },
+];
+/** midpoints between tracks, where the viewport cross-fades */
+export const SWITCH = [0.455, 0.69];
 
-export const CHECK = { flag: [0.585, 0.6] as const, fix: [0.635, 0.655] as const, clear: [0.66, 0.68] as const };
-export const DETAIL = { cut: [0.69, 0.72] as const, parts: [0.71, 0.75] as const, out: [0.8, 0.83] as const };
+export const trackAt = (p: number) => (p < SWITCH[0] ? 0 : p < SWITCH[1] ? 1 : 2);
+export const localQ = (p: number, i = trackAt(p)) => lin(TRACKS[i].a, TRACKS[i].b, p);
+/** page progress for a local q inside track i */
+export const pageAt = (i: number, q: number) => lerp(TRACKS[i].a, TRACKS[i].b, q);
 
 export const chapterAt = (p: number) => {
   let i = 0;
