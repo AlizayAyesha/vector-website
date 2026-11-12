@@ -139,3 +139,64 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------- pinned intro ---------- */
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #f4f4f5;
+  box-shadow: 0 0 10px rgb(255 255 255 / 0.8);
+  animation: breathe 2.2s ease-in-out infinite;
+}
+@keyframes breathe {
+  50% {
+    opacity: 0.35;
+    box-shadow: 0 0 2px rgb(255 255 255 / 0.4);
+  }
+}
+.word-in,
+.hero-in {
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(0.3em);
+  animation: blur-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+.hero-in {
+  transform: translateY(12px);
+}
+@keyframes blur-in {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+.phrase {
+  text-shadow: 0 0 30px #000, 0 0 60px #000;
+}
+.phrase [data-w] {
+  transition: opacity 0.12s linear;
+}
+.pip {
+  display: block;
+  width: 2px;
+  height: 18px;
+  border-radius: 2px;
+  background: #303033;
+  transition: background 0.3s, height 0.3s;
+}
+.pip[data-on="true"] {
+  background: #f4f4f5;
+  height: 30px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .word-in,
+  .hero-in {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    animation: none;
+  }
+}

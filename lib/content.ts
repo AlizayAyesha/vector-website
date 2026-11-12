@@ -26,6 +26,15 @@ export const hero = {
   sub: "An AI workspace for CAD and engineering. Plan, build and review in your tools.", // live
 };
 
+// Pinned intro statements (windows are scroll-progress ranges, 0..1).
+export const intro = {
+  phrases: [
+    { text: "Design, projects and your tools. Together.", window: [0.2, 0.4] as const, note: "" }, // live (homepage heading)
+    { text: "Connected to the software you already use.", window: [0.44, 0.64] as const, note: "Status from vectoros.one/software" }, // new
+    { text: "Ask. Plan. Build. Then inspect the result in your tools.", window: [0.67, 0.9] as const, note: "" }, // live words (How it works)
+  ],
+};
+
 export const story = {
   eyebrow: "Design, projects and your tools. Together.", // live (section heading)
   beats: [

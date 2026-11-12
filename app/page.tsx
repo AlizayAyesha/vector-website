@@ -3,9 +3,9 @@ import Story from "@/components/Story";
 import Faq from "@/components/Faq";
 import Media from "@/components/Media";
 import Reveal from "@/components/Reveal";
-import { HeroCanvas } from "@/components/Lazy3D";
+import Intro from "@/components/Intro";
 import { Logo } from "@/components/Logo";
-import { ctas, footer, hero, steps, tools } from "@/lib/content";
+import { ctas, footer, steps, tools } from "@/lib/content";
 
 const Arrow = () => (
   <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
@@ -50,42 +50,8 @@ export default function Home() {
       <Nav />
 
       <main id="main">
-        {/* HERO */}
-        <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-hidden pb-16 pt-32 md:justify-center md:pb-0">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 md:left-[30%]">
-              <HeroCanvas />
-            </div>
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent md:via-black/10" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
-          </div>
-
-          <div className="relative mx-auto w-full max-w-6xl px-6">
-            <p className="eyebrow mb-6">{hero.eyebrow}</p>
-            <h1 className="text-[clamp(3rem,9.5vw,8.5rem)] font-semibold leading-[0.92] tracking-[-0.045em]">
-              {hero.title[0]}
-              <br />
-              <span className="bg-gradient-to-b from-fg to-fg/45 bg-clip-text text-transparent">{hero.title[1]}</span>
-            </h1>
-            <p className="mt-7 max-w-md text-pretty text-lg text-muted md:text-xl">{hero.sub}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <a href={ctas.bookDemo} className="btn-primary btn-lg">
-                Book a demo <Arrow />
-              </a>
-              <a href="#work" className="btn-ghost btn-lg glass">
-                See the work
-              </a>
-            </div>
-          </div>
-
-          <div className="pointer-events-none absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-muted md:flex" aria-hidden="true">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll</span>
-            <span className="h-8 w-px bg-gradient-to-b from-muted to-transparent" />
-          </div>
-        </section>
-
-        {/* STORY (scroll-driven 3D) */}
-        <Story />
+        {/* INTRO: pinned hero + scroll-scrubbed 3D */}
+        <Intro />
 
         {/* ASK → PLAN → BUILD */}
         <section id="how" className="scroll-mt-24 relative mx-auto max-w-6xl px-6 py-28 md:py-40">
@@ -109,6 +75,9 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* STORY (scroll-driven 3D) */}
+        <Story />
 
         {/* MEDIA */}
         <section id="work" className="scroll-mt-24 relative mx-auto max-w-6xl px-6 pb-28 md:pb-40">

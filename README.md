@@ -1,6 +1,6 @@
 # Vector OS — 3D site (local prototype)
 
-A standalone, Atenea-*inspired* (style only) marketing site for Vector OS with original Three.js scenes.
+A standalone, Atenea-*inspired* (layout, pacing and scroll behaviour only — all code, geometry and copy are original/Vector's own) marketing site for Vector OS with original Three.js scenes.
 Nothing here is deployed or pushed. Local preview only.
 
 ## Run it
@@ -24,10 +24,10 @@ No environment variables or secrets are needed.
 ## What's inside
 
 - **Next.js 16 (App Router, TypeScript) + Tailwind CSS 4 + three.js** — no other runtime deps.
-- `app/page.tsx` — page sections: frosted pill nav, hero, scroll story, Ask → Plan → Build, recorded projects, tools strip, CTA, FAQ, footer.
+- `components/Intro.tsx` + `components/three/coreScene.ts` — the pinned intro (480vh tall, sticky full-viewport canvas). Scroll progress scrubs everything: the hero copy lifts/blurs away, the bracket dissolves into ~9k points that re-form the Vector mark, then six tool nodes and links draw in (available = solid with data pulses, in development = dashed). Three statements fade in over the scene and light up word by word as you scroll. Scrolling back plays it in reverse.
+- `app/page.tsx` — page sections: frosted pill nav, pinned intro, Ask → Plan → Build, exploded-assembly scroll story, Ask → Plan → Build, recorded projects, tools strip, CTA, FAQ, footer.
 - `lib/content.ts` — all copy and links in one place. Each line is tagged `live` (taken from vectoros.one) or `new` (written for this prototype — review before launch).
 - `components/three/stage.tsx` — tiny WebGL stage: DPR capped at 1.75, renders only while on screen (IntersectionObserver) and while the tab is visible, single still frame for `prefers-reduced-motion`, CSS glow fallback if WebGL is unavailable.
-- `components/three/heroScene.ts` — original parametric L-bracket: base pulls 80 → 120 mm, holes then ribs appear, dimension line + inspection plane, mouse parallax.
 - `components/three/storyScene.ts` — original pillow-block assembly (plate, bracket, bearing ring, shaft, bolts) that explodes and reassembles as you scroll.
 - 3D is code-split with `next/dynamic` (`ssr: false`), so the first paint is plain HTML/CSS.
 - Inter is self-hosted (`app/fonts`, SIL OFL licence included) via `next/font/local`.
