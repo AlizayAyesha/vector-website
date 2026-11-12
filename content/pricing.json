@@ -1,0 +1,273 @@
+{
+ "source": "vectoros.one/pricing (rendered page + its JS plan catalogue), captured 13 Nov 2026",
+ "header": {
+  "eyebrow": "Pricing",
+  "title": "A plan for your work.",
+  "sub": "Choose your capacity. Keep your workflow.",
+  "note": "Monthly subscriptions · Secure Stripe checkout · No sign-in required.",
+  "unit": "USD before tax · Monthly edit allowance"
+ },
+ "billingNotes": {
+  "monthly": "Billed monthly.",
+  "quarterly": "Quarterly prepayment · 5% below monthly pricing. Full upfront charge shown on each card.",
+  "yearly": "Yearly prepayment · 10% below monthly pricing. Full upfront charge shown on each card."
+ },
+ "professionalsNote": "Professional plans for one person. For a team, contact us about Enterprise.",
+ "enterprise": {
+  "title": "Built around your organization.",
+  "body": "Tell us about your team, engineering software and workflow requirements. Seats, usage, integrations, deployment and support are scoped through an individual agreement.",
+  "contracts": [
+   "Monthly contract",
+   "Quarterly contract",
+   "Yearly contract"
+  ],
+  "terms": "Enterprise billing and discounts are negotiated individually. Standard plan discounts do not apply. Potential contract capabilities require feasibility review and a written agreement.",
+  "emailNote": "Opens your email application using the existing project contact. Include your work email, company, company size, engineering discipline, software, estimated seats and workflow requirements. No enquiry is automatically submitted or saved on this website.",
+  "email": "office@sh3ikhmabz.com"
+ },
+ "freeCta": {
+  "label": "Get Vector OS",
+  "href": "/download",
+  "note": "No subscription required."
+ },
+ "plans": [
+  {
+   "id": "free",
+   "name": "Free",
+   "audience": "individuals",
+   "card": "free",
+   "label": "For individuals",
+   "monthly": 0,
+   "upfront": {},
+   "intervals": [],
+   "edits": "3 basic AI edits / month",
+   "tagline": "Discover what's possible.",
+   "description": "Experience a new way to interact with engineering software. Explore Vector OS, understand your designs, and experience AI-assisted engineering without a subscription.",
+   "features": [
+    "Access to essential AI capabilities",
+    "Basic engineering file and model-context inspection",
+    "Explore supported Rhino and Revit workflows"
+   ],
+   "supporting": "No subscription required."
+  },
+  {
+   "id": "go",
+   "name": "Go",
+   "audience": "individuals",
+   "card": "go",
+   "label": "For individuals",
+   "monthly": 20,
+   "upfront": {
+    "quarterly": 57,
+    "yearly": 216
+   },
+   "intervals": [
+    "monthly",
+    "quarterly",
+    "yearly"
+   ],
+   "edits": "8 standard AI edits / month",
+   "tagline": "Start getting real engineering work done.",
+   "description": "Move beyond experimenting. Use Vector OS to handle simple modeling operations, reduce repetitive work, and bring AI directly into your engineering workflow.",
+   "features": [
+    "Essential engineering AI models",
+    "Basic project and active-document context",
+    "Supported native Rhino and Revit operations",
+    "Plan, approve, and review AI-assisted changes"
+   ],
+   "supporting": "For occasional projects and lighter engineering workloads.",
+   "checkout": "https://buy.stripe.com/5kQ7sK0ZWgIe35EatT3ZK00"
+  },
+  {
+   "id": "plus",
+   "name": "Plus",
+   "audience": "individuals",
+   "card": "plus",
+   "label": "Recommended",
+   "recommended": true,
+   "monthly": 50,
+   "upfront": {
+    "quarterly": 142.5,
+    "yearly": 540
+   },
+   "intervals": [
+    "monthly",
+    "quarterly",
+    "yearly"
+   ],
+   "edits": "20 standard AI edits / month",
+   "tagline": "More capability for the way you work.",
+   "description": "For engineers who are ready to make Vector OS part of their regular workflow. Go further with more edits, stronger reasoning, and richer engineering context.",
+   "features": [
+    "Expanded model access and reasoning capabilities",
+    "Richer project and document context",
+    "More frequent native engineering operations",
+    "Project history and workflow continuity"
+   ],
+   "supporting": "For engineers turning AI assistance into everyday productivity.",
+   "checkout": "https://buy.stripe.com/cNi00i24063AeOm8lL3ZK01"
+  },
+  {
+   "id": "pro",
+   "name": "Pro",
+   "capacity": "Pro",
+   "audience": "professionals",
+   "card": "pro",
+   "label": "For professionals",
+   "monthly": 100,
+   "upfront": {
+    "quarterly": 285
+   },
+   "intervals": [
+    "monthly",
+    "quarterly"
+   ],
+   "edits": "50 standard AI edits / month",
+   "tagline": "Your engineering workflow, accelerated.",
+   "description": "Everything you need to make AI a serious part of your professional toolkit.",
+   "features": [
+    "Access to premium engineering AI models",
+    "Advanced project-context capabilities",
+    "Supported multi-step engineering operations",
+    "Native engineering software integration",
+    "Execution planning, approval, and result review"
+   ],
+   "supporting": "For independent professionals and engineers using Vector OS consistently.",
+   "checkout": "https://buy.stripe.com/aFabJ0gYU8bIeOm8lL3ZK02"
+  },
+  {
+   "id": "pro_advanced",
+   "name": "Pro Advanced",
+   "capacity": "Advanced",
+   "audience": "professionals",
+   "card": "pro",
+   "label": "For professionals",
+   "monthly": 200,
+   "upfront": {
+    "quarterly": 570
+   },
+   "intervals": [
+    "monthly",
+    "quarterly"
+   ],
+   "edits": "120 standard AI edits / month",
+   "tagline": "Take on bigger challenges.",
+   "description": "Greater capacity for engineers handling complex projects, frequent modeling changes, and demanding design processes.",
+   "features": [
+    "All Pro capabilities",
+    "Greater usage capacity for premium reasoning",
+    "More room for complex, multi-step workflows",
+    "Expanded engineering context and project continuity"
+   ],
+   "supporting": "For professionals whose engineering work demands more.",
+   "checkout": "https://buy.stripe.com/9B63cu38463AcGe45v3ZK03"
+  },
+  {
+   "id": "pro_max",
+   "name": "Pro Max",
+   "capacity": "Max",
+   "audience": "professionals",
+   "card": "pro",
+   "label": "For professionals",
+   "monthly": 500,
+   "upfront": {},
+   "intervals": [
+    "monthly"
+   ],
+   "edits": "300 standard AI edits / month",
+   "tagline": "Maximum capability. Minimum interruption.",
+   "description": "For power users who push engineering software every day. Work through high-volume tasks and advanced workflows with substantially more capacity.",
+   "features": [
+    "All Pro Advanced capabilities",
+    "Extensive premium reasoning capacity",
+    "Intensive engineering workflows and repeated automation",
+    "Expanded support for complex project operations"
+   ],
+   "supporting": "For high-intensity professional engineering work.",
+   "checkout": "https://buy.stripe.com/bJe5kC6kg77EfSqfOd3ZK04"
+  },
+  {
+   "id": "ultra",
+   "name": "Ultra",
+   "audience": "professionals",
+   "card": "ultra",
+   "label": "For professionals",
+   "monthly": 1000,
+   "upfront": {},
+   "intervals": [
+    "monthly"
+   ],
+   "edits": "700 standard AI edits / month",
+   "tagline": "Built for engineering without compromise.",
+   "description": "Vector OS's highest-capacity standard subscription, created for demanding professionals who work on large, complex projects and depend on AI across intensive engineering workflows.",
+   "features": [
+    "Full access to supported managed AI model tiers",
+    "Highest standard-plan usage capacity",
+    "Extensive project and engineering context capabilities",
+    "High-volume, multi-step native engineering automation",
+    "Advanced workflow planning and execution review"
+   ],
+   "supporting": "For exceptional workloads that demand exceptional capacity.",
+   "checkout": "https://buy.stripe.com/14AbJ0dMIcrY35EcC13ZK05"
+  },
+  {
+   "id": "enterprise",
+   "name": "Enterprise",
+   "audience": "professionals",
+   "card": "enterprise",
+   "label": "For teams",
+   "monthly": null,
+   "upfront": {},
+   "intervals": [],
+   "edits": "Custom usage allowances",
+   "tagline": "Engineering intelligence at organizational scale.",
+   "description": "Bring Vector OS into the heart of your engineering organization. Connect teams, projects, engineering applications, and institutional knowledge through a unified AI-powered workflow.",
+   "features": [
+    "Custom usage allowances and seat arrangements",
+    "Centralized organization and team management",
+    "Tailored engineering integrations and workflows",
+    "Organization-specific context and knowledge",
+    "Permissions, governance, and auditability",
+    "Dedicated onboarding and deployment assistance",
+    "Forward Deployed Engineering options",
+    "Custom commercial, security, and support agreements"
+   ],
+   "supporting": "Built around your organization's engineering requirements.",
+   "for": "Designed for architecture firms, engineering consultancies, construction companies, shipyards, manufacturers, and multidisciplinary engineering organizations."
+  }
+ ],
+ "faq": [
+  {
+   "q": "What counts as a standard AI edit?",
+   "a": "A standard AI edit represents a bounded, authorized engineering task. Complex operations or stronger reasoning can consume multiple standard edits. Applicable usage must be shown before execution; internal model calls are not separate customer edits."
+  },
+  {
+   "q": "Do monthly edits change with quarterly or yearly billing?",
+   "a": "No. Your edit allowance renews monthly regardless of your billing period. Paying quarterly or yearly does not grant all usage upfront. Unused included edits do not roll over."
+  },
+  {
+   "q": "Which billing periods can I choose?",
+   "a": "Online checkout is available for monthly subscriptions. Quarterly and yearly amounts are shown for comparison only. Enterprise arrangements are negotiated individually."
+  },
+  {
+   "q": "Does one subscription cover every interface?",
+   "a": "One Vector OS account follows you across the desktop application, web workspace and available native engineering integrations included in your plan. You do not purchase a separate subscription for each included interface. Availability still depends on supported releases and applications."
+  },
+  {
+   "q": "Does the professional group include team seats?",
+   "a": "Free, Go, Plus, Pro, Pro Advanced, Pro Max and Ultra are individual subscriptions for one user. Enterprise can include negotiated seats, organization management and shared workflows through a separate agreement."
+  },
+  {
+   "q": "Do I need separate engineering-software licenses?",
+   "a": "Yes. Vector OS does not include third-party Rhino, Revit or other engineering-software licenses. You need the required compatible software and licenses; only explicitly supported applications, versions and operations are available."
+  },
+  {
+   "q": "Can I subscribe or upgrade on this page?",
+   "a": "Yes. Choose a monthly plan to subscribe securely through Stripe without a Vector OS sign-in. Stripe collects your checkout email and manages the recurring payment. Account sign-in and automatic access activation are coming later; use your checkout email when contacting support. Capabilities and edit allowances still depend on supported releases."
+  },
+  {
+   "q": "How do Enterprise arrangements work?",
+   "a": "Contact the existing project sales email to discuss your organization. Usage, seats, integrations, security, deployment and support are scoped individually. Potential capabilities require a written commercial and technical agreement; they are not included by default."
+  }
+ ]
+}

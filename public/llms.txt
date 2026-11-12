@@ -1,0 +1,40 @@
+# Vector OS
+
+> An AI workspace for CAD and engineering. Plan, build and review work in your tools.
+
+## Product and availability
+
+- [What is Vector OS?](https://vectoros.one/product): Task modes, workspaces, beta access and product boundaries.
+- [Design and Project modes](https://vectoros.one/product/workspace-modes): Compare the workspace layouts.
+- [Software directory](https://vectoros.one/software): Authoritative public connector status and software discovery.
+
+- Rhino: Available. Rhino is available in the Vector OS beta. Grasshopper integration is in development; it does not inherit Rhino availability.
+- Blender: Available. Blender is available in the Vector OS beta. Supported features and host versions depend on your build.
+- Revit: Available. Revit is available in the Vector OS beta. Dynamo integration is in development; it does not inherit Revit availability.
+- Maxsurf Complete: Available. Maxsurf Complete is available in the Vector OS beta. Supported modules, features and host versions depend on your build.
+- Grasshopper: In development. Grasshopper integration is in development. Rhino availability does not establish Grasshopper feature support.
+- Autodesk Dynamo: In development. Dynamo integration is in development. Revit availability does not establish Dynamo feature support.
+
+Beta availability is not a guarantee of every feature, host version or module. Other directory entries are upcoming unless their current status explicitly says otherwise.
+
+## AI workflows and connection guidance
+
+- [AI for CAD and engineering workflows](https://vectoros.one/ai): Explore AI workflow planning for Rhino, Revit, Grasshopper, Autodesk Dynamo, Blender and Maxsurf Complete, with clear Vector OS connector status.
+- [AI for Rhino](https://vectoros.one/ai/rhino): Plan geometry changes around a clear selection, model units and retained design intent. Beta connector availability depends on your build.
+- [AI for Revit](https://vectoros.one/ai/revit): Prepare BIM requests with selected elements, levels, parameters and model relationships in view. Beta connector availability depends on your build.
+- [AI for Grasshopper](https://vectoros.one/ai/grasshopper): Frame parametric questions around a Grasshopper definition, inputs, references and expected outputs. Connector integration is in development.
+- [AI for Autodesk Dynamo](https://vectoros.one/ai/dynamo): Plan a Dynamo graph review using Revit element scope, parameter values and explicit execution boundaries. Connector integration is in development.
+- [AI for Blender](https://vectoros.one/ai/blender): Prepare scene and modelling requests with object identity, transforms, scale and review criteria. Beta connector availability depends on your build.
+- [AI for Maxsurf Complete](https://vectoros.one/ai/maxsurf): Frame vessel-design questions around hull geometry, loading assumptions and reviewed analysis inputs. Beta connector availability depends on your build.
+- [How to connect AI to CAD software](https://vectoros.one/ai/connect-ai-to-cad): Check connector availability, request the right Vector OS beta build, select host context and review approval before a supported native CAD action.
+
+## Getting started
+
+- [Connect software](https://vectoros.one/tutorials/connect-software): Check the installed build, host and selected document.
+- [Ask, Plan and Build](https://vectoros.one/tutorials/ask-plan-build): Understand task modes before native work.
+- [Native approval](https://vectoros.one/tutorials/native-approval): Review authority for work in engineering applications.
+- [Windows beta access](https://vectoros.one/download): Current access and compatible-build information.
+
+The website workspace sample is scripted. It does not run live AI or connect to CAD software. Directory concepts and example requests do not establish native feature support. No universal file conversion is promised.
+
+Software and vendor names identify the tools discussed; they do not imply endorsement or an official vendor AI product.

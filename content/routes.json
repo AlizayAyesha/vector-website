@@ -1,0 +1,1171 @@
+[
+ {
+  "path": "/ai",
+  "kind": "ai",
+  "title": "AI for CAD and engineering workflows",
+  "h1": "AI for CAD and engineering workflows",
+  "description": "Explore AI workflow planning for Rhino, Revit, Grasshopper, Autodesk Dynamo, Blender and Maxsurf Complete, with clear Vector OS connector status."
+ },
+ {
+  "path": "/ai/blender",
+  "kind": "ai",
+  "title": "AI for Blender",
+  "h1": "AI for Blender",
+  "description": "Prepare scene and modelling requests with object identity, transforms, scale and review criteria. Beta connector availability depends on your build."
+ },
+ {
+  "path": "/ai/connect-ai-to-cad",
+  "kind": "ai",
+  "title": "How to connect AI to CAD software",
+  "h1": "How to connect AI to CAD software",
+  "description": "Check connector availability, request the right Vector OS beta build, select host context and review approval before a supported native CAD action."
+ },
+ {
+  "path": "/ai/dynamo",
+  "kind": "ai",
+  "title": "AI for Autodesk Dynamo",
+  "h1": "AI for Autodesk Dynamo",
+  "description": "Plan a Dynamo graph review using Revit element scope, parameter values and explicit execution boundaries. Connector integration is in development."
+ },
+ {
+  "path": "/ai/grasshopper",
+  "kind": "ai",
+  "title": "AI for Grasshopper",
+  "h1": "AI for Grasshopper",
+  "description": "Frame parametric questions around a Grasshopper definition, inputs, references and expected outputs. Connector integration is in development."
+ },
+ {
+  "path": "/ai/maxsurf",
+  "kind": "ai",
+  "title": "AI for Maxsurf Complete",
+  "h1": "AI for Maxsurf Complete",
+  "description": "Frame vessel-design questions around hull geometry, loading assumptions and reviewed analysis inputs. Beta connector availability depends on your build."
+ },
+ {
+  "path": "/ai/revit",
+  "kind": "ai",
+  "title": "AI for Revit",
+  "h1": "AI for Revit",
+  "description": "Prepare BIM requests with selected elements, levels, parameters and model relationships in view. Beta connector availability depends on your build."
+ },
+ {
+  "path": "/ai/rhino",
+  "kind": "ai",
+  "title": "AI for Rhino",
+  "h1": "AI for Rhino",
+  "description": "Plan geometry changes around a clear selection, model units and retained design intent. Beta connector availability depends on your build."
+ },
+ {
+  "path": "/download",
+  "kind": "page",
+  "title": "Windows beta access",
+  "h1": "Join the Windows beta.",
+  "description": "Request Vector OS Windows beta information and check current access, host compatibility and installation requirements before starting native engineering work."
+ },
+ {
+  "path": "/gallery",
+  "kind": "page",
+  "title": "CAD and engineering workflow examples",
+  "h1": "Examples",
+  "description": "Watch recorded engineering projects, from hull geometry and architectural facades to component assemblies. Explore tools, workflow steps and example results."
+ },
+ {
+  "path": "/",
+  "kind": "page",
+  "title": "AI workspace for CAD and engineering",
+  "h1": "Your tools. One workspace.",
+  "description": "Vector OS is an AI workspace for CAD and engineering. Explore Design and Project modes, recorded workflows and beta connector availability."
+ },
+ {
+  "path": "/pricing",
+  "kind": "page",
+  "title": "Monthly plans for engineering work",
+  "h1": "A plan for your work.",
+  "description": "Compare Vector OS monthly plans, edit allowances and billing details. Paid monthly subscriptions use Stripe checkout; website sign-in is not required."
+ },
+ {
+  "path": "/privacy",
+  "kind": "page",
+  "title": "Website analytics and privacy information",
+  "h1": "Privacy information",
+  "description": "Learn how optional Vector OS website analytics works, manage analytics consent and read the current pre-release product privacy information."
+ },
+ {
+  "path": "/product",
+  "kind": "page",
+  "title": "What is Vector OS?",
+  "h1": "What is Vector OS?",
+  "description": "Understand the Vector OS engineering workspace, Design and Project layouts, beta connector availability and the difference between website samples and native work."
+ },
+ {
+  "path": "/product/workspace-modes",
+  "kind": "page",
+  "title": "Design mode and Project mode",
+  "h1": "Design mode and Project mode",
+  "description": "Compare the focused Design view with the Project workspace in the Vector OS website sample, and learn how workspace layouts differ from Ask, Plan and Build."
+ },
+ {
+  "path": "/releases",
+  "kind": "page",
+  "title": "Beta release information",
+  "h1": "Release notes",
+  "description": "Check Vector OS release information, build availability and update guidance. Confirm the supplied build before installing or connecting engineering software."
+ },
+ {
+  "path": "/software",
+  "kind": "page",
+  "title": "Engineering software and connector status",
+  "h1": "Find your software.",
+  "description": "Find engineering software in Vector OS. Compare available beta connectors, integrations in development and upcoming tools, grouped by software company."
+ },
+ {
+  "path": "/software/abaqus",
+  "kind": "software",
+  "title": "Abaqus workflows and connector status",
+  "h1": "Abaqus",
+  "description": "Explore Abaqus workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/allplan",
+  "kind": "software",
+  "title": "ALLPLAN workflows and connector status",
+  "h1": "ALLPLAN",
+  "description": "Explore ALLPLAN workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/altair-hypermesh",
+  "kind": "software",
+  "title": "Altair HyperMesh workflows and connector status",
+  "h1": "Altair HyperMesh",
+  "description": "Explore Altair HyperMesh workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/altair-optistruct",
+  "kind": "software",
+  "title": "Altair OptiStruct workflows and connector status",
+  "h1": "Altair OptiStruct",
+  "description": "Explore Altair OptiStruct workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/ansys-ls-dyna",
+  "kind": "software",
+  "title": "Ansys LS-DYNA workflows and connector status",
+  "h1": "Ansys LS-DYNA",
+  "description": "Explore Ansys LS-DYNA workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/ansys-motor-cad",
+  "kind": "software",
+  "title": "Ansys Motor-CAD workflows and connector status",
+  "h1": "Ansys Motor-CAD",
+  "description": "Explore Ansys Motor-CAD workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/anylogic",
+  "kind": "software",
+  "title": "AnyLogic workflows and connector status",
+  "h1": "AnyLogic",
+  "description": "Explore AnyLogic workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/arcgis-pro",
+  "kind": "software",
+  "title": "ArcGIS Pro workflows and connector status",
+  "h1": "ArcGIS Pro",
+  "description": "Explore ArcGIS Pro workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/archicad",
+  "kind": "software",
+  "title": "Archicad workflows and connector status",
+  "h1": "Archicad",
+  "description": "Explore Archicad workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/autocad-plant-3d",
+  "kind": "software",
+  "title": "AutoCAD Plant 3D workflows and connector status",
+  "h1": "AutoCAD Plant 3D",
+  "description": "Explore AutoCAD Plant 3D workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/autocad",
+  "kind": "software",
+  "title": "AutoCAD workflows and connector status",
+  "h1": "AutoCAD",
+  "description": "Explore AutoCAD workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/autodesk-3ds-max",
+  "kind": "software",
+  "title": "Autodesk 3ds Max workflows and connector status",
+  "h1": "Autodesk 3ds Max",
+  "description": "Explore Autodesk 3ds Max workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/bimcollab-zoom",
+  "kind": "software",
+  "title": "BIMcollab Zoom workflows and connector status",
+  "h1": "BIMcollab Zoom",
+  "description": "Explore BIMcollab Zoom workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/blender",
+  "kind": "software",
+  "title": "Blender workflows and connector status",
+  "h1": "Blender",
+  "description": "Explore Blender workflow ideas in Vector OS. Blender is available in the beta; supported modeling features and host versions depend on your build."
+ },
+ {
+  "path": "/software/bricscad",
+  "kind": "software",
+  "title": "BricsCAD workflows and connector status",
+  "h1": "BricsCAD",
+  "description": "Explore BricsCAD workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/cadmatic",
+  "kind": "software",
+  "title": "Cadmatic workflows and connector status",
+  "h1": "Cadmatic",
+  "description": "Explore Cadmatic workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/catia",
+  "kind": "software",
+  "title": "CATIA workflows and connector status",
+  "h1": "CATIA",
+  "description": "Explore CATIA workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/cfx",
+  "kind": "software",
+  "title": "CFX workflows and connector status",
+  "h1": "CFX",
+  "description": "Explore CFX workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/cinema-4d",
+  "kind": "software",
+  "title": "Cinema 4D workflows and connector status",
+  "h1": "Cinema 4D",
+  "description": "Explore Cinema 4D workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/civil-3d",
+  "kind": "software",
+  "title": "Civil 3D workflows and connector status",
+  "h1": "Civil 3D",
+  "description": "Explore Civil 3D workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/cloudcompare",
+  "kind": "software",
+  "title": "CloudCompare workflows and connector status",
+  "h1": "CloudCompare",
+  "description": "Explore CloudCompare workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/comsol",
+  "kind": "software",
+  "title": "COMSOL workflows and connector status",
+  "h1": "COMSOL",
+  "description": "Explore COMSOL workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/corona",
+  "kind": "software",
+  "title": "Corona workflows and connector status",
+  "h1": "Corona",
+  "description": "Explore Corona workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/creo",
+  "kind": "software",
+  "title": "Creo workflows and connector status",
+  "h1": "Creo",
+  "description": "Explore Creo workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/d5-render",
+  "kind": "software",
+  "title": "D5 Render workflows and connector status",
+  "h1": "D5 Render",
+  "description": "Explore D5 Render workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/delftship",
+  "kind": "software",
+  "title": "DELFTship workflows and connector status",
+  "h1": "DELFTship",
+  "description": "Explore DELFTship workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/draftsight",
+  "kind": "software",
+  "title": "DraftSight workflows and connector status",
+  "h1": "DraftSight",
+  "description": "Explore DraftSight workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/edgecam",
+  "kind": "software",
+  "title": "EDGECAM workflows and connector status",
+  "h1": "EDGECAM",
+  "description": "Explore EDGECAM workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/enscape",
+  "kind": "software",
+  "title": "Enscape workflows and connector status",
+  "h1": "Enscape",
+  "description": "Explore Enscape workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/esprit",
+  "kind": "software",
+  "title": "ESPRIT workflows and connector status",
+  "h1": "ESPRIT",
+  "description": "Explore ESPRIT workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/etabs",
+  "kind": "software",
+  "title": "ETABS workflows and connector status",
+  "h1": "ETABS",
+  "description": "Explore ETABS workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/faro-scene",
+  "kind": "software",
+  "title": "FARO SCENE workflows and connector status",
+  "h1": "FARO SCENE",
+  "description": "Explore FARO SCENE workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/femap",
+  "kind": "software",
+  "title": "Femap workflows and connector status",
+  "h1": "Femap",
+  "description": "Explore Femap workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/flexsim",
+  "kind": "software",
+  "title": "FlexSim workflows and connector status",
+  "h1": "FlexSim",
+  "description": "Explore FlexSim workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/fluent",
+  "kind": "software",
+  "title": "Fluent workflows and connector status",
+  "h1": "Fluent",
+  "description": "Explore Fluent workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/foran",
+  "kind": "software",
+  "title": "FORAN workflows and connector status",
+  "h1": "FORAN",
+  "description": "Explore FORAN workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/freecad",
+  "kind": "software",
+  "title": "FreeCAD workflows and connector status",
+  "h1": "FreeCAD",
+  "description": "Explore FreeCAD workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/fusion",
+  "kind": "software",
+  "title": "Fusion workflows and connector status",
+  "h1": "Fusion",
+  "description": "Explore Fusion workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/geomagic-control-x",
+  "kind": "software",
+  "title": "Geomagic Control X workflows and connector status",
+  "h1": "Geomagic Control X",
+  "description": "Explore Geomagic Control X workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/geomagic-design-x",
+  "kind": "software",
+  "title": "Geomagic Design X workflows and connector status",
+  "h1": "Geomagic Design X",
+  "description": "Explore Geomagic Design X workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/geomagic-wrap",
+  "kind": "software",
+  "title": "Geomagic Wrap workflows and connector status",
+  "h1": "Geomagic Wrap",
+  "description": "Explore Geomagic Wrap workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/geostudio",
+  "kind": "software",
+  "title": "GeoStudio workflows and connector status",
+  "h1": "GeoStudio",
+  "description": "Explore GeoStudio workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/ghs",
+  "kind": "software",
+  "title": "GHS workflows and connector status",
+  "h1": "GHS",
+  "description": "Explore GHS workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/heeds",
+  "kind": "software",
+  "title": "HEEDS workflows and connector status",
+  "h1": "HEEDS",
+  "description": "Explore HEEDS workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/hfss",
+  "kind": "software",
+  "title": "HFSS workflows and connector status",
+  "h1": "HFSS",
+  "description": "Explore HFSS workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/houdini",
+  "kind": "software",
+  "title": "Houdini workflows and connector status",
+  "h1": "Houdini",
+  "description": "Explore Houdini workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/infraworks",
+  "kind": "software",
+  "title": "InfraWorks workflows and connector status",
+  "h1": "InfraWorks",
+  "description": "Explore InfraWorks workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/inventor",
+  "kind": "software",
+  "title": "Inventor workflows and connector status",
+  "h1": "Inventor",
+  "description": "Explore Inventor workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/keyshot",
+  "kind": "software",
+  "title": "KeyShot workflows and connector status",
+  "h1": "KeyShot",
+  "description": "Explore KeyShot workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/leica-cyclone",
+  "kind": "software",
+  "title": "Leica Cyclone workflows and connector status",
+  "h1": "Leica Cyclone",
+  "description": "Explore Leica Cyclone workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/lumion",
+  "kind": "software",
+  "title": "Lumion workflows and connector status",
+  "h1": "Lumion",
+  "description": "Explore Lumion workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/mastercam",
+  "kind": "software",
+  "title": "Mastercam workflows and connector status",
+  "h1": "Mastercam",
+  "description": "Explore Mastercam workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/mathcad",
+  "kind": "software",
+  "title": "Mathcad workflows and connector status",
+  "h1": "Mathcad",
+  "description": "Explore Mathcad workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/mathematica",
+  "kind": "software",
+  "title": "Mathematica workflows and connector status",
+  "h1": "Mathematica",
+  "description": "Explore Mathematica workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/matlab",
+  "kind": "software",
+  "title": "MATLAB workflows and connector status",
+  "h1": "MATLAB",
+  "description": "Explore MATLAB workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/maxsurf",
+  "kind": "software",
+  "title": "Maxsurf Complete workflows and connector status",
+  "h1": "Maxsurf Complete",
+  "description": "Explore Maxsurf Complete workflow ideas in Vector OS. The connector is available in the beta; module support and host versions depend on your build."
+ },
+ {
+  "path": "/software/maxwell",
+  "kind": "software",
+  "title": "Ansys Maxwell workflows and connector status",
+  "h1": "Ansys Maxwell",
+  "description": "Explore Ansys Maxwell workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/maya",
+  "kind": "software",
+  "title": "Maya workflows and connector status",
+  "h1": "Maya",
+  "description": "Explore Maya workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/mechanical",
+  "kind": "software",
+  "title": "Ansys Mechanical workflows and connector status",
+  "h1": "Ansys Mechanical",
+  "description": "Explore Ansys Mechanical workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/metashape",
+  "kind": "software",
+  "title": "Metashape workflows and connector status",
+  "h1": "Metashape",
+  "description": "Explore Metashape workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/microsoft-project",
+  "kind": "software",
+  "title": "Microsoft Project workflows and connector status",
+  "h1": "Microsoft Project",
+  "description": "Explore Microsoft Project workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/microstation",
+  "kind": "software",
+  "title": "MicroStation workflows and connector status",
+  "h1": "MicroStation",
+  "description": "Explore MicroStation workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/moses",
+  "kind": "software",
+  "title": "MOSES workflows and connector status",
+  "h1": "MOSES",
+  "description": "Explore MOSES workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/msc-nastran",
+  "kind": "software",
+  "title": "MSC Nastran workflows and connector status",
+  "h1": "MSC Nastran",
+  "description": "Explore MSC Nastran workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/napa-designer",
+  "kind": "software",
+  "title": "NAPA Designer workflows and connector status",
+  "h1": "NAPA Designer",
+  "description": "Explore NAPA Designer workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/napa",
+  "kind": "software",
+  "title": "NAPA workflows and connector status",
+  "h1": "NAPA",
+  "description": "Explore NAPA workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/navisworks",
+  "kind": "software",
+  "title": "Navisworks workflows and connector status",
+  "h1": "Navisworks",
+  "description": "Explore Navisworks workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/ntop",
+  "kind": "software",
+  "title": "nTop workflows and connector status",
+  "h1": "nTop",
+  "description": "Explore nTop workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/nx-cam",
+  "kind": "software",
+  "title": "NX CAM workflows and connector status",
+  "h1": "NX CAM",
+  "description": "Explore NX CAM workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/nx",
+  "kind": "software",
+  "title": "NX workflows and connector status",
+  "h1": "NX",
+  "description": "Explore NX workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/onshape",
+  "kind": "software",
+  "title": "Onshape workflows and connector status",
+  "h1": "Onshape",
+  "description": "Explore Onshape workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/openbridge-designer",
+  "kind": "software",
+  "title": "OpenBridge Designer workflows and connector status",
+  "h1": "OpenBridge Designer",
+  "description": "Explore OpenBridge Designer workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/openbuildings-designer",
+  "kind": "software",
+  "title": "OpenBuildings Designer workflows and connector status",
+  "h1": "OpenBuildings Designer",
+  "description": "Explore OpenBuildings Designer workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/openfoam",
+  "kind": "software",
+  "title": "OpenFOAM workflows and connector status",
+  "h1": "OpenFOAM",
+  "description": "Explore OpenFOAM workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/openmodelica",
+  "kind": "software",
+  "title": "OpenModelica workflows and connector status",
+  "h1": "OpenModelica",
+  "description": "Explore OpenModelica workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/openplant",
+  "kind": "software",
+  "title": "OpenPlant workflows and connector status",
+  "h1": "OpenPlant",
+  "description": "Explore OpenPlant workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/openrail-designer",
+  "kind": "software",
+  "title": "OpenRail Designer workflows and connector status",
+  "h1": "OpenRail Designer",
+  "description": "Explore OpenRail Designer workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/openroads",
+  "kind": "software",
+  "title": "OpenRoads workflows and connector status",
+  "h1": "OpenRoads",
+  "description": "Explore OpenRoads workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/openscad",
+  "kind": "software",
+  "title": "OpenSCAD workflows and connector status",
+  "h1": "OpenSCAD",
+  "description": "Explore OpenSCAD workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/optislang",
+  "kind": "software",
+  "title": "optiSLang workflows and connector status",
+  "h1": "optiSLang",
+  "description": "Explore optiSLang workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/orca3d",
+  "kind": "software",
+  "title": "Orca3D workflows and connector status",
+  "h1": "Orca3D",
+  "description": "Explore Orca3D workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/orcaflex",
+  "kind": "software",
+  "title": "OrcaFlex workflows and connector status",
+  "h1": "OrcaFlex",
+  "description": "Explore OrcaFlex workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/orcawave",
+  "kind": "software",
+  "title": "OrcaWave workflows and connector status",
+  "h1": "OrcaWave",
+  "description": "Explore OrcaWave workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/pias",
+  "kind": "software",
+  "title": "PIAS workflows and connector status",
+  "h1": "PIAS",
+  "description": "Explore PIAS workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/plant-simulation",
+  "kind": "software",
+  "title": "Plant Simulation workflows and connector status",
+  "h1": "Plant Simulation",
+  "description": "Explore Plant Simulation workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/plaxis",
+  "kind": "software",
+  "title": "PLAXIS workflows and connector status",
+  "h1": "PLAXIS",
+  "description": "Explore PLAXIS workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/polyworks-inspector",
+  "kind": "software",
+  "title": "PolyWorks Inspector workflows and connector status",
+  "h1": "PolyWorks Inspector",
+  "description": "Explore PolyWorks Inspector workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/power-bi",
+  "kind": "software",
+  "title": "Power BI workflows and connector status",
+  "h1": "Power BI",
+  "description": "Explore Power BI workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/powermill",
+  "kind": "software",
+  "title": "PowerMill workflows and connector status",
+  "h1": "PowerMill",
+  "description": "Explore PowerMill workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/primavera-p6",
+  "kind": "software",
+  "title": "Primavera P6 workflows and connector status",
+  "h1": "Primavera P6",
+  "description": "Explore Primavera P6 workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/process-simulate",
+  "kind": "software",
+  "title": "Process Simulate workflows and connector status",
+  "h1": "Process Simulate",
+  "description": "Explore Process Simulate workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/projectwise",
+  "kind": "software",
+  "title": "ProjectWise workflows and connector status",
+  "h1": "ProjectWise",
+  "description": "Explore ProjectWise workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/qgis",
+  "kind": "software",
+  "title": "QGIS workflows and connector status",
+  "h1": "QGIS",
+  "description": "Explore QGIS workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/realityscan",
+  "kind": "software",
+  "title": "RealityScan workflows and connector status",
+  "h1": "RealityScan",
+  "description": "Explore RealityScan workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/recap-pro",
+  "kind": "software",
+  "title": "ReCap Pro workflows and connector status",
+  "h1": "ReCap Pro",
+  "description": "Explore ReCap Pro workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/revit",
+  "kind": "software",
+  "title": "Revit workflows and connector status",
+  "h1": "Vector OS for Revit + Dynamo.",
+  "description": "Explore Revit building workflows with Vector OS, from a design brief to coordinated review. Revit is available in the beta; Dynamo is in development."
+ },
+ {
+  "path": "/software/rfem",
+  "kind": "software",
+  "title": "RFEM workflows and connector status",
+  "h1": "RFEM",
+  "description": "Explore RFEM workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/rhino",
+  "kind": "software",
+  "title": "Rhino workflows and connector status",
+  "h1": "Vector OS for Rhino + Grasshopper.",
+  "description": "Explore Rhino workflows with Vector OS, from vessel geometry to drawing review. Rhino is available in the beta; Grasshopper integration is in development."
+ },
+ {
+  "path": "/software/robodk",
+  "kind": "software",
+  "title": "RoboDK workflows and connector status",
+  "h1": "RoboDK",
+  "description": "Explore RoboDK workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/robotstudio",
+  "kind": "software",
+  "title": "RobotStudio workflows and connector status",
+  "h1": "RobotStudio",
+  "description": "Explore RobotStudio workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/sacs",
+  "kind": "software",
+  "title": "SACS workflows and connector status",
+  "h1": "SACS",
+  "description": "Explore SACS workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/sap2000",
+  "kind": "software",
+  "title": "SAP2000 workflows and connector status",
+  "h1": "SAP2000",
+  "description": "Explore SAP2000 workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/sesam",
+  "kind": "software",
+  "title": "Sesam workflows and connector status",
+  "h1": "Sesam",
+  "description": "Explore Sesam workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/shapr3d",
+  "kind": "software",
+  "title": "Shapr3D workflows and connector status",
+  "h1": "Shapr3D",
+  "description": "Explore Shapr3D workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/shipconstructor",
+  "kind": "software",
+  "title": "ShipConstructor workflows and connector status",
+  "h1": "ShipConstructor",
+  "description": "Explore ShipConstructor workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/shipweight",
+  "kind": "software",
+  "title": "ShipWeight workflows and connector status",
+  "h1": "ShipWeight",
+  "description": "Explore ShipWeight workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/simcenter-3d",
+  "kind": "software",
+  "title": "Simcenter 3D workflows and connector status",
+  "h1": "Simcenter 3D",
+  "description": "Explore Simcenter 3D workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/simcenter-nastran",
+  "kind": "software",
+  "title": "Simcenter Nastran workflows and connector status",
+  "h1": "Simcenter Nastran",
+  "description": "Explore Simcenter Nastran workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/simscale",
+  "kind": "software",
+  "title": "SimScale workflows and connector status",
+  "h1": "SimScale",
+  "description": "Explore SimScale workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/simulink",
+  "kind": "software",
+  "title": "Simulink workflows and connector status",
+  "h1": "Simulink",
+  "description": "Explore Simulink workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/sketchup",
+  "kind": "software",
+  "title": "SketchUp workflows and connector status",
+  "h1": "SketchUp",
+  "description": "Explore SketchUp workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/solibri",
+  "kind": "software",
+  "title": "Solibri workflows and connector status",
+  "h1": "Solibri",
+  "description": "Explore Solibri workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/solid-edge",
+  "kind": "software",
+  "title": "Solid Edge workflows and connector status",
+  "h1": "Solid Edge",
+  "description": "Explore Solid Edge workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/solidcam",
+  "kind": "software",
+  "title": "SolidCAM workflows and connector status",
+  "h1": "SolidCAM",
+  "description": "Explore SolidCAM workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/solidworks-pdm",
+  "kind": "software",
+  "title": "SOLIDWORKS PDM workflows and connector status",
+  "h1": "SOLIDWORKS PDM",
+  "description": "Explore SOLIDWORKS PDM workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/solidworks",
+  "kind": "software",
+  "title": "SOLIDWORKS workflows and connector status",
+  "h1": "SOLIDWORKS",
+  "description": "Explore SOLIDWORKS workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/speckle",
+  "kind": "software",
+  "title": "Speckle workflows and connector status",
+  "h1": "Speckle",
+  "description": "Explore Speckle workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/staad-pro",
+  "kind": "software",
+  "title": "STAAD.Pro workflows and connector status",
+  "h1": "STAAD.Pro",
+  "description": "Explore STAAD.Pro workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/star-ccm-plus",
+  "kind": "software",
+  "title": "STAR-CCM+ workflows and connector status",
+  "h1": "STAR-CCM+",
+  "description": "Explore STAR-CCM+ workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/synchro",
+  "kind": "software",
+  "title": "SYNCHRO workflows and connector status",
+  "h1": "SYNCHRO",
+  "description": "Explore SYNCHRO workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/teamcenter",
+  "kind": "software",
+  "title": "Teamcenter workflows and connector status",
+  "h1": "Teamcenter",
+  "description": "Explore Teamcenter workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/tekla-structures",
+  "kind": "software",
+  "title": "Tekla Structures workflows and connector status",
+  "h1": "Tekla Structures",
+  "description": "Explore Tekla Structures workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/trello",
+  "kind": "software",
+  "title": "Trello workflows and connector status",
+  "h1": "Trello",
+  "description": "Explore Trello workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/twinmotion",
+  "kind": "software",
+  "title": "Twinmotion workflows and connector status",
+  "h1": "Twinmotion",
+  "description": "Explore Twinmotion workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/unreal-engine",
+  "kind": "software",
+  "title": "Unreal Engine workflows and connector status",
+  "h1": "Unreal Engine",
+  "description": "Explore Unreal Engine workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/v-ray",
+  "kind": "software",
+  "title": "V-Ray workflows and connector status",
+  "h1": "V-Ray",
+  "description": "Explore V-Ray workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/vault",
+  "kind": "software",
+  "title": "Vault workflows and connector status",
+  "h1": "Vault",
+  "description": "Explore Vault workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/vectorworks-architect",
+  "kind": "software",
+  "title": "Vectorworks Architect workflows and connector status",
+  "h1": "Vectorworks Architect",
+  "description": "Explore Vectorworks Architect workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/windchill",
+  "kind": "software",
+  "title": "Windchill workflows and connector status",
+  "h1": "Windchill",
+  "description": "Explore Windchill workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/software/worknc",
+  "kind": "software",
+  "title": "WORKNC workflows and connector status",
+  "h1": "WORKNC",
+  "description": "Explore WORKNC workflow ideas in Vector OS. Connector status: Upcoming. Development and release dates have not been announced."
+ },
+ {
+  "path": "/support",
+  "kind": "page",
+  "title": "Help with setup and software connections",
+  "h1": "How can we help?",
+  "description": "Find Vector OS setup and connection guides, release information and support contacts for Windows beta access and engineering workflow questions."
+ },
+ {
+  "path": "/terms",
+  "kind": "page",
+  "title": "Terms availability and product information",
+  "h1": "Terms availability",
+  "description": "Read the current terms availability notice for Vector OS and check product-account, commercial and beta release information."
+ },
+ {
+  "path": "/tutorials",
+  "kind": "page",
+  "title": "Setup, connections and workflow guides",
+  "h1": "Find your next step.",
+  "description": "Find Vector OS guides for Windows beta setup, software connections, selected context, Ask, Plan and Build, native approvals and interrupted work."
+ },
+ {
+  "path": "/tutorials/ask-plan-build",
+  "kind": "guide",
+  "title": "Ask, Plan and Build",
+  "h1": "Ask, Plan and Build",
+  "description": "Choose whether to understand, prepare a change or apply an exact reviewed native plan."
+ },
+ {
+  "path": "/tutorials/change-plan",
+  "kind": "guide",
+  "title": "Change or cancel a plan",
+  "h1": "Change or cancel a plan",
+  "description": "Review subscription timing, team capacity and server confirmation before changing or canceling a plan."
+ },
+ {
+  "path": "/tutorials/connect-software",
+  "kind": "guide",
+  "title": "Connect your software",
+  "h1": "Connect your software",
+  "description": "Move from a detected installation to a fresh connection with the exact host and document you chose."
+ },
+ {
+  "path": "/tutorials/diagnostics",
+  "kind": "guide",
+  "title": "Export safe diagnostics",
+  "h1": "Export safe diagnostics",
+  "description": "Collect a small redacted explanation of a problem, save it locally and choose separately what to share."
+ },
+ {
+  "path": "/tutorials/first-revit-result",
+  "kind": "guide",
+  "title": "Your first Revit result",
+  "h1": "Your first Revit result",
+  "description": "Review one supported instance Comments change in a local practice project, then confirm the committed value."
+ },
+ {
+  "path": "/tutorials/first-rhino-result",
+  "kind": "guide",
+  "title": "Your first Rhino result",
+  "h1": "Your first Rhino result",
+  "description": "Use a small local practice model to review one bounded Rhino change and inspect its native receipt."
+ },
+ {
+  "path": "/tutorials/install-vector",
+  "kind": "guide",
+  "title": "Install Vector OS",
+  "h1": "Install Vector OS",
+  "description": "Check the supplied Windows beta before installing, then keep installation and connection as separate checkpoints."
+ },
+ {
+  "path": "/tutorials/native-approval",
+  "kind": "guide",
+  "title": "Review a native approval",
+  "h1": "Review a native approval",
+  "description": "Review the exact document, targets and outputs covered by one native approval."
+ },
+ {
+  "path": "/tutorials/plans-and-credits",
+  "kind": "guide",
+  "title": "Understand plans and credits",
+  "h1": "Understand plans and credits",
+  "description": "Read the published offer, choose the wallet for the next run and distinguish reserved from settled usage."
+ },
+ {
+  "path": "/tutorials/reconciliation-required",
+  "kind": "guide",
+  "title": "Resolve an unknown outcome",
+  "h1": "Resolve an unknown outcome",
+  "description": "Resolve the outcome of the original operation without applying the same edit again."
+ },
+ {
+  "path": "/tutorials/resume-after-interruption",
+  "kind": "guide",
+  "title": "Resume after interruption",
+  "h1": "Resume after interruption",
+  "description": "Return to the original workspace and inspect each unfinished action before continuing."
+ },
+ {
+  "path": "/tutorials/selected-context",
+  "kind": "guide",
+  "title": "Choose files and context",
+  "h1": "Choose files and context",
+  "description": "Choose the information needed for one request and inspect exactly what will leave your device."
+ },
+ {
+  "path": "/tutorials/sign-in",
+  "kind": "guide",
+  "title": "Sign in to Vector OS",
+  "h1": "Sign in to Vector OS",
+  "description": "Confirm the right identity in the browser and finish the separate desktop handoff."
+ },
+ {
+  "path": "/tutorials/team-seats",
+  "kind": "guide",
+  "title": "Manage team seats",
+  "h1": "Manage team seats",
+  "description": "Use the correct owner account, count reserved invitations and verify membership from the team record."
+ },
+ {
+  "path": "/tutorials/uninstall",
+  "kind": "guide",
+  "title": "Uninstall while retaining projects",
+  "h1": "Uninstall while retaining projects",
+  "description": "Remove only the application and owned connector installation while preserving your projects and recovery evidence."
+ },
+ {
+  "path": "/tutorials/update-vector",
+  "kind": "guide",
+  "title": "Update Vector OS and connectors",
+  "h1": "Update Vector OS and connectors",
+  "description": "Check eligibility, finish uncertain work and verify the new app or connector after a safe restart."
+ },
+ {
+  "path": "/waitlist",
+  "kind": "page",
+  "title": "Release updates and beta news",
+  "h1": "Stay in the loop.",
+  "description": "Follow Vector OS release updates and beta news. Email updates are optional; check the current signup availability and privacy information."
+ }
+]

@@ -1,0 +1,3321 @@
+{
+ "groups": [
+  {
+   "id": "design-cad",
+   "name": "Design & CAD",
+   "description": "Geometry, parts, assemblies and parametric design."
+  },
+  {
+   "id": "bim-infrastructure",
+   "name": "BIM & Infrastructure",
+   "description": "Buildings, coordination, civil infrastructure, plant and building services."
+  },
+  {
+   "id": "visualization-rendering",
+   "name": "Visualization & Rendering",
+   "description": "Materials, lighting, animation, walkthroughs and presentation."
+  },
+  {
+   "id": "simulation-analysis",
+   "name": "Simulation & Analysis",
+   "description": "Structural, fluid, thermal, electromagnetic and multiphysics work."
+  },
+  {
+   "id": "marine-offshore",
+   "name": "Marine & Offshore",
+   "description": "Hull design, stability, seakeeping, offshore systems and shipbuilding."
+  },
+  {
+   "id": "manufacturing-robotics",
+   "name": "Manufacturing & Robotics",
+   "description": "Machining, additive manufacturing, assembly and production simulation."
+  },
+  {
+   "id": "scanning-inspection",
+   "name": "Scanning & Inspection",
+   "description": "Point clouds, reverse engineering, dimensional inspection and scan-to-model workflows."
+  },
+  {
+   "id": "engineering-data-workflows",
+   "name": "Engineering Data & Workflows",
+   "description": "Calculations, optimization, engineering information and project handoffs."
+  },
+  {
+   "id": "electrical-electronics",
+   "name": "Electrical & Electronics",
+   "description": "Electrical, electromagnetic, controls and electronics engineering workflows."
+  },
+  {
+   "id": "management-planning",
+   "name": "Management & Planning",
+   "description": "Planning, scheduling, coordination and reporting for projects and portfolios."
+  }
+ ],
+ "products": [
+  {
+   "slug": "abaqus",
+   "name": "Abaqus",
+   "title": "Abaqus",
+   "company": "Dassault Systèmes",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Abaqus supports advanced finite-element analysis for nonlinear, contact and multiphysics problems.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "allplan",
+   "name": "ALLPLAN",
+   "title": "ALLPLAN",
+   "company": "Nemetschek Group",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "ALLPLAN supports multidisciplinary BIM authoring and detailed building or infrastructure documentation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "altair-hypermesh",
+   "name": "Altair HyperMesh",
+   "title": "Altair HyperMesh",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Altair HyperMesh supports high-fidelity meshing, model assembly and simulation preprocessing.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "altair-optistruct",
+   "name": "Altair OptiStruct",
+   "title": "Altair OptiStruct",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Altair OptiStruct supports structural analysis and design optimisation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "ansys-ls-dyna",
+   "name": "Ansys LS-DYNA",
+   "title": "Ansys LS-DYNA",
+   "company": "Ansys (Synopsys)",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Ansys LS-DYNA supports explicit dynamics for impact, crash and highly nonlinear events.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "maxwell",
+   "name": "Ansys Maxwell",
+   "title": "Ansys Maxwell",
+   "company": "Ansys (Synopsys)",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis",
+    "Electrical & Electronics"
+   ],
+   "description": "Ansys Maxwell supports low-frequency electromagnetic field simulation for motors, transformers and devices.",
+   "aliases": [
+    "ANSYS Maxwell",
+    "AEDT",
+    "electromagnetics"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "mechanical",
+   "name": "Ansys Mechanical",
+   "title": "Ansys Mechanical",
+   "company": "Ansys (Synopsys)",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Ansys Mechanical supports structural, thermal and related finite-element analysis workflows.",
+   "aliases": [
+    "ANSYS Mechanical",
+    "finite element analysis",
+    "FEA"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "ansys-motor-cad",
+   "name": "Ansys Motor-CAD",
+   "title": "Ansys Motor-CAD",
+   "company": "Ansys (Synopsys)",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Ansys Motor-CAD supports multiphysics electric-machine design across thermal, electromagnetic and mechanical domains.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "anylogic",
+   "name": "AnyLogic",
+   "title": "AnyLogic",
+   "company": "AnyLogic",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "AnyLogic supports multimethod simulation using discrete-event, agent-based and system-dynamics models.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "arcgis-pro",
+   "name": "ArcGIS Pro",
+   "title": "ArcGIS Pro",
+   "company": "Esri",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "ArcGIS Pro supports professional mapping, spatial analysis and geodatabase workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "archicad",
+   "name": "Archicad",
+   "title": "Archicad",
+   "company": "Nemetschek Group",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "Archicad supports architect-led BIM authoring, documentation and coordinated building delivery.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "autocad",
+   "name": "AutoCAD",
+   "title": "AutoCAD",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "AutoCAD supports precise 2D drafting and general-purpose 3D design across engineering disciplines.",
+   "aliases": [
+    "Auto CAD",
+    "Autodesk AutoCAD"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "autocad-plant-3d",
+   "name": "AutoCAD Plant 3D",
+   "title": "AutoCAD Plant 3D",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "AutoCAD Plant 3D supports process-plant modelling, piping specifications and isometric documentation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "autodesk-3ds-max",
+   "name": "Autodesk 3ds Max",
+   "title": "Autodesk 3ds Max",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Autodesk 3ds Max supports 3D modelling, animation and rendering for design visualisation and media.",
+   "aliases": [
+    "3ds Max"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "bimcollab-zoom",
+   "name": "BIMcollab Zoom",
+   "title": "BIMcollab Zoom",
+   "company": "BIMcollab",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "BIMcollab Zoom provides model viewing, smart issue workflows and rule-based BIM validation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "blender",
+   "name": "Blender",
+   "title": "Blender",
+   "company": "Blender Foundation",
+   "status": "Available",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Blender is an open-source suite for 3D modelling, animation, rendering and compositing.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "bricscad",
+   "name": "BricsCAD",
+   "title": "BricsCAD",
+   "company": "Hexagon",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "BricsCAD combines DWG drafting, 3D modelling and mechanical or BIM-oriented design tools.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "cadmatic",
+   "name": "Cadmatic",
+   "title": "Cadmatic",
+   "company": "Cadmatic",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "CADMATIC supports ship and plant design with hull, outfitting and production-information workflows.",
+   "aliases": [
+    "Cadmatic Hull"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "catia",
+   "name": "CATIA",
+   "title": "CATIA",
+   "company": "Dassault Systèmes",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "CATIA supports multidisciplinary product definition, complex surfaces and large assembly development.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "cfx",
+   "name": "CFX",
+   "title": "CFX",
+   "company": "Ansys (Synopsys)",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Ansys CFX supports CFD workflows for turbomachinery and general fluid-flow analysis.",
+   "aliases": [
+    "Ansys CFX"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "cinema-4d",
+   "name": "Cinema 4D",
+   "title": "Cinema 4D",
+   "company": "Nemetschek Group",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Cinema 4D supports motion design, 3D modelling, simulation and rendering.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "civil-3d",
+   "name": "Civil 3D",
+   "title": "Civil 3D",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "Civil 3D supports terrain, corridor, pipe-network and civil documentation workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "cloudcompare",
+   "name": "CloudCompare",
+   "title": "CloudCompare",
+   "company": "CloudCompare project",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "CloudCompare is an open-source tool for point-cloud and mesh processing, comparison and measurement.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "comsol",
+   "name": "COMSOL",
+   "title": "COMSOL",
+   "company": "COMSOL",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis",
+    "Electrical & Electronics"
+   ],
+   "description": "COMSOL Multiphysics supports coupled-physics modelling, simulation and application building.",
+   "aliases": [
+    "COMSOL Multiphysics"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "corona",
+   "name": "Corona",
+   "title": "Corona",
+   "company": "Chaos",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Chaos Corona provides physically based rendering for architectural and design visualisation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "creo",
+   "name": "Creo",
+   "title": "Creo",
+   "company": "PTC",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "PTC Creo supports parametric product design, assemblies and model-based engineering workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "d5-render",
+   "name": "D5 Render",
+   "title": "D5 Render",
+   "company": "D5",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "D5 Render provides real-time rendering and scene presentation for architectural design.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "delftship",
+   "name": "DELFTship",
+   "title": "DELFTship",
+   "company": "DELFTship",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "DELFTship supports hull-form modelling, hydrostatics and early-stage naval-architecture studies.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "draftsight",
+   "name": "DraftSight",
+   "title": "DraftSight",
+   "company": "Dassault Systèmes",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "DraftSight focuses on professional DWG drafting, annotation and drawing-management workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "edgecam",
+   "name": "EDGECAM",
+   "title": "EDGECAM",
+   "company": "Hexagon",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "EDGECAM supports production machining, feature recognition and CNC code preparation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "enscape",
+   "name": "Enscape",
+   "title": "Enscape",
+   "company": "Chaos",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Enscape provides real-time architectural visualisation and design review from connected building models.",
+   "aliases": [
+    "Chaos Enscape"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "esprit",
+   "name": "ESPRIT",
+   "title": "ESPRIT",
+   "company": "Hexagon",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "ESPRIT supports CNC programming, digital-machine simulation and production optimisation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "etabs",
+   "name": "ETABS",
+   "title": "ETABS",
+   "company": "Computers and Structures",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "ETABS focuses on analysis and design of multistorey building systems.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "faro-scene",
+   "name": "FARO SCENE",
+   "title": "FARO SCENE",
+   "company": "FARO",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "FARO SCENE supports processing, registering and managing terrestrial laser-scan projects.",
+   "aliases": [
+    "FARO Scene"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "femap",
+   "name": "Femap",
+   "title": "Femap",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Simcenter Femap provides pre- and post-processing for finite-element modelling and solver workflows.",
+   "aliases": [
+    "Simcenter Femap",
+    "Siemens Femap"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "flexsim",
+   "name": "FlexSim",
+   "title": "FlexSim",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "FlexSim supports discrete-event simulation and 3D visualisation of operational systems.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "fluent",
+   "name": "Fluent",
+   "title": "Fluent",
+   "company": "Ansys (Synopsys)",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Ansys Fluent supports computational fluid dynamics for flow, heat transfer and related physics.",
+   "aliases": [
+    "Ansys Fluent",
+    "ANSYS Fluent",
+    "CFD",
+    "computational fluid dynamics"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "foran",
+   "name": "FORAN",
+   "title": "FORAN",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "FORAN supports integrated ship design, engineering and production information across vessel disciplines.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "freecad",
+   "name": "FreeCAD",
+   "title": "FreeCAD",
+   "company": "FreeCAD project",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "FreeCAD is an open-source parametric modeller for parts, assemblies, drawings and extensible engineering workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "fusion",
+   "name": "Fusion",
+   "title": "Fusion",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "Autodesk Fusion connects product design, engineering and manufacturing preparation in one cloud-connected workspace.",
+   "aliases": [
+    "Autodesk Fusion",
+    "Fusion 360"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "geomagic-control-x",
+   "name": "Geomagic Control X",
+   "title": "Geomagic Control X",
+   "company": "Hexagon",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "Geomagic Control X supports dimensional inspection and comparison of scan data against design intent.",
+   "aliases": [
+    "Control X"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "geomagic-design-x",
+   "name": "Geomagic Design X",
+   "title": "Geomagic Design X",
+   "company": "Hexagon",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "Geomagic Design X supports scan-to-CAD reverse engineering from mesh and point-cloud data.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "geomagic-wrap",
+   "name": "Geomagic Wrap",
+   "title": "Geomagic Wrap",
+   "company": "Hexagon",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "Geomagic Wrap supports transforming point clouds and scans into polygonal 3D models.",
+   "aliases": [
+    "Wrap"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "geostudio",
+   "name": "GeoStudio",
+   "title": "GeoStudio",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "GeoStudio supports slope stability, seepage and coupled geotechnical analysis.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "ghs",
+   "name": "GHS",
+   "title": "GHS",
+   "company": "Creative Systems",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "GHS supports vessel stability, loading and salvage analysis using geometric ship models.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "heeds",
+   "name": "HEEDS",
+   "title": "HEEDS",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "HEEDS supports automated design-space exploration and multidisciplinary optimisation across engineering tools.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "hfss",
+   "name": "HFSS",
+   "title": "HFSS",
+   "company": "Ansys (Synopsys)",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis",
+    "Electrical & Electronics"
+   ],
+   "description": "Ansys HFSS supports high-frequency electromagnetic simulation for antennas and electronic systems.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "houdini",
+   "name": "Houdini",
+   "title": "Houdini",
+   "company": "SideFX",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Houdini provides procedural 3D, effects, simulation and pipeline workflows built around node networks.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "infraworks",
+   "name": "InfraWorks",
+   "title": "InfraWorks",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "InfraWorks supports contextual infrastructure planning, concept design and stakeholder communication.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "inventor",
+   "name": "Inventor",
+   "title": "Inventor",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "Autodesk Inventor provides parametric mechanical modelling, assembly design and documentation workflows.",
+   "aliases": [
+    "Autodesk Inventor"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "keyshot",
+   "name": "KeyShot",
+   "title": "KeyShot",
+   "company": "KeyShot",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "KeyShot focuses on physically based product rendering, materials and animation.",
+   "aliases": [
+    "KeyShot Studio"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "leica-cyclone",
+   "name": "Leica Cyclone",
+   "title": "Leica Cyclone",
+   "company": "Hexagon",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "Leica Cyclone supports laser-scan registration, point-cloud processing and reality-capture deliverables. These intended workflows refer to Cyclone REGISTER 360 PLUS.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "lumion",
+   "name": "Lumion",
+   "title": "Lumion",
+   "company": "Act-3D",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Lumion supports rapid architectural visualisation with contextual scenes, materials and animation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "mastercam",
+   "name": "Mastercam",
+   "title": "Mastercam",
+   "company": "Mastercam (Sandvik)",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "Mastercam supports CNC toolpath programming, verification and shop-floor manufacturing workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "mathcad",
+   "name": "Mathcad",
+   "title": "Mathcad",
+   "company": "PTC",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "Mathcad provides engineering calculation worksheets with units, notation and documented results.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "mathematica",
+   "name": "Mathematica",
+   "title": "Mathematica",
+   "company": "Wolfram",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "Wolfram Mathematica supports symbolic and numerical computation, visualisation and notebook workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "matlab",
+   "name": "MATLAB",
+   "title": "MATLAB",
+   "company": "MathWorks",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows",
+    "Electrical & Electronics"
+   ],
+   "description": "MATLAB supports numerical computing, data analysis, algorithm development and engineering visualisation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "maxsurf",
+   "name": "Maxsurf",
+   "title": "Maxsurf Complete",
+   "company": "Bentley Systems",
+   "status": "Available",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "Maxsurf supports hull design, hydrostatics, stability, resistance, motions and vessel performance workflows.",
+   "aliases": [
+    "MAXSURF",
+    "Max Surf",
+    "Bentley Maxsurf"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "maya",
+   "name": "Maya",
+   "title": "Maya",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Autodesk Maya supports character, effects, animation and high-end 3D production workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "metashape",
+   "name": "Metashape",
+   "title": "Metashape",
+   "company": "Agisoft",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "Agisoft Metashape supports photogrammetric reconstruction, orthomosaics and measurement products from imagery.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "microsoft-project",
+   "name": "Microsoft Project",
+   "title": "Microsoft Project",
+   "company": "Microsoft",
+   "status": "Upcoming",
+   "groups": [
+    "Management & Planning"
+   ],
+   "description": "Microsoft Project supports task scheduling, resource planning and project tracking.",
+   "aliases": [
+    "MS Project"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "microstation",
+   "name": "MicroStation",
+   "title": "MicroStation",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "MicroStation provides precise 2D and 3D infrastructure design with referenced project information.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "moses",
+   "name": "MOSES",
+   "title": "MOSES",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "MOSES supports offshore floating-system modelling, installation analysis and marine operations.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "msc-nastran",
+   "name": "MSC Nastran",
+   "title": "MSC Nastran",
+   "company": "Cadence",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "MSC Nastran provides finite-element solvers for structural, dynamic and thermal analysis.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "napa",
+   "name": "NAPA",
+   "title": "NAPA",
+   "company": "NAPA",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "NAPA supports ship design, stability, performance and operational decision workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "napa-designer",
+   "name": "NAPA Designer",
+   "title": "NAPA Designer",
+   "company": "NAPA",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "NAPA Designer supports early-stage ship design, hull form development and arrangement work.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "navisworks",
+   "name": "Navisworks",
+   "title": "Navisworks",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "Navisworks brings multidisciplinary models together for coordination, clash review and construction simulation.",
+   "aliases": [
+    "Autodesk Navisworks"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "ntop",
+   "name": "nTop",
+   "title": "nTop",
+   "company": "nTop",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "nTop uses implicit modelling and field-driven design for complex, high-performance engineered geometry.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "nx",
+   "name": "NX",
+   "title": "NX",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "Siemens NX spans advanced product design, assemblies and engineering preparation for complex products.",
+   "aliases": [
+    "Designcenter NX",
+    "Siemens NX"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "nx-cam",
+   "name": "NX CAM",
+   "title": "NX CAM",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "NX CAM supports integrated CNC programming, simulation and manufacturing planning.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "onshape",
+   "name": "Onshape",
+   "title": "Onshape",
+   "company": "PTC",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "Onshape provides browser-based parametric CAD, assemblies and controlled product collaboration.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "openbridge-designer",
+   "name": "OpenBridge Designer",
+   "title": "OpenBridge Designer",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "OpenBridge Designer supports bridge modelling, analysis coordination and drawing production.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "openbuildings-designer",
+   "name": "OpenBuildings Designer",
+   "title": "OpenBuildings Designer",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "OpenBuildings Designer supports multidisciplinary building design and information-rich project delivery.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "openfoam",
+   "name": "OpenFOAM",
+   "title": "OpenFOAM",
+   "company": "OpenFOAM project",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "OpenFOAM is an open-source CFD toolbox for configurable solvers, meshing and post-processing.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "openmodelica",
+   "name": "OpenModelica",
+   "title": "OpenModelica",
+   "company": "Open Source Modelica Consortium",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "OpenModelica is an open-source environment for equation-based modelling and simulation of dynamic systems.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "openplant",
+   "name": "OpenPlant",
+   "title": "OpenPlant",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "OpenPlant supports plant design, piping and equipment information across multidisciplinary projects.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "openrail-designer",
+   "name": "OpenRail Designer",
+   "title": "OpenRail Designer",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "OpenRail Designer supports rail alignment, corridor, electrification and multidisciplinary design workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "openroads",
+   "name": "OpenRoads",
+   "title": "OpenRoads",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "OpenRoads Designer supports survey, roadway geometry, drainage and civil deliverables in a model-based environment.",
+   "aliases": [
+    "OpenRoads Designer"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "openscad",
+   "name": "OpenSCAD",
+   "title": "OpenSCAD",
+   "company": "OpenSCAD project",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "OpenSCAD creates solid models from declarative scripts and reproducible parameters.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "optislang",
+   "name": "optiSLang",
+   "title": "optiSLang",
+   "company": "Ansys (Synopsys)",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "Ansys optiSLang supports process integration, sensitivity analysis and multidisciplinary optimisation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "orca3d",
+   "name": "Orca3D",
+   "title": "Orca3D",
+   "company": "Orca3D",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "Orca3D extends Rhino with marine design tools for hull modelling, hydrostatics and naval-architecture analysis.",
+   "aliases": [
+    "Orca 3D"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "orcaflex",
+   "name": "OrcaFlex",
+   "title": "OrcaFlex",
+   "company": "Orcina",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "OrcaFlex supports dynamic analysis of offshore systems including lines, risers, cables and floating structures.",
+   "aliases": [
+    "Orca Flex",
+    "Orcina OrcaFlex"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "orcawave",
+   "name": "OrcaWave",
+   "title": "OrcaWave",
+   "company": "Orcina",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "OrcaWave supports diffraction analysis and hydrodynamic data generation for floating structures.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "pias",
+   "name": "PIAS",
+   "title": "PIAS",
+   "company": "SARC",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "PIAS supports naval-architecture calculations, hull modelling and ship-design documentation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "plant-simulation",
+   "name": "Plant Simulation",
+   "title": "Plant Simulation",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "Tecnomatix Plant Simulation supports discrete-event modelling of factories, logistics and throughput.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "plaxis",
+   "name": "PLAXIS",
+   "title": "PLAXIS",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "PLAXIS supports finite-element analysis for soil, rock and geotechnical deformation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "polyworks-inspector",
+   "name": "PolyWorks Inspector",
+   "title": "PolyWorks Inspector",
+   "company": "InnovMetric",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "PolyWorks Inspector supports 3D measurement planning, dimensional analysis and inspection reporting.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "power-bi",
+   "name": "Power BI",
+   "title": "Power BI",
+   "company": "Microsoft",
+   "status": "Upcoming",
+   "groups": [
+    "Management & Planning"
+   ],
+   "description": "Power BI supports interactive business intelligence, semantic models and operational reporting.",
+   "aliases": [
+    "Microsoft Power BI"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "powermill",
+   "name": "PowerMill",
+   "title": "PowerMill",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "Autodesk PowerMill supports high-speed and multi-axis CNC machining for complex parts.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "primavera-p6",
+   "name": "Primavera P6",
+   "title": "Primavera P6",
+   "company": "Oracle",
+   "status": "Upcoming",
+   "groups": [
+    "Management & Planning"
+   ],
+   "description": "Oracle Primavera P6 supports enterprise project scheduling, resources and portfolio controls.",
+   "aliases": [
+    "Oracle Primavera P6"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "process-simulate",
+   "name": "Process Simulate",
+   "title": "Process Simulate",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "Tecnomatix Process Simulate supports manufacturing-process planning, robotics and human simulation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "projectwise",
+   "name": "ProjectWise",
+   "title": "ProjectWise",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "ProjectWise manages infrastructure project information, document control and multidisciplinary delivery.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "qgis",
+   "name": "QGIS",
+   "title": "QGIS",
+   "company": "QGIS project",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "QGIS is an open-source geographic information system for spatial analysis, mapping and extensible geoprocessing.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "realityscan",
+   "name": "RealityScan",
+   "title": "RealityScan",
+   "company": "Epic Games",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "RealityScan supports photogrammetric reconstruction and 3D model creation from image sets.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "recap-pro",
+   "name": "ReCap Pro",
+   "title": "ReCap Pro",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "description": "Autodesk ReCap Pro supports reality capture, point-cloud registration and scan-to-design preparation.",
+   "aliases": [
+    "Autodesk ReCap Pro"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "revit",
+   "name": "Revit + Dynamo",
+   "title": "Vector OS for Revit + Dynamo.",
+   "company": "",
+   "status": "Available",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "Explore a building from its first brief to a coordinated review.",
+   "aliases": [
+    "Revit",
+    "Dynamo",
+    "Autodesk Revit"
+   ],
+   "members": [
+    {
+     "name": "Revit",
+     "status": "Available"
+    },
+    {
+     "name": "Dynamo",
+     "status": "In development"
+    }
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "rfem",
+   "name": "RFEM",
+   "title": "RFEM",
+   "company": "Dlubal",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "RFEM supports structural modelling, analysis and code-based design for buildings and structures.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "rhino",
+   "name": "Rhino + Grasshopper",
+   "title": "Vector OS for Rhino + Grasshopper.",
+   "company": "",
+   "status": "Available",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "Explore a vessel from its first brief to drawings and review.",
+   "aliases": [
+    "Rhino",
+    "Grasshopper",
+    "Rhinoceros",
+    "Rhino 3D",
+    "GH",
+    "parametric modelling"
+   ],
+   "members": [
+    {
+     "name": "Rhino",
+     "status": "Available"
+    },
+    {
+     "name": "Grasshopper",
+     "status": "In development"
+    }
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "robodk",
+   "name": "RoboDK",
+   "title": "RoboDK",
+   "company": "RoboDK",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "RoboDK supports offline robot programming, simulation and cell calibration workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "robotstudio",
+   "name": "RobotStudio",
+   "title": "RobotStudio",
+   "company": "ABB",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "ABB RobotStudio supports offline programming and simulation for ABB robot systems.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "sacs",
+   "name": "SACS",
+   "title": "SACS",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "SACS supports offshore structural analysis and design for fixed platforms and marine structures.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "sap2000",
+   "name": "SAP2000",
+   "title": "SAP2000",
+   "company": "Computers and Structures",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "SAP2000 supports general structural analysis and design for buildings and infrastructure.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "sesam",
+   "name": "Sesam",
+   "title": "Sesam",
+   "company": "DNV",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "DNV Sesam supports hydrodynamic and structural analysis for offshore and maritime assets.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "shapr3d",
+   "name": "Shapr3D",
+   "title": "Shapr3D",
+   "company": "Shapr3D",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "Shapr3D supports direct solid modelling and drawing workflows across desktop and tablet devices.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "shipconstructor",
+   "name": "ShipConstructor",
+   "title": "ShipConstructor",
+   "company": "SSI",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "ShipConstructor supports detailed shipbuilding design and production information on an AutoCAD platform.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "shipweight",
+   "name": "ShipWeight",
+   "title": "ShipWeight",
+   "company": "B&A Software",
+   "status": "Upcoming",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "description": "ShipWeight supports weight estimation, tracking and centre-of-gravity control through a vessel lifecycle.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "simcenter-3d",
+   "name": "Simcenter 3D",
+   "title": "Simcenter 3D",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Simcenter 3D supports multidisciplinary simulation modelling, solution and results analysis.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "simcenter-nastran",
+   "name": "Simcenter Nastran",
+   "title": "Simcenter Nastran",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Simcenter Nastran provides finite-element solutions for structural, dynamics and thermal problems.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "simscale",
+   "name": "SimScale",
+   "title": "SimScale",
+   "company": "SimScale",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "SimScale provides browser-based engineering simulation for fluids, structures and thermal studies.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "simulink",
+   "name": "Simulink",
+   "title": "Simulink",
+   "company": "MathWorks",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows",
+    "Electrical & Electronics"
+   ],
+   "description": "Simulink supports block-diagram modelling, simulation and model-based design of dynamic systems.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "sketchup",
+   "name": "SketchUp",
+   "title": "SketchUp",
+   "company": "Trimble",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "SketchUp supports direct 3D modelling for rapid architectural massing, spatial studies and design communication.",
+   "aliases": [
+    "Sketch Up",
+    "Trimble SketchUp"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "solibri",
+   "name": "Solibri",
+   "title": "Solibri",
+   "company": "Nemetschek Group",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "Solibri focuses on model checking, information validation and BIM coordination review.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "solid-edge",
+   "name": "Solid Edge",
+   "title": "Solid Edge",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "Solid Edge combines parametric and synchronous mechanical design with assemblies and manufacturing documentation.",
+   "aliases": [
+    "Designcenter Solid Edge",
+    "Siemens Solid Edge"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "solidcam",
+   "name": "SolidCAM",
+   "title": "SolidCAM",
+   "company": "SolidCAM",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "SolidCAM provides integrated CAM programming within common mechanical CAD environments.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "solidworks",
+   "name": "SOLIDWORKS",
+   "title": "SOLIDWORKS",
+   "company": "Dassault Systèmes",
+   "status": "Upcoming",
+   "groups": [
+    "Design & CAD"
+   ],
+   "description": "SOLIDWORKS centres mechanical design on parametric parts, assemblies and production drawings.",
+   "aliases": [
+    "Solid Works",
+    "Dassault SOLIDWORKS"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "solidworks-pdm",
+   "name": "SOLIDWORKS PDM",
+   "title": "SOLIDWORKS PDM",
+   "company": "Dassault Systèmes",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "SOLIDWORKS PDM manages design files, versions and controlled engineering workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "speckle",
+   "name": "Speckle",
+   "title": "Speckle",
+   "company": "Speckle",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "Speckle provides open data infrastructure for exchanging, versioning and collaborating on AEC information.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "staad-pro",
+   "name": "STAAD.Pro",
+   "title": "STAAD.Pro",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "STAAD.Pro supports structural analysis and code-based design across multiple material systems.",
+   "aliases": [
+    "STAAD Pro"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "star-ccm-plus",
+   "name": "STAR-CCM+",
+   "title": "STAR-CCM+",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "description": "Simcenter STAR-CCM+ supports multidisciplinary computational fluid and thermal simulation.",
+   "aliases": [
+    "STAR CCM+",
+    "Simcenter STAR-CCM+"
+   ],
+   "logo": ""
+  },
+  {
+   "slug": "synchro",
+   "name": "SYNCHRO",
+   "title": "SYNCHRO",
+   "company": "Bentley Systems",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "SYNCHRO supports 4D construction planning, model-linked scheduling and progress review.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "teamcenter",
+   "name": "Teamcenter",
+   "title": "Teamcenter",
+   "company": "Siemens",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "Teamcenter provides product-lifecycle data, configuration and change-management workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "tekla-structures",
+   "name": "Tekla Structures",
+   "title": "Tekla Structures",
+   "company": "Trimble",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "Tekla Structures provides detailed structural modelling for constructible steel and concrete information.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "trello",
+   "name": "Trello",
+   "title": "Trello",
+   "company": "Atlassian",
+   "status": "Upcoming",
+   "groups": [
+    "Management & Planning"
+   ],
+   "description": "Trello organises work through boards, lists and cards for lightweight planning and team coordination.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "twinmotion",
+   "name": "Twinmotion",
+   "title": "Twinmotion",
+   "company": "Epic Games",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Twinmotion turns design models into real-time visualisations, images and presentations.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "unreal-engine",
+   "name": "Unreal Engine",
+   "title": "Unreal Engine",
+   "company": "Epic Games",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "Unreal Engine provides real-time 3D rendering, interaction and simulation for immersive experiences.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "v-ray",
+   "name": "V-Ray",
+   "title": "V-Ray",
+   "company": "Chaos",
+   "status": "Upcoming",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "description": "V-Ray provides rendering tools for physically based lighting, materials and production imagery.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "vault",
+   "name": "Vault",
+   "title": "Vault",
+   "company": "Autodesk",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "Autodesk Vault manages CAD data, versions, relationships and engineering change processes.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "vectorworks-architect",
+   "name": "Vectorworks Architect",
+   "title": "Vectorworks Architect",
+   "company": "Nemetschek Group",
+   "status": "Upcoming",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "description": "Vectorworks Architect combines design modelling, BIM data and architectural documentation.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "windchill",
+   "name": "Windchill",
+   "title": "Windchill",
+   "company": "PTC",
+   "status": "Upcoming",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "description": "PTC Windchill provides product data, lifecycle, configuration and change-management workflows.",
+   "aliases": [],
+   "logo": ""
+  },
+  {
+   "slug": "worknc",
+   "name": "WORKNC",
+   "title": "WORKNC",
+   "company": "Hexagon",
+   "status": "Upcoming",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "description": "WORKNC supports automated CNC programming for complex surface and mould machining.",
+   "aliases": [],
+   "logo": ""
+  }
+ ],
+ "entries": [
+  {
+   "name": "Abaqus",
+   "slug": "abaqus",
+   "company": "Dassault Systèmes",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/8c4d3a2033fed633687241c8.png",
+   "description": "Abaqus supports advanced finite-element analysis for nonlinear, contact and multiphysics problems."
+  },
+  {
+   "name": "ALLPLAN",
+   "slug": "allplan",
+   "company": "Nemetschek Group",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/e3f5b07338fef37b6a4a1525.svg",
+   "description": "ALLPLAN supports multidisciplinary BIM authoring and detailed building or infrastructure documentation."
+  },
+  {
+   "name": "Altair HyperMesh",
+   "slug": "altair-hypermesh",
+   "company": "Siemens",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Altair HyperMesh supports high-fidelity meshing, model assembly and simulation preprocessing."
+  },
+  {
+   "name": "Altair OptiStruct",
+   "slug": "altair-optistruct",
+   "company": "Siemens",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Altair OptiStruct supports structural analysis and design optimisation."
+  },
+  {
+   "name": "Ansys LS-DYNA",
+   "slug": "ansys-ls-dyna",
+   "company": "Ansys (Synopsys)",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/99bc862700f35ca560ef1c97.svg",
+   "description": "Ansys LS-DYNA supports explicit dynamics for impact, crash and highly nonlinear events."
+  },
+  {
+   "name": "Ansys Maxwell",
+   "slug": "maxwell",
+   "company": "Ansys (Synopsys)",
+   "groups": [
+    "Simulation & Analysis",
+    "Electrical & Electronics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/99bc862700f35ca560ef1c97.svg",
+   "description": "Ansys Maxwell supports low-frequency electromagnetic field simulation for motors, transformers and devices."
+  },
+  {
+   "name": "Ansys Mechanical",
+   "slug": "mechanical",
+   "company": "Ansys (Synopsys)",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/99bc862700f35ca560ef1c97.svg",
+   "description": "Ansys Mechanical supports structural, thermal and related finite-element analysis workflows."
+  },
+  {
+   "name": "Ansys Motor-CAD",
+   "slug": "ansys-motor-cad",
+   "company": "Ansys (Synopsys)",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/99bc862700f35ca560ef1c97.svg",
+   "description": "Ansys Motor-CAD supports multiphysics electric-machine design across thermal, electromagnetic and mechanical domains."
+  },
+  {
+   "name": "AnyLogic",
+   "slug": "anylogic",
+   "company": "AnyLogic",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/0e74011ce8dd06663b7b87d1.ico",
+   "description": "AnyLogic supports multimethod simulation using discrete-event, agent-based and system-dynamics models."
+  },
+  {
+   "name": "ArcGIS Pro",
+   "slug": "arcgis-pro",
+   "company": "Esri",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/0d209eaa481521ced019e6dc.png",
+   "description": "ArcGIS Pro supports professional mapping, spatial analysis and geodatabase workflows."
+  },
+  {
+   "name": "Archicad",
+   "slug": "archicad",
+   "company": "Nemetschek Group",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/4e90683f55fb153f979d79ab.png",
+   "description": "Archicad supports architect-led BIM authoring, documentation and coordinated building delivery."
+  },
+  {
+   "name": "AutoCAD",
+   "slug": "autocad",
+   "company": "Autodesk",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/e30b135998b07768fb3f3eb8.ico",
+   "description": "AutoCAD supports precise 2D drafting and general-purpose 3D design across engineering disciplines."
+  },
+  {
+   "name": "AutoCAD Plant 3D",
+   "slug": "autocad-plant-3d",
+   "company": "Autodesk",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/e30b135998b07768fb3f3eb8.ico",
+   "description": "AutoCAD Plant 3D supports process-plant modelling, piping specifications and isometric documentation."
+  },
+  {
+   "name": "Autodesk 3ds Max",
+   "slug": "autodesk-3ds-max",
+   "company": "Autodesk",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/5d9af17643be13cb8ef4d4a9.svg",
+   "description": "Autodesk 3ds Max supports 3D modelling, animation and rendering for design visualisation and media."
+  },
+  {
+   "name": "BIMcollab Zoom",
+   "slug": "bimcollab-zoom",
+   "company": "BIMcollab",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/edd06004cd4b90b7408e4e75.png",
+   "description": "BIMcollab Zoom provides model viewing, smart issue workflows and rule-based BIM validation."
+  },
+  {
+   "name": "Blender",
+   "slug": "blender",
+   "company": "Blender Foundation",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Available",
+   "logo": "https://vectoros.one/assets/software-logos/806316a5df0549b5047a683f.ico",
+   "description": "Blender is an open-source suite for 3D modelling, animation, rendering and compositing."
+  },
+  {
+   "name": "BricsCAD",
+   "slug": "bricscad",
+   "company": "Hexagon",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/170032c546d0fa250c8cad3d.ico",
+   "description": "BricsCAD combines DWG drafting, 3D modelling and mechanical or BIM-oriented design tools."
+  },
+  {
+   "name": "Cadmatic",
+   "slug": "cadmatic",
+   "company": "Cadmatic",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/bcf05626c5d30dafab6a2656.webp",
+   "description": "CADMATIC supports ship and plant design with hull, outfitting and production-information workflows."
+  },
+  {
+   "name": "CATIA",
+   "slug": "catia",
+   "company": "Dassault Systèmes",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/8c4d3a2033fed633687241c8.png",
+   "description": "CATIA supports multidisciplinary product definition, complex surfaces and large assembly development."
+  },
+  {
+   "name": "CFX",
+   "slug": "cfx",
+   "company": "Ansys (Synopsys)",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/99bc862700f35ca560ef1c97.svg",
+   "description": "Ansys CFX supports CFD workflows for turbomachinery and general fluid-flow analysis."
+  },
+  {
+   "name": "Cinema 4D",
+   "slug": "cinema-4d",
+   "company": "Nemetschek Group",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/4a3940ac3165d1bb2fd192a5.ico",
+   "description": "Cinema 4D supports motion design, 3D modelling, simulation and rendering."
+  },
+  {
+   "name": "Civil 3D",
+   "slug": "civil-3d",
+   "company": "Autodesk",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/bf818242a3e2b1f6f2821fbe.svg",
+   "description": "Civil 3D supports terrain, corridor, pipe-network and civil documentation workflows."
+  },
+  {
+   "name": "CloudCompare",
+   "slug": "cloudcompare",
+   "company": "CloudCompare project",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/2466b8a5f2e8bdb69b037a5d.jpg",
+   "description": "CloudCompare is an open-source tool for point-cloud and mesh processing, comparison and measurement."
+  },
+  {
+   "name": "COMSOL",
+   "slug": "comsol",
+   "company": "COMSOL",
+   "groups": [
+    "Simulation & Analysis",
+    "Electrical & Electronics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/62a7b914445b96b64c400ea3.ico",
+   "description": "COMSOL Multiphysics supports coupled-physics modelling, simulation and application building."
+  },
+  {
+   "name": "Corona",
+   "slug": "corona",
+   "company": "Chaos",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/8f442e8893ea3f33a486d289.ico",
+   "description": "Chaos Corona provides physically based rendering for architectural and design visualisation."
+  },
+  {
+   "name": "Creo",
+   "slug": "creo",
+   "company": "PTC",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/f30b7430c7c61d104dd62d2e.png",
+   "description": "PTC Creo supports parametric product design, assemblies and model-based engineering workflows."
+  },
+  {
+   "name": "D5 Render",
+   "slug": "d5-render",
+   "company": "D5",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/1b2746c0e2b593d7a9e24d5a.png",
+   "description": "D5 Render provides real-time rendering and scene presentation for architectural design."
+  },
+  {
+   "name": "DELFTship",
+   "slug": "delftship",
+   "company": "DELFTship",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/0882c301e6707570948526d2.png",
+   "description": "DELFTship supports hull-form modelling, hydrostatics and early-stage naval-architecture studies."
+  },
+  {
+   "name": "DraftSight",
+   "slug": "draftsight",
+   "company": "Dassault Systèmes",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/0cf3817e171105afa8f91973.svg",
+   "description": "DraftSight focuses on professional DWG drafting, annotation and drawing-management workflows."
+  },
+  {
+   "name": "Dynamo",
+   "slug": "revit",
+   "company": "Autodesk",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "In development",
+   "logo": "https://vectoros.one/assets/software-logos/e30b135998b07768fb3f3eb8.ico",
+   "description": "Explore a building from its first brief to a coordinated review."
+  },
+  {
+   "name": "EDGECAM",
+   "slug": "edgecam",
+   "company": "Hexagon",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/5d95051b9a5eb860530e4488.svg",
+   "description": "EDGECAM supports production machining, feature recognition and CNC code preparation."
+  },
+  {
+   "name": "Enscape",
+   "slug": "enscape",
+   "company": "Chaos",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/8f442e8893ea3f33a486d289.ico",
+   "description": "Enscape provides real-time architectural visualisation and design review from connected building models."
+  },
+  {
+   "name": "ESPRIT",
+   "slug": "esprit",
+   "company": "Hexagon",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c839dd5c151dd7ec91679ec1.ico",
+   "description": "ESPRIT supports CNC programming, digital-machine simulation and production optimisation."
+  },
+  {
+   "name": "ETABS",
+   "slug": "etabs",
+   "company": "Computers and Structures",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/8ba1b3921575ce11a076ba6b.png",
+   "description": "ETABS focuses on analysis and design of multistorey building systems."
+  },
+  {
+   "name": "FARO SCENE",
+   "slug": "faro-scene",
+   "company": "FARO",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/5a741a73e0121c6182479516.ico",
+   "description": "FARO SCENE supports processing, registering and managing terrestrial laser-scan projects."
+  },
+  {
+   "name": "Femap",
+   "slug": "femap",
+   "company": "Siemens",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Simcenter Femap provides pre- and post-processing for finite-element modelling and solver workflows."
+  },
+  {
+   "name": "FlexSim",
+   "slug": "flexsim",
+   "company": "Autodesk",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/2bec4ba4ff6f6db3ca1ff53d.png",
+   "description": "FlexSim supports discrete-event simulation and 3D visualisation of operational systems."
+  },
+  {
+   "name": "Fluent",
+   "slug": "fluent",
+   "company": "Ansys (Synopsys)",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/99bc862700f35ca560ef1c97.svg",
+   "description": "Ansys Fluent supports computational fluid dynamics for flow, heat transfer and related physics."
+  },
+  {
+   "name": "FORAN",
+   "slug": "foran",
+   "company": "Siemens",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "FORAN supports integrated ship design, engineering and production information across vessel disciplines."
+  },
+  {
+   "name": "FreeCAD",
+   "slug": "freecad",
+   "company": "FreeCAD project",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/e0990f02c063532a17952fb5.ico",
+   "description": "FreeCAD is an open-source parametric modeller for parts, assemblies, drawings and extensible engineering workflows."
+  },
+  {
+   "name": "Fusion",
+   "slug": "fusion",
+   "company": "Autodesk",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/e30b135998b07768fb3f3eb8.ico",
+   "description": "Autodesk Fusion connects product design, engineering and manufacturing preparation in one cloud-connected workspace."
+  },
+  {
+   "name": "Geomagic Control X",
+   "slug": "geomagic-control-x",
+   "company": "Hexagon",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/a59b7e5dd5a54631742918cd.png",
+   "description": "Geomagic Control X supports dimensional inspection and comparison of scan data against design intent."
+  },
+  {
+   "name": "Geomagic Design X",
+   "slug": "geomagic-design-x",
+   "company": "Hexagon",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/dc6134867aaa9aa8fb2608a4.png",
+   "description": "Geomagic Design X supports scan-to-CAD reverse engineering from mesh and point-cloud data."
+  },
+  {
+   "name": "Geomagic Wrap",
+   "slug": "geomagic-wrap",
+   "company": "Hexagon",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/f5073d456ce37a022f616fd3.png",
+   "description": "Geomagic Wrap supports transforming point clouds and scans into polygonal 3D models."
+  },
+  {
+   "name": "GeoStudio",
+   "slug": "geostudio",
+   "company": "Bentley Systems",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/83a0c5c7d068f0cdcfed7d69.png",
+   "description": "GeoStudio supports slope stability, seepage and coupled geotechnical analysis."
+  },
+  {
+   "name": "GHS",
+   "slug": "ghs",
+   "company": "Creative Systems",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c82a3f459b87d90dea5ca601.ico",
+   "description": "GHS supports vessel stability, loading and salvage analysis using geometric ship models."
+  },
+  {
+   "name": "Grasshopper",
+   "slug": "rhino",
+   "company": "McNeel",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "In development",
+   "logo": "https://vectoros.one/assets/software-logos/1d20c7baa62780cc8419b04d.ico",
+   "description": "Explore a vessel from its first brief to drawings and review."
+  },
+  {
+   "name": "HEEDS",
+   "slug": "heeds",
+   "company": "Siemens",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/a59b748ffb0ba193d2ea3b50.ico",
+   "description": "HEEDS supports automated design-space exploration and multidisciplinary optimisation across engineering tools."
+  },
+  {
+   "name": "HFSS",
+   "slug": "hfss",
+   "company": "Ansys (Synopsys)",
+   "groups": [
+    "Simulation & Analysis",
+    "Electrical & Electronics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/99bc862700f35ca560ef1c97.svg",
+   "description": "Ansys HFSS supports high-frequency electromagnetic simulation for antennas and electronic systems."
+  },
+  {
+   "name": "Houdini",
+   "slug": "houdini",
+   "company": "SideFX",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/d54c597207f1c348511aee85.ico",
+   "description": "Houdini provides procedural 3D, effects, simulation and pipeline workflows built around node networks."
+  },
+  {
+   "name": "InfraWorks",
+   "slug": "infraworks",
+   "company": "Autodesk",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/70ea6a4ad6eb43ce2dce1b41.svg",
+   "description": "InfraWorks supports contextual infrastructure planning, concept design and stakeholder communication."
+  },
+  {
+   "name": "Inventor",
+   "slug": "inventor",
+   "company": "Autodesk",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/5f3a1364e3b52aeb1faff8c3.svg",
+   "description": "Autodesk Inventor provides parametric mechanical modelling, assembly design and documentation workflows."
+  },
+  {
+   "name": "KeyShot",
+   "slug": "keyshot",
+   "company": "KeyShot",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c42110ad517eab4118d6da71.ico",
+   "description": "KeyShot focuses on physically based product rendering, materials and animation."
+  },
+  {
+   "name": "Leica Cyclone",
+   "slug": "leica-cyclone",
+   "company": "Hexagon",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/7dda5c326b1ed668360ac4c2.png",
+   "description": "Leica Cyclone supports laser-scan registration, point-cloud processing and reality-capture deliverables. These intended workflows refer to Cyclone REGISTER 360 PLUS."
+  },
+  {
+   "name": "Lumion",
+   "slug": "lumion",
+   "company": "Act-3D",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/af1bee6e8094487a40f5888e.ico",
+   "description": "Lumion supports rapid architectural visualisation with contextual scenes, materials and animation."
+  },
+  {
+   "name": "Mastercam",
+   "slug": "mastercam",
+   "company": "Mastercam (Sandvik)",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/db3f4a0f13c71d71d09ce8d3.png",
+   "description": "Mastercam supports CNC toolpath programming, verification and shop-floor manufacturing workflows."
+  },
+  {
+   "name": "Mathcad",
+   "slug": "mathcad",
+   "company": "PTC",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/f30b7430c7c61d104dd62d2e.png",
+   "description": "Mathcad provides engineering calculation worksheets with units, notation and documented results."
+  },
+  {
+   "name": "Mathematica",
+   "slug": "mathematica",
+   "company": "Wolfram",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/737cce6599e3e60fac811a29.ico",
+   "description": "Wolfram Mathematica supports symbolic and numerical computation, visualisation and notebook workflows."
+  },
+  {
+   "name": "MATLAB",
+   "slug": "matlab",
+   "company": "MathWorks",
+   "groups": [
+    "Engineering Data & Workflows",
+    "Electrical & Electronics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/ef0eca8b5b903f6460c1ceb8.ico",
+   "description": "MATLAB supports numerical computing, data analysis, algorithm development and engineering visualisation."
+  },
+  {
+   "name": "Maxsurf Complete",
+   "slug": "maxsurf",
+   "company": "Bentley Systems",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Available",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "Maxsurf supports hull design, hydrostatics, stability, resistance, motions and vessel performance workflows."
+  },
+  {
+   "name": "Maya",
+   "slug": "maya",
+   "company": "Autodesk",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/4449f319b44da8d7d9c5cd09.svg",
+   "description": "Autodesk Maya supports character, effects, animation and high-end 3D production workflows."
+  },
+  {
+   "name": "Metashape",
+   "slug": "metashape",
+   "company": "Agisoft",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/a0a6b4535cf7034fed71e5f9.ico",
+   "description": "Agisoft Metashape supports photogrammetric reconstruction, orthomosaics and measurement products from imagery."
+  },
+  {
+   "name": "Microsoft Project",
+   "slug": "microsoft-project",
+   "company": "Microsoft",
+   "groups": [
+    "Management & Planning"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/90cdaf487716184e40340009.ico",
+   "description": "Microsoft Project supports task scheduling, resource planning and project tracking."
+  },
+  {
+   "name": "MicroStation",
+   "slug": "microstation",
+   "company": "Bentley Systems",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "MicroStation provides precise 2D and 3D infrastructure design with referenced project information."
+  },
+  {
+   "name": "MOSES",
+   "slug": "moses",
+   "company": "Bentley Systems",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "MOSES supports offshore floating-system modelling, installation analysis and marine operations."
+  },
+  {
+   "name": "MSC Nastran",
+   "slug": "msc-nastran",
+   "company": "Cadence",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/7f4284c91cc02bf09db908a0.ico",
+   "description": "MSC Nastran provides finite-element solvers for structural, dynamic and thermal analysis."
+  },
+  {
+   "name": "NAPA",
+   "slug": "napa",
+   "company": "NAPA",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/ee2758b0c261b54bbdf38211.png",
+   "description": "NAPA supports ship design, stability, performance and operational decision workflows."
+  },
+  {
+   "name": "NAPA Designer",
+   "slug": "napa-designer",
+   "company": "NAPA",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/ee2758b0c261b54bbdf38211.png",
+   "description": "NAPA Designer supports early-stage ship design, hull form development and arrangement work."
+  },
+  {
+   "name": "Navisworks",
+   "slug": "navisworks",
+   "company": "Autodesk",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/73c29364f6a2cece1c80ed9a.svg",
+   "description": "Navisworks brings multidisciplinary models together for coordination, clash review and construction simulation."
+  },
+  {
+   "name": "nTop",
+   "slug": "ntop",
+   "company": "nTop",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/77c673167c96eb36f9992228.png",
+   "description": "nTop uses implicit modelling and field-driven design for complex, high-performance engineered geometry."
+  },
+  {
+   "name": "NX",
+   "slug": "nx",
+   "company": "Siemens",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Siemens NX spans advanced product design, assemblies and engineering preparation for complex products."
+  },
+  {
+   "name": "NX CAM",
+   "slug": "nx-cam",
+   "company": "Siemens",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "NX CAM supports integrated CNC programming, simulation and manufacturing planning."
+  },
+  {
+   "name": "Onshape",
+   "slug": "onshape",
+   "company": "PTC",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/9cccf27246047a68d81867b6.png",
+   "description": "Onshape provides browser-based parametric CAD, assemblies and controlled product collaboration."
+  },
+  {
+   "name": "OpenBridge Designer",
+   "slug": "openbridge-designer",
+   "company": "Bentley Systems",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "OpenBridge Designer supports bridge modelling, analysis coordination and drawing production."
+  },
+  {
+   "name": "OpenBuildings Designer",
+   "slug": "openbuildings-designer",
+   "company": "Bentley Systems",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "OpenBuildings Designer supports multidisciplinary building design and information-rich project delivery."
+  },
+  {
+   "name": "OpenFOAM",
+   "slug": "openfoam",
+   "company": "OpenFOAM project",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/357405a9c8c0e8f2de846e61.png",
+   "description": "OpenFOAM is an open-source CFD toolbox for configurable solvers, meshing and post-processing."
+  },
+  {
+   "name": "OpenModelica",
+   "slug": "openmodelica",
+   "company": "Open Source Modelica Consortium",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/ebbf9a71055a7062204e5e24.svg",
+   "description": "OpenModelica is an open-source environment for equation-based modelling and simulation of dynamic systems."
+  },
+  {
+   "name": "OpenPlant",
+   "slug": "openplant",
+   "company": "Bentley Systems",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "OpenPlant supports plant design, piping and equipment information across multidisciplinary projects."
+  },
+  {
+   "name": "OpenRail Designer",
+   "slug": "openrail-designer",
+   "company": "Bentley Systems",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "OpenRail Designer supports rail alignment, corridor, electrification and multidisciplinary design workflows."
+  },
+  {
+   "name": "OpenRoads",
+   "slug": "openroads",
+   "company": "Bentley Systems",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "OpenRoads Designer supports survey, roadway geometry, drainage and civil deliverables in a model-based environment."
+  },
+  {
+   "name": "OpenSCAD",
+   "slug": "openscad",
+   "company": "OpenSCAD project",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/867e07697118725cde421060.ico",
+   "description": "OpenSCAD creates solid models from declarative scripts and reproducible parameters."
+  },
+  {
+   "name": "optiSLang",
+   "slug": "optislang",
+   "company": "Ansys (Synopsys)",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/99bc862700f35ca560ef1c97.svg",
+   "description": "Ansys optiSLang supports process integration, sensitivity analysis and multidisciplinary optimisation."
+  },
+  {
+   "name": "Orca3D",
+   "slug": "orca3d",
+   "company": "Orca3D",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c9ae28d1c71390fde655408a.png",
+   "description": "Orca3D extends Rhino with marine design tools for hull modelling, hydrostatics and naval-architecture analysis."
+  },
+  {
+   "name": "OrcaFlex",
+   "slug": "orcaflex",
+   "company": "Orcina",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/57e2424b35461a87a651f494.ico",
+   "description": "OrcaFlex supports dynamic analysis of offshore systems including lines, risers, cables and floating structures."
+  },
+  {
+   "name": "OrcaWave",
+   "slug": "orcawave",
+   "company": "Orcina",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/57e2424b35461a87a651f494.ico",
+   "description": "OrcaWave supports diffraction analysis and hydrodynamic data generation for floating structures."
+  },
+  {
+   "name": "PIAS",
+   "slug": "pias",
+   "company": "SARC",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/df36776cc5a8a36ede8221f2.png",
+   "description": "PIAS supports naval-architecture calculations, hull modelling and ship-design documentation."
+  },
+  {
+   "name": "Plant Simulation",
+   "slug": "plant-simulation",
+   "company": "Siemens",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Tecnomatix Plant Simulation supports discrete-event modelling of factories, logistics and throughput."
+  },
+  {
+   "name": "PLAXIS",
+   "slug": "plaxis",
+   "company": "Bentley Systems",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "PLAXIS supports finite-element analysis for soil, rock and geotechnical deformation."
+  },
+  {
+   "name": "PolyWorks Inspector",
+   "slug": "polyworks-inspector",
+   "company": "InnovMetric",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/8f41024c647c3bb1befc35cc.png",
+   "description": "PolyWorks Inspector supports 3D measurement planning, dimensional analysis and inspection reporting."
+  },
+  {
+   "name": "Power BI",
+   "slug": "power-bi",
+   "company": "Microsoft",
+   "groups": [
+    "Management & Planning"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/90cdaf487716184e40340009.ico",
+   "description": "Power BI supports interactive business intelligence, semantic models and operational reporting."
+  },
+  {
+   "name": "PowerMill",
+   "slug": "powermill",
+   "company": "Autodesk",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/5663e71ab188893cf92c8b9c.svg",
+   "description": "Autodesk PowerMill supports high-speed and multi-axis CNC machining for complex parts."
+  },
+  {
+   "name": "Primavera P6",
+   "slug": "primavera-p6",
+   "company": "Oracle",
+   "groups": [
+    "Management & Planning"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/2fd4f0ef64ea34fc2f73d168.ico",
+   "description": "Oracle Primavera P6 supports enterprise project scheduling, resources and portfolio controls."
+  },
+  {
+   "name": "Process Simulate",
+   "slug": "process-simulate",
+   "company": "Siemens",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Tecnomatix Process Simulate supports manufacturing-process planning, robotics and human simulation."
+  },
+  {
+   "name": "ProjectWise",
+   "slug": "projectwise",
+   "company": "Bentley Systems",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "ProjectWise manages infrastructure project information, document control and multidisciplinary delivery."
+  },
+  {
+   "name": "QGIS",
+   "slug": "qgis",
+   "company": "QGIS project",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c6997b9b274710f5d9e01bf1.png",
+   "description": "QGIS is an open-source geographic information system for spatial analysis, mapping and extensible geoprocessing."
+  },
+  {
+   "name": "RealityScan",
+   "slug": "realityscan",
+   "company": "Epic Games",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/997118bfae17f5df37015c81.png",
+   "description": "RealityScan supports photogrammetric reconstruction and 3D model creation from image sets."
+  },
+  {
+   "name": "ReCap Pro",
+   "slug": "recap-pro",
+   "company": "Autodesk",
+   "groups": [
+    "Scanning & Inspection"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/564d73f73beb37b9e8365961.svg",
+   "description": "Autodesk ReCap Pro supports reality capture, point-cloud registration and scan-to-design preparation."
+  },
+  {
+   "name": "Revit",
+   "slug": "revit",
+   "company": "Autodesk",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Available",
+   "logo": "https://vectoros.one/assets/software-logos/24b4fbc1e362016dafc6f349.svg",
+   "description": "Explore a building from its first brief to a coordinated review."
+  },
+  {
+   "name": "RFEM",
+   "slug": "rfem",
+   "company": "Dlubal",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/e439ff8db9ea6a4199c6b778.svg",
+   "description": "RFEM supports structural modelling, analysis and code-based design for buildings and structures."
+  },
+  {
+   "name": "Rhino",
+   "slug": "rhino",
+   "company": "McNeel",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Available",
+   "logo": "https://vectoros.one/assets/software-logos/cbf4cb0807430d9584e7e651.ico",
+   "description": "Explore a vessel from its first brief to drawings and review."
+  },
+  {
+   "name": "RoboDK",
+   "slug": "robodk",
+   "company": "RoboDK",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c58b40ae7a309325f9e4019e.png",
+   "description": "RoboDK supports offline robot programming, simulation and cell calibration workflows."
+  },
+  {
+   "name": "RobotStudio",
+   "slug": "robotstudio",
+   "company": "ABB",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/a71cd77f1579ad3be7839acf.ico",
+   "description": "ABB RobotStudio supports offline programming and simulation for ABB robot systems."
+  },
+  {
+   "name": "SACS",
+   "slug": "sacs",
+   "company": "Bentley Systems",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "SACS supports offshore structural analysis and design for fixed platforms and marine structures."
+  },
+  {
+   "name": "SAP2000",
+   "slug": "sap2000",
+   "company": "Computers and Structures",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/8ba1b3921575ce11a076ba6b.png",
+   "description": "SAP2000 supports general structural analysis and design for buildings and infrastructure."
+  },
+  {
+   "name": "Sesam",
+   "slug": "sesam",
+   "company": "DNV",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/474e35d25164c9e4071bc06d.png",
+   "description": "DNV Sesam supports hydrodynamic and structural analysis for offshore and maritime assets."
+  },
+  {
+   "name": "Shapr3D",
+   "slug": "shapr3d",
+   "company": "Shapr3D",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/d5622bcdd09e7940e858b0a7.png",
+   "description": "Shapr3D supports direct solid modelling and drawing workflows across desktop and tablet devices."
+  },
+  {
+   "name": "ShipConstructor",
+   "slug": "shipconstructor",
+   "company": "SSI",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/a2b285cff21ee0759dd7c436.png",
+   "description": "ShipConstructor supports detailed shipbuilding design and production information on an AutoCAD platform."
+  },
+  {
+   "name": "ShipWeight",
+   "slug": "shipweight",
+   "company": "B&A Software",
+   "groups": [
+    "Marine & Offshore"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/8e922dad6d480744c6062b6b.png",
+   "description": "ShipWeight supports weight estimation, tracking and centre-of-gravity control through a vessel lifecycle."
+  },
+  {
+   "name": "Simcenter 3D",
+   "slug": "simcenter-3d",
+   "company": "Siemens",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Simcenter 3D supports multidisciplinary simulation modelling, solution and results analysis."
+  },
+  {
+   "name": "Simcenter Nastran",
+   "slug": "simcenter-nastran",
+   "company": "Siemens",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Simcenter Nastran provides finite-element solutions for structural, dynamics and thermal problems."
+  },
+  {
+   "name": "SimScale",
+   "slug": "simscale",
+   "company": "SimScale",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/082dcdcddbd630f5647a2b3a.svg",
+   "description": "SimScale provides browser-based engineering simulation for fluids, structures and thermal studies."
+  },
+  {
+   "name": "Simulink",
+   "slug": "simulink",
+   "company": "MathWorks",
+   "groups": [
+    "Engineering Data & Workflows",
+    "Electrical & Electronics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/ef0eca8b5b903f6460c1ceb8.ico",
+   "description": "Simulink supports block-diagram modelling, simulation and model-based design of dynamic systems."
+  },
+  {
+   "name": "SketchUp",
+   "slug": "sketchup",
+   "company": "Trimble",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/3a4f1efb0e8cb207c846b1d0.svg",
+   "description": "SketchUp supports direct 3D modelling for rapid architectural massing, spatial studies and design communication."
+  },
+  {
+   "name": "Solibri",
+   "slug": "solibri",
+   "company": "Nemetschek Group",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/438d2befbc5e363968b7bda0.png",
+   "description": "Solibri focuses on model checking, information validation and BIM coordination review."
+  },
+  {
+   "name": "Solid Edge",
+   "slug": "solid-edge",
+   "company": "Siemens",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/a59b748ffb0ba193d2ea3b50.ico",
+   "description": "Solid Edge combines parametric and synchronous mechanical design with assemblies and manufacturing documentation."
+  },
+  {
+   "name": "SolidCAM",
+   "slug": "solidcam",
+   "company": "SolidCAM",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/38b59f271123d0d704004caf.svg",
+   "description": "SolidCAM provides integrated CAM programming within common mechanical CAD environments."
+  },
+  {
+   "name": "SOLIDWORKS",
+   "slug": "solidworks",
+   "company": "Dassault Systèmes",
+   "groups": [
+    "Design & CAD"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c758eaa2e03304d9042fdfd7.ico",
+   "description": "SOLIDWORKS centres mechanical design on parametric parts, assemblies and production drawings."
+  },
+  {
+   "name": "SOLIDWORKS PDM",
+   "slug": "solidworks-pdm",
+   "company": "Dassault Systèmes",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c758eaa2e03304d9042fdfd7.ico",
+   "description": "SOLIDWORKS PDM manages design files, versions and controlled engineering workflows."
+  },
+  {
+   "name": "Speckle",
+   "slug": "speckle",
+   "company": "Speckle",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/9d7283ede745c01ba0befa5e.ico",
+   "description": "Speckle provides open data infrastructure for exchanging, versioning and collaborating on AEC information."
+  },
+  {
+   "name": "STAAD.Pro",
+   "slug": "staad-pro",
+   "company": "Bentley Systems",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "STAAD.Pro supports structural analysis and code-based design across multiple material systems."
+  },
+  {
+   "name": "STAR-CCM+",
+   "slug": "star-ccm-plus",
+   "company": "Siemens",
+   "groups": [
+    "Simulation & Analysis"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Simcenter STAR-CCM+ supports multidisciplinary computational fluid and thermal simulation."
+  },
+  {
+   "name": "SYNCHRO",
+   "slug": "synchro",
+   "company": "Bentley Systems",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c2c9eb1ec98b21877231f71d.png",
+   "description": "SYNCHRO supports 4D construction planning, model-linked scheduling and progress review."
+  },
+  {
+   "name": "Teamcenter",
+   "slug": "teamcenter",
+   "company": "Siemens",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/06d25b60a1322dae942eac29.ico",
+   "description": "Teamcenter provides product-lifecycle data, configuration and change-management workflows."
+  },
+  {
+   "name": "Tekla Structures",
+   "slug": "tekla-structures",
+   "company": "Trimble",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/a5f5061ce09484afb5c60848.ico",
+   "description": "Tekla Structures provides detailed structural modelling for constructible steel and concrete information."
+  },
+  {
+   "name": "Trello",
+   "slug": "trello",
+   "company": "Atlassian",
+   "groups": [
+    "Management & Planning"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/6245384a876e446ac4c95de0.ico",
+   "description": "Trello organises work through boards, lists and cards for lightweight planning and team coordination."
+  },
+  {
+   "name": "Twinmotion",
+   "slug": "twinmotion",
+   "company": "Epic Games",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/c7c76945428683151053d9ee.svg",
+   "description": "Twinmotion turns design models into real-time visualisations, images and presentations."
+  },
+  {
+   "name": "Unreal Engine",
+   "slug": "unreal-engine",
+   "company": "Epic Games",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/56b72a5f1068d1e09da57782.svg",
+   "description": "Unreal Engine provides real-time 3D rendering, interaction and simulation for immersive experiences."
+  },
+  {
+   "name": "V-Ray",
+   "slug": "v-ray",
+   "company": "Chaos",
+   "groups": [
+    "Visualization & Rendering"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/8f442e8893ea3f33a486d289.ico",
+   "description": "V-Ray provides rendering tools for physically based lighting, materials and production imagery."
+  },
+  {
+   "name": "Vault",
+   "slug": "vault",
+   "company": "Autodesk",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/515ad09eafc856b1728a647f.svg",
+   "description": "Autodesk Vault manages CAD data, versions, relationships and engineering change processes."
+  },
+  {
+   "name": "Vectorworks Architect",
+   "slug": "vectorworks-architect",
+   "company": "Nemetschek Group",
+   "groups": [
+    "BIM & Infrastructure"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/dbdbeb4939bac9ddf72edbab.ico",
+   "description": "Vectorworks Architect combines design modelling, BIM data and architectural documentation."
+  },
+  {
+   "name": "Windchill",
+   "slug": "windchill",
+   "company": "PTC",
+   "groups": [
+    "Engineering Data & Workflows"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/f30b7430c7c61d104dd62d2e.png",
+   "description": "PTC Windchill provides product data, lifecycle, configuration and change-management workflows."
+  },
+  {
+   "name": "WORKNC",
+   "slug": "worknc",
+   "company": "Hexagon",
+   "groups": [
+    "Manufacturing & Robotics"
+   ],
+   "status": "Upcoming",
+   "logo": "https://vectoros.one/assets/software-logos/f67ec829a34492ffbd327f28.svg",
+   "description": "WORKNC supports automated CNC programming for complex surface and mould machining."
+  }
+ ]
+}

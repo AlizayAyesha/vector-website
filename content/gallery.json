@@ -1,0 +1,1382 @@
+{
+ "collections": [
+  {
+   "id": "design-foundations",
+   "name": "Design foundations"
+  },
+  {
+   "id": "marine-design",
+   "name": "Marine design"
+  },
+  {
+   "id": "analysis-mcp",
+   "name": "Analysis & MCP"
+  },
+  {
+   "id": "production-systems",
+   "name": "Production systems"
+  },
+  {
+   "id": "knowledge-governance",
+   "name": "Knowledge & governance"
+  }
+ ],
+ "recordings": [
+  {
+   "id": "vector-recorded-project-hull-to-structural-geometry-20261007",
+   "title": "From hull to structural geometry",
+   "summary": "Follow a recorded Vector OS workflow from a hull in Maxsurf to reference geometry, deck levels and structural framing in Rhino, ending with an orbit of the built model.",
+   "tools": "Vector OS · Maxsurf Modeler · Rhino",
+   "duration": "2:02",
+   "video": "https://vectoros.one/assets/recorded-projects/20261007/01f0ee0c46cf-r02.mp4",
+   "poster": "https://vectoros.one/assets/recording-thumbnails/redesign-20261105/vector-recorded-project-hull-to-structural-geometry-20261007.webp"
+  },
+  {
+   "id": "curved-double-bottom",
+   "title": "Curved Double Bottom",
+   "summary": "From curved double-bottom revision to model and drawing review. Real recorded project work, with the Vector OS interface and Rhino geometry visible.",
+   "tools": "VDB-01 / B1-R01-CURVED · Vector OS and Rhino 8",
+   "duration": "2:53",
+   "video": "https://vectoros.one/workflow-media/20261003/curved-double-bottom/curved-project-work.mp4",
+   "poster": "https://vectoros.one/assets/recording-thumbnails/redesign-20261105/curved-double-bottom.webp"
+  },
+  {
+   "id": "flat-double-bottom",
+   "title": "Flat Double Bottom",
+   "summary": "Recorded project work: modeling a flat double-bottom structural block, then reviewing its drawings and details.",
+   "tools": "Vector OS and Rhino 8 · Recorded project work",
+   "duration": "1:59",
+   "video": "https://vectoros.one/workflow-media/20260913/flat-double-bottom/recorded-workflow.mp4",
+   "poster": "https://vectoros.one/assets/recording-thumbnails/redesign-20261105/flat-double-bottom.webp"
+  },
+  {
+   "id": "recorded-workflow",
+   "title": "From hull to working drawings",
+   "summary": "An 11 m hull developed in Maxsurf Modeler and Rhino 8.",
+   "tools": "Maxsurf Modeler + Rhino 8",
+   "duration": "2:15",
+   "video": "https://vectoros.one/workflow-media/20260913/recorded-workflow.mp4",
+   "poster": "https://vectoros.one/assets/recording-thumbnails/redesign-20261105/recorded-workflow.webp"
+  },
+  {
+   "id": "solidworks-component-assembly-review",
+   "title": "Component detail to assembly review",
+   "summary": "Recorded project work in SOLIDWORKS, from component references and wheel assembly details to frame and body interface review.",
+   "tools": "SOLIDWORKS · Recorded project work",
+   "duration": "1:59",
+   "video": "https://vectoros.one/assets/recorded-projects/20261022/solidworks-component-assembly-review.mp4",
+   "poster": "https://vectoros.one/assets/recording-thumbnails/redesign-20261105/solidworks-component-assembly-review.webp"
+  },
+  {
+   "id": "facade-component-workflow",
+   "title": "Façade component workflow",
+   "summary": "Recorded architectural façade work in Rhino 8, from reference and scope to framing, glazing, profiles and component interface review.",
+   "tools": "Rhino 8 · Architectural façade workflow",
+   "duration": "1:57",
+   "video": "https://vectoros.one/assets/recorded-projects/20261019/facade-component-workflow.mp4",
+   "poster": "https://vectoros.one/assets/recording-thumbnails/redesign-20261105/facade-component-workflow.webp"
+  }
+ ],
+ "studies": [
+  {
+   "id": "V01",
+   "title": "Live Conversational Model Control",
+   "collection": "design-foundations",
+   "task": "Move the wheelhouse and compare its position.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V01/V01_A.png?rev=quality2",
+     "alt": "Panel A: a chat command requesting a two-metre aft move of the wheelhouse."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V01/V01_B.png?rev=quality2",
+     "alt": "Panel B: the wheelhouse selected in a vessel CAD view with the aft translation shown."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V01/V01_C.png?rev=quality2",
+     "alt": "Panel C: the updated vessel model beside a change summary comparing the previous and new position."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V01/V01_Live_Conversational_Model_Control.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A selected wheelhouse moves aft in a simplified vessel model while a position readback changes; the fixture says native execution and engineering acceptance are not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V02",
+   "title": "Hull Fairing",
+   "collection": "design-foundations",
+   "task": "Fair a hull surface and inspect the curvature.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V02/V02_A.png?rev=quality2",
+     "alt": "Panel A: the hull fairness region selected with control curves."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V02/V02_B.png?rev=quality2",
+     "alt": "Panel B: the adjusted fair hull surface in perspective."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V02/V02_C.png?rev=quality2",
+     "alt": "Panel C: before-and-after hull views with deviation values and a curvature plot."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V02/V02_Hull_Fairing.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A local hull-fairing region and waterline-curvature trace change before a geometric quality readback; hydrodynamic performance is explicitly not claimed.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V03",
+   "title": "General Arrangement Alternatives",
+   "collection": "design-foundations",
+   "task": "Compare machinery arrangements and clearances.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V03/V03_A.png?rev=quality2",
+     "alt": "Panel A: the baseline general arrangement of a vessel."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V03/V03_B.png?rev=quality2",
+     "alt": "Panel B: three machinery arrangement alternatives shown in plan."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V03/V03_C.png?rev=quality2",
+     "alt": "Panel C: the selected aft-machinery option with a criteria comparison table."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V03/V03_General_Arrangement_Alternatives.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Simplified vessel arrangement candidates are compared for access and clearances before one option is retained for review; engineering selection remains open.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V04",
+   "title": "Interior Revision",
+   "collection": "design-foundations",
+   "task": "Revise an interior and check the access gap.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V04/V04_A.png?rev=quality2",
+     "alt": "Panel A: the current vessel interior layout with seating and rooms."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V04/V04_B.png?rev=quality2",
+     "alt": "Panel B: a chat request to move the seating bay and add a lobby partition."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V04/V04_C.png?rev=quality2",
+     "alt": "Panel C: the revised interior with aisle, egress and headroom checks."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V04/V04_Interior_Revision.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A simplified interior partition is extended, then an access-gap conflict remains visible with a correction still required before acceptance.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V05",
+   "title": "Equipment Register to 3D Placement",
+   "collection": "design-foundations",
+   "task": "Place equipment and inspect its service space.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V05/V05_A.png?rev=quality2",
+     "alt": "Panel A: an equipment register listing dimensions, mass and systems."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V05/V05_B.png?rev=quality2",
+     "alt": "Panel B: registered equipment placed in a vessel model with the main engine selected."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V05/V05_C.png?rev=quality2",
+     "alt": "Panel C: the main-engine maintenance envelope, connection checks and review notes."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V05/V05_Equipment_Register_to_3D_Placement.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Equipment records are placed one by one in a simplified vessel volume, ending with a placement register that retains OEM and engineering-review limits.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V06",
+   "title": "Systems Routing",
+   "collection": "design-foundations",
+   "task": "Trace a system route and identify clashes.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V06/V06_A.png?rev=quality2",
+     "alt": "Panel A: a vessel equipment model with routing endpoints marked."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V06/V06_B.png?rev=quality2",
+     "alt": "Panel B: generated fuel, water, electrical and HVAC routes with a clash highlighted."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V06/V06_C.png?rev=quality2",
+     "alt": "Panel C: rerouted systems with route lengths and passing clearance status."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V06/V06_Systems_Routing.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A preliminary fuel route is replaced by an alternate corridor between simplified equipment objects; hydraulic sizing and bend design remain not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V07",
+   "title": "Requirements and Standards",
+   "collection": "design-foundations",
+   "task": "Check a clearance against its stated requirement.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V07/V07_A.png?rev=quality2",
+     "alt": "Panel A: selected project, company, ISO, class and OEM knowledge sources."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V07/V07_B.png?rev=quality2",
+     "alt": "Panel B: a low-overhead-clearance issue while checks are running on the vessel model."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V07/V07_C.png?rev=quality2",
+     "alt": "Panel C: a compliance results table separating passes, warnings and review items."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V07/V07_Requirements_and_Standards.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. An authored clearance requirement is measured against simplified geometry, with project-rule status separated from unresolved class or ISO applicability.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V08",
+   "title": "Structural Framing",
+   "collection": "design-foundations",
+   "task": "Lay out frames and longitudinal members.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V08/V08_A.png?rev=quality2",
+     "alt": "Panel A: a hull shell with a 600 mm frame-spacing grid."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V08/V08_B.png?rev=quality2",
+     "alt": "Panel B: generated transverse frames and longitudinal members in the hull."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V08/V08_C.png?rev=quality2",
+     "alt": "Panel C: a structural member schedule with one spacing value marked for checking."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V08/V08_Structural_Framing.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Frame centre-lines and longitudinals are generated in a simplified hull, then a panel and scantling input is selected while pressure and sizing remain pending.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V09",
+   "title": "Weight, mass properties and CG",
+   "collection": "design-foundations",
+   "task": "Add equipment mass and inspect the centre of gravity.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V09/V09_A.png?rev=quality2",
+     "alt": "Panel A: an equipment mass table with longitudinal, transverse and vertical centres of gravity."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V09/V09_B.png?rev=quality2",
+     "alt": "Panel B: a generator added to the vessel model and labelled with its mass."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V09/V09_C.png?rev=quality2",
+     "alt": "Panel C: updated mass properties and trim values after the generator addition."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V09/V09_Weight_Mass_Properties_and_CG_Propagation.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A generator mass is added to a simplified vessel mass ledger and the centre-of-gravity readback changes, with source confidence retained beside the values.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V10",
+   "title": "Revision propagation",
+   "collection": "design-foundations",
+   "task": "Trace the effects of a tank revision.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V10/V10_A.png?rev=quality2",
+     "alt": "Panel A: a chat request to move a fuel tank and update dependent routes and drawings."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V10/V10_B.png?rev=quality2",
+     "alt": "Panel B: the selected tank and impacted piping, supports and drawings highlighted."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V10/V10_C.png?rev=quality2",
+     "alt": "Panel C: a revision record listing updated items and one support requiring manual review."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V10/V10_Revision_Propagation.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A tank revision identifies dependent pipe, support, route and drawing records, then linked readbacks update while the service-gap issue remains visible.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V11",
+   "title": "Parametric hull definition",
+   "collection": "marine-design",
+   "task": "Change a hull parameter and compare the form.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V11/V11_A.png?rev=quality2",
+     "alt": "Panel A: a hull parameter form for length, beam, draft and coefficients."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V11/V11_B.png?rev=quality2",
+     "alt": "Panel B: the updated parametric hull surface in a CAD view."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V11/V11_C.png?rev=quality2",
+     "alt": "Panel C: before-and-after hull forms with their coefficient values."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V11/V11_Parametric_Hull_Definition.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A declared hull parameter is corrected within a simplified parametric form and the geometry plus volume readback update; the fixture remains a demonstration.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V12",
+   "title": "Lines plan and offsets",
+   "collection": "marine-design",
+   "task": "Inspect hull sections, lines and offsets.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V12/V12_A.png?rev=quality2",
+     "alt": "Panel A: a chat request for stations, waterlines and buttocks."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V12/V12_B.png?rev=quality2",
+     "alt": "Panel B: profile, body-plan and plan views of the generated lines plan."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V12/V12_C.png?rev=quality2",
+     "alt": "Panel C: an offsets table beside sections and a printable lines plan."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V12/V12_Lines_Plan_and_Offsets.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Hull intersections are generated from the same coordinate data and then shown as a lines plan with offsets; the sequence remains a conventional-view fixture.",
+   "durationSeconds": 18
+  },
+  {
+   "id": "V13",
+   "title": "Hydrostatics and independent cross-check",
+   "collection": "marine-design",
+   "task": "Compare two hydrostatics calculations.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V13/V13_A.png?rev=quality2",
+     "alt": "Panel A: a hydrostatics table at the design draft."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V13/V13_B.png?rev=quality2",
+     "alt": "Panel B: the hull waterline with aft and forward perpendiculars plus buoyancy and flotation centres."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V13/V13_C.png?rev=quality2",
+     "alt": "Panel C: a CAD-versus-section-integration hydrostatics comparison within tolerance."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V13/V13_Hydrostatics_Independent_Cross_Check.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A prescribed-draft hull receives calculated hydrostatic values and a numerical cross-check, while equilibrium, stability and native analysis remain not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V14",
+   "title": "Equilibrium Draft and Trim",
+   "collection": "marine-design",
+   "task": "Inspect draft and trim for a loading condition.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V14/V14_A.png?rev=quality2",
+     "alt": "Panel A: a vessel loading-condition table and total weight."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V14/V14_B.png?rev=quality2",
+     "alt": "Panel B: the hull at unequal forward and aft drafts with trim dimensions."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V14/V14_C.png?rev=quality2",
+     "alt": "Panel C: an equilibrium results table with displacement, drafts, trim and stability values."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V14/V14_Equilibrium_Draft_and_Trim.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A loading ledger is evaluated against buoyancy and longitudinal balance, with forward and aft draft readbacks changing to a converged illustrative condition.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V15",
+   "title": "Loading Cases and Preliminary Stability",
+   "collection": "marine-design",
+   "task": "Compare loading cases and flag review items.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V15/V15_A.png?rev=quality2",
+     "alt": "Panel A: six loading cases with pass, review and warning states."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V15/V15_B.png?rev=quality2",
+     "alt": "Panel B: GZ curves for full-load, departure and heavy-weather cases."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V15/V15_C.png?rev=quality2",
+     "alt": "Panel C: a stability criteria summary that flags the damage case for review."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V15/V15_Loading_Cases_and_Preliminary_Stability.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Several loading cases receive preliminary GM values, then a crowding case governs and remains marked for formal stability review.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V16",
+   "title": "OEM Datasheet to Engineering Object",
+   "collection": "marine-design",
+   "task": "Turn datasheet fields into an equipment object.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V16/V16_A.png?rev=quality2",
+     "alt": "Panel A: a marine diesel datasheet excerpt with dimensions, mass and performance data."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V16/V16_B.png?rev=quality2",
+     "alt": "Panel B: a parsed diesel-engine object with dimensions, mass and connection attributes."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V16/V16_C.png?rev=quality2",
+     "alt": "Panel C: the engine placed in a maintenance envelope with placement-ready attributes."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V16/V16_OEM_Datasheet_to_Engineering_Object.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Selected datasheet fields are normalized into a simplified equipment object, with accepted fields traced and missing service-clearance evidence left explicit.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V17",
+   "title": "Fuel System Engineering",
+   "collection": "marine-design",
+   "task": "Compare a fuel route and its hydraulic checks.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V17/V17_A.png?rev=quality2",
+     "alt": "Panel A: fuel consumers with load and connection-size data."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V17/V17_B.png?rev=quality2",
+     "alt": "Panel B: a day-tank-to-engine fuel route with fill, vent, valve and filter labelled."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V17/V17_C.png?rev=quality2",
+     "alt": "Panel C: provisional pipe sizing, velocity and pressure-loss results with a review note."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V17/V17_Fuel_System_Engineering.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A preliminary fuel route fails velocity or pressure-loss checks, then an alternate path improves the hydraulic readback; the calculation remains an authored assumption.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V18",
+   "title": "Electrical Load, Distribution and Cable Consequences",
+   "collection": "marine-design",
+   "task": "Trace electrical loads and distribution.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V18/V18_A.png?rev=quality2",
+     "alt": "Panel A: an electrical load register for vessel equipment."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V18/V18_B.png?rev=quality2",
+     "alt": "Panel B: a single-line concept from generators through the main switchboard to load groups."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V18/V18_C.png?rev=quality2",
+     "alt": "Panel C: the connected and design load summary with a starting-current warning."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V18/V18_Electrical_Load_Distribution_and_Cable_Consequences.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A simplified single-line electrical allocation changes after a load revision, with battery, starting-current and cable consequences retained as warnings.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V19",
+   "title": "HVAC and Ventilation",
+   "collection": "marine-design",
+   "task": "Inspect ventilation routes and equipment.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V19/V19_A.png?rev=quality2",
+     "alt": "Panel A: space areas and internal, solar and occupancy heat loads."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V19/V19_B.png?rev=quality2",
+     "alt": "Panel B: supply and return duct routing with an air-handling unit in the vessel."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V19/V19_C.png?rev=quality2",
+     "alt": "Panel C: cooling capacity, airflow and duct sizes with two spaces below the target air-change rate."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V19/V19_HVAC_and_Ventilation.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Room heat and occupancy inputs drive a duct-routing comparison, ending with capacity and airflow readbacks while equipment selection remains unresolved.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V20",
+   "title": "Structural Scantlings",
+   "collection": "marine-design",
+   "task": "Compare plate and section sizing inputs.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V20/V20_A.png?rev=quality2",
+     "alt": "Panel A: plate, material, pressure, stiffener and spacing inputs for hull scantlings."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V20/V20_B.png?rev=quality2",
+     "alt": "Panel B: a selected midship hull-side panel with its dimensions."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V20/V20_C.png?rev=quality2",
+     "alt": "Panel C: required and selected plate and section values with a class-check result."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V20/V20_Structural_Scantlings.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A hull panel scantling calculation compares declared plate and stiffener selections, retaining stock, buckling and structural-adequacy review boundaries.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V21",
+   "title": "Rhino MCP",
+   "collection": "analysis-mcp",
+   "task": "Extract a hull section and review its curves.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V21/V21_A.png?rev=quality2",
+     "alt": "Panel A: an AI request to create and name a midship section in Rhino."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V21/V21_B.png?rev=quality2",
+     "alt": "Panel B: a Rhino-style viewport with the two-metre midship section highlighted."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V21/V21_C.png?rev=quality2",
+     "alt": "Panel C: the created section curves and saved-model details in a response panel."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V21/V21_Rhino_MCP.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A local Rhino-style section action creates and reads back a hull section in a simplified model; the fixture explicitly states native Rhino or MCP execution was not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V22",
+   "title": "Grasshopper MCP",
+   "collection": "analysis-mcp",
+   "task": "Change a Grasshopper parameter and inspect the result.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V22/V22_A.png?rev=quality2",
+     "alt": "Panel A: a baseline Grasshopper-style hull definition with length, beam, draft and coefficient inputs."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V22/V22_B.png?rev=quality2",
+     "alt": "Panel B: an AI request to increase beam and bake the result to a named layer."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V22/V22_C.png?rev=quality2",
+     "alt": "Panel C: the updated definition showing 22 metres beam and a completed sync status."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V22/V22_Grasshopper_MCP.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A named hull beam parameter changes in a simplified graph-driven sequence, while native Grasshopper execution and the final bake remain held for review.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V23",
+   "title": "Rhino → Maxsurf",
+   "collection": "analysis-mcp",
+   "task": "Check a hull transfer between modelling tools.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V23/V23_A.png?rev=quality2",
+     "alt": "Panel A: a Rhino-style hull export dialog targeting a Maxsurf model file."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V23/V23_B.png?rev=quality2",
+     "alt": "Panel B: the same hull imported into a Maxsurf-style modeler view."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V23/V23_C.png?rev=quality2",
+     "alt": "Panel C: the imported hull dimensions, surface count and successful transfer check."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V23/V23_Rhino_Maxsurf.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A simplified Rhino-to-Maxsurf transfer manifest compares source and imported dimensions, ending with a local match while both native applications remain not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V24",
+   "title": "Maxsurf Resistance Iteration",
+   "collection": "analysis-mcp",
+   "task": "Compare resistance before and after a hull change.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V24/V24_A.png?rev=quality2",
+     "alt": "Panel A: baseline Maxsurf-style resistance values and a speed-resistance chart."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V24/V24_B.png?rev=quality2",
+     "alt": "Panel B: an AI request to change the midship coefficient and rerun resistance."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V24/V24_C.png?rev=quality2",
+     "alt": "Panel C: baseline and revised resistance curves with an 11.8 percent reduction at 16 knots."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V24/V24_Maxsurf_Resistance_Iteration.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A baseline and revised resistance visualization fixture compare two hull variants, while the display explicitly says it is not a resistance prediction.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V25",
+   "title": "CFD Geometry Preparation",
+   "collection": "analysis-mcp",
+   "task": "Inspect geometry prepared for a CFD domain.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V25/V25_A.png?rev=quality2",
+     "alt": "Panel A: a Rhino-style hull model with the CFD layer selected."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V25/V25_B.png?rev=quality2",
+     "alt": "Panel B: the hull inside a labelled fluid domain with inlet and outlet boundaries."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V25/V25_C.png?rev=quality2",
+     "alt": "Panel C: a geometry-preparation checklist showing closed surfaces, consistent normals and named selections."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V25/V25_CFD_Geometry_Preparation.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Excluded geometry is removed from a simplified hull and a fluid domain is prepared, ending with local mesh-closure checks while CFD and stability remain not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V26",
+   "title": "Fluent Meshing",
+   "collection": "analysis-mcp",
+   "task": "Inspect the mesh and identify quality warnings.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V26/V26_A.png?rev=quality2",
+     "alt": "Panel A: a CFD domain around the hull with named inlet, outlet, hull and symmetry boundaries."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V26/V26_B.png?rev=quality2",
+     "alt": "Panel B: the surface and volume mesh with an inflation-layer detail."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V26/V26_C.png?rev=quality2",
+     "alt": "Panel C: mesh metrics with a warning about high skewness near the stern."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V26/V26_Fluent_Meshing.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A staged surface mesh changes from distorted to locally rebuilt triangles and receives a quality histogram; volume meshing and Fluent execution remain not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V27",
+   "title": "Fluent CFD",
+   "collection": "analysis-mcp",
+   "task": "Compare flow and resistance results.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V27/V27_A.png?rev=quality2",
+     "alt": "Panel A: a Fluent-style residual convergence monitor."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V27/V27_B.png?rev=quality2",
+     "alt": "Panel B: a pressure contour and streamlines around the hull."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V27/V27_C.png?rev=quality2",
+     "alt": "Panel C: hydrodynamic resistance results compared with a previous baseline."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V27/V27_Fluent_CFD.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A solver-monitor visualization fixture changes from a failed residual view to a revised result display, while native CFD solving remains not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V28",
+   "title": "ANSYS Mechanical",
+   "collection": "analysis-mcp",
+   "task": "Inspect stresses and a stiffener review item.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V28/V28_A.png?rev=quality2",
+     "alt": "Panel A: a structural vessel model with loads and supports."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V28/V28_B.png?rev=quality2",
+     "alt": "Panel B: a finite-element mesh with equivalent-stress contours."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V28/V28_C.png?rev=quality2",
+     "alt": "Panel C: maximum stress, deformation, safety factor and a local stiffener review note."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V28/V28_ANSYS_Mechanical.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. An analytic beam member deforms under a declared load and receives a hand-calculated response; the sequence explicitly does not represent a native FEA solve.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V29",
+   "title": "Orca3D / OrcaFlex Specialist Marine Analysis",
+   "collection": "analysis-mcp",
+   "task": "Review marine motion and mooring results.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V29/V29_A.png?rev=quality2",
+     "alt": "Panel A: a moored vessel analysis setup with waves, wind, current, lines and anchors."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V29/V29_B.png?rev=quality2",
+     "alt": "Panel B: the vessel and colour-coded mooring lines in a three-dimensional sea view."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V29/V29_C.png?rev=quality2",
+     "alt": "Panel C: motion, line-tension and anchor-safety results for the stated sea condition."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V29/V29_Orca3D_OrcaFlex_Specialist_Marine_Analysis.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A simplified moored vessel receives a one-degree-of-freedom surge response and line-tension readbacks, while native OrcaFlex or nonlinear analysis remains not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V30",
+   "title": "Integrated Design → Analysis → Revision Loop",
+   "collection": "analysis-mcp",
+   "task": "Compare the analysis results for a design revision.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V30/V30_A.png?rev=quality2",
+     "alt": "Panel A: a four-step prompt, geometry, analysis and results workflow."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V30/V30_B.png?rev=quality2",
+     "alt": "Panel B: Maxsurf, Fluent, Mechanical and OrcaFlex result views for one vessel."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V30/V30_C.png?rev=quality2",
+     "alt": "Panel C: baseline and revised resistance, stress, motion and tension values in a final comparison."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V30/V30_Integrated_Design_Analysis_Revision_Loop.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A hull revision compares baseline and candidate resistance evidence, retaining warnings and the explicit boundary that native CFD and FEA were not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V31",
+   "title": "ShipConstructor/Product Model",
+   "collection": "production-systems",
+   "task": "Inspect a production model and its linked parts.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V31/V31_A.png?rev=quality2",
+     "alt": "Panel A: a detailed ship production model with structural and outfitting elements."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V31/V31_B.png?rev=quality2",
+     "alt": "Panel B: deck-plate metadata including part number, material, dimensions and parent assembly."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V31/V31_C.png?rev=quality2",
+     "alt": "Panel C: production-model hierarchy, attribute and drawing-link checks with model status."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V31/V31_ShipConstructor_Product_Model.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A simplified production model maps structural and equipment objects to product attributes, with unmatched objects and API or native execution left for review.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V32",
+   "title": "BOM / Material Take-Off",
+   "collection": "production-systems",
+   "task": "Review quantities, materials and a bill of materials.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V32/V32_A.png?rev=quality2",
+     "alt": "Panel A: a ship assembly zone selected in the production model."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V32/V32_B.png?rev=quality2",
+     "alt": "Panel B: a generated bill of materials with parts, quantities and materials."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V32/V32_C.png?rev=quality2",
+     "alt": "Panel C: summarised item counts, total weight and a BOM export control."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V32/V32_BOM_Material_Take_Off.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A production zone is selected for take-off and a plate addition changes quantity and mass totals, while unknown material and uncalculated quantities remain visible.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V33",
+   "title": "Production Work Package and Assembly Sequence",
+   "collection": "production-systems",
+   "task": "Inspect a work package and assembly sequence.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V33/V33_A.png?rev=quality2",
+     "alt": "Panel A: a vessel zone selected as an eight-block work package."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V33/V33_B.png?rev=quality2",
+     "alt": "Panel B: the package contents including drawings, fabrication items, NC data and task cards."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V33/V33_C.png?rev=quality2",
+     "alt": "Panel C: work-package dates, revision and completed deliverable counts."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V33/V33_Production_Work_Package_and_Assembly_Sequence.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A tank installation work package changes its sequence to improve opening clearance, while lifting, removal access and site constraints remain review items.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V34",
+   "title": "Pipe Spool / Fabrication Information",
+   "collection": "production-systems",
+   "task": "Review a pipe spool and its fabrication cut list.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V34/V34_A.png?rev=quality2",
+     "alt": "Panel A: a routed fresh-water pipe selected in the vessel model."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V34/V34_B.png?rev=quality2",
+     "alt": "Panel B: the extracted spool geometry with size, material, bends, welds and weight."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V34/V34_C.png?rev=quality2",
+     "alt": "Panel C: the spool cut list with lengths, bend angles and totals."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V34/V34_Pipe_Spool_Fabrication_Information.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A preliminary spool register compares two routed pipe candidates and their total length, retaining welding and fabrication as unresolved work.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V35",
+   "title": "Multidisciplinary Clash Detection",
+   "collection": "production-systems",
+   "task": "Locate clashes across systems and structure.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V35/V35_A.png?rev=quality2",
+     "alt": "Panel A: a coordinated structure, piping, HVAC, electrical and equipment model."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V35/V35_B.png?rev=quality2",
+     "alt": "Panel B: a piping-versus-structure clash highlighted at a beam penetration."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V35/V35_C.png?rev=quality2",
+     "alt": "Panel C: an issue table separating open, in-progress and resolved clashes."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V35/V35_Multidisciplinary_Clash_Detection.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A selected piping clash is rerouted around simplified equipment, but the remaining service gap stays below target and is preserved for separate review.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V36",
+   "title": "Navisworks Coordination",
+   "collection": "production-systems",
+   "task": "Review coordination issues by discipline.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V36/V36_A.png?rev=quality2",
+     "alt": "Panel A: a federated plant model with discipline visibility controls."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V36/V36_B.png?rev=quality2",
+     "alt": "Panel B: a pipe-versus-structural-beam clash marked for review."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V36/V36_C.png?rev=quality2",
+     "alt": "Panel C: a coordination summary with reviewed, open and closed counts by discipline pair."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V36/V36_Navisworks_Coordination.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A coordination issue is located, saved and revised in a simplified plant model, while the issue remains open and the native recheck is not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V37",
+   "title": "Point Cloud Import",
+   "collection": "production-systems",
+   "task": "Inspect an imported point cloud and its coordinates.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V37/V37_A.png?rev=quality2",
+     "alt": "Panel A: a clean CAD plant model before scan data is added."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V37/V37_B.png?rev=quality2",
+     "alt": "Panel B: the same plant represented by an imported point-cloud overlay."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V37/V37_C.png?rev=quality2",
+     "alt": "Panel C: point-cloud size, coordinate system, alignment method and aligned status."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V37/V37_Point_Cloud_Import.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A synthetic point cloud is processed around a simplified plant, with grouping and crop settings retained and semantic object recognition explicitly not claimed.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V38",
+   "title": "Scan-to-Design Registration",
+   "collection": "production-systems",
+   "task": "Align a scan and compare the deviations.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V38/V38_A.png?rev=quality2",
+     "alt": "Panel A: a coarse CAD-to-point-cloud alignment with overlap and RMS values."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V38/V38_B.png?rev=quality2",
+     "alt": "Panel B: the refined registered point cloud coloured by deviation."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V38/V38_C.png?rev=quality2",
+     "alt": "Panel C: a registration report, deviation histogram and tolerance distribution."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V38/V38_Scan_to_Design_Registration.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Reference points are matched and transformed for a simulated scan registration, ending with a residual plot while survey-quality acceptance remains separate.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V39",
+   "title": "As-Built Deviation Detection",
+   "collection": "production-systems",
+   "task": "Compare scanned equipment with the design model.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V39/V39_A.png?rev=quality2",
+     "alt": "Panel A: a selected centrifugal pump with scan-versus-design deviation overlay."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V39/V39_B.png?rev=quality2",
+     "alt": "Panel B: the pump and base coloured by a deviation heatmap."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V39/V39_C.png?rev=quality2",
+     "alt": "Panel C: a deviation register for pump, tank, pipe, valve and column with review states."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V39/V39_As_Built_Deviation_Detection.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Object-level scan deviations are calculated from sampled points, then one equipment item is isolated with direction and coverage readbacks for review.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V40",
+   "title": "Digital Thread",
+   "collection": "production-systems",
+   "task": "Follow the links from design to as-built records.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V40/V40_A.png?rev=quality2",
+     "alt": "Panel A: the design, fabrication, site-scan and digital-twin stages of a plant asset."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V40/V40_B.png?rev=quality2",
+     "alt": "Panel B: design, fabricated and as-built representations shown side by side."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V40/V40_C.png?rev=quality2",
+     "alt": "Panel C: a traceability register linking design, fabrication and scan identifiers."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V40/V40_Digital_Thread.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A digital-thread bundle links equipment, model, drawing, work-package and scan records, while unresolved OEM confirmation keeps readiness open.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V41",
+   "title": "Engineering Knowledge Architecture",
+   "collection": "knowledge-governance",
+   "task": "Trace a requirement through a clearance correction.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V41/V41_A.png?rev=quality2",
+     "alt": "Panel A: an authored knowledge requirement linked to equipment object P-103 in an engineering viewer."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V41/V41_B.png?rev=quality2",
+     "alt": "Panel B: a measured 0.400 m service gap failing an authored 0.600 m requirement."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V41/V41_C.png?rev=quality2",
+     "alt": "Panel C: the corrected 0.600 m gap with a traceable evidence chain and engineer-review boundary."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V41/V41_Engineering_Knowledge_Architecture.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. An authored service-gap requirement is traced through source, calculation and a proposed transform, with engineer authority and final readback kept separate.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V42",
+   "title": "Hull-Form Knowledge Dataset",
+   "collection": "knowledge-governance",
+   "task": "Check a hull candidate against its dataset range.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V42/V42_A.png?rev=quality2",
+     "alt": "Panel A: an authored hull dataset filtered to a family with one out-of-range example."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V42/V42_B.png?rev=quality2",
+     "alt": "Panel B: a 2.60 m beam candidate rejected against the 3.00–3.60 m validity range."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V42/V42_C.png?rev=quality2",
+     "alt": "Panel C: an in-range 3.50 m beam candidate applied while performance remains not run."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V42/V42_Hull_Form_Knowledge_Dataset.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A hull-family dataset rejects one out-of-range record and applies an in-range candidate, while performance remains not run and engineering review remains necessary.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V43",
+   "title": "Equipment/OEM Dataset",
+   "collection": "knowledge-governance",
+   "task": "Inspect equipment data and a held source revision.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V43/V43_A.png?rev=quality2",
+     "alt": "Panel A: equipment object P-103 linked to source revision, dimensions, mass, electrical input and ports."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V43/V43_B.png?rev=quality2",
+     "alt": "Panel B: the equipment object with mappings from dimensions, mass, ports and electrical data plus a missing maintenance gap."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V43/V43_C.png?rev=quality2",
+     "alt": "Panel C: a candidate source revision held because its mass changed while the active revision remains preserved."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V43/V43_Equipment_OEM_Dataset.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Equipment dimensions, mass, ports and electrical fields are normalized from a connected source, then a candidate mass revision is held while the active record is preserved.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V44",
+   "title": "Standards / ISO / Class Knowledge",
+   "collection": "knowledge-governance",
+   "task": "Separate a project check from external certification.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V44/V44_A.png?rev=quality2",
+     "alt": "Panel A: an authored project clearance rule with external standard applicability absent."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V44/V44_B.png?rev=quality2",
+     "alt": "Panel B: the measured service gap failing the project rule while the external check remains separate."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V44/V44_C.png?rev=quality2",
+     "alt": "Panel C: the corrected local gap passing while ISO or class applicability remains unresolved and not certified."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V44/V44_Standards_ISO_Class_Knowledge.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. An authored project clearance rule is checked against measured geometry and corrected locally, while ISO or class applicability stays unresolved and not certified.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V45",
+   "title": "Engineering Evaluation Benchmark",
+   "collection": "knowledge-governance",
+   "task": "Review benchmark passes alongside retained failures.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V45/V45_A.png?rev=quality2",
+     "alt": "Panel A: five authored benchmark cases awaiting execution with locked expected answers."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V45/V45_B.png?rev=quality2",
+     "alt": "Panel B: citation and unit failures traced while only two of four completed cases pass."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V45/V45_C.png?rev=quality2",
+     "alt": "Panel C: partial benchmark results retained with three passes and two failures."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V45/V45_Engineering_Evaluation_Benchmark.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Deterministic benchmark cases run against fixed expectations, retaining citation and unit failures instead of overwriting them with the passing results.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V46",
+   "title": "Private / Local Engineering AI Deployment",
+   "collection": "knowledge-governance",
+   "task": "Explore an illustrated local-processing architecture.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V46/V46_A.png?rev=quality2",
+     "alt": "Panel A: an on-premise network linking engineering workstations, a local AI server and company data."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V46/V46_B.png?rev=quality2",
+     "alt": "Panel B: a local engineering assistant reading internal CAD and standards without internet access."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V46/V46_C.png?rev=quality2",
+     "alt": "Panel C: a deployment-status table describing internal data access, logging and on-site operation."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V46/V46_Private_Local_Engineering_AI_Deployment.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A proposed local-processing path moves an object within a simplified on-premise architecture, while deployment, security audit and compliance are explicitly not run.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V47",
+   "title": "MCP Permissions and Engineering Safety Gates",
+   "collection": "knowledge-governance",
+   "task": "Inspect approval gates and an action audit trail.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V47/V47_A.png?rev=quality2",
+     "alt": "Panel A: a permissions matrix for read, write, solve, export and delete actions by role."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V47/V47_B.png?rev=quality2",
+     "alt": "Panel B: an external model-export request waiting for manager approval."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V47/V47_C.png?rev=quality2",
+     "alt": "Panel C: an audit log that distinguishes approved, allowed and restricted actions."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V47/V47_MCP_Permissions_and_Engineering_Safety_Gates.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A policy-controlled tool request requires approval, records a denied or allowed action, and demonstrates undo plus audit readback without native MCP execution.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V48",
+   "title": "Multi-Agent Engineering Team",
+   "collection": "knowledge-governance",
+   "task": "Follow tasks and missing evidence across disciplines.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V48/V48_A.png?rev=quality2",
+     "alt": "Panel A: an orchestrator connected to naval architecture, structures, CFD, systems and production agents."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V48/V48_B.png?rev=quality2",
+     "alt": "Panel B: analysis tasks delegated against one vessel with completed, active and queued states."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V48/V48_C.png?rev=quality2",
+     "alt": "Panel C: a shared task board reporting progress and retained results by discipline."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V48/V48_Multi_Agent_Engineering_Team.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. Bounded software roles return partial vessel-analysis evidence, then a missing CFD artifact is rejected and routed back while engineer review remains required.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V49",
+   "title": "Failure Detection and Recovery",
+   "collection": "knowledge-governance",
+   "task": "Diagnose and correct a model-unit mismatch.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V49/V49_A.png?rev=quality2",
+     "alt": "Panel A: a geometry import error caused by millimetres-versus-metres units."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V49/V49_B.png?rev=quality2",
+     "alt": "Panel B: a five-step diagnosis, conversion, validation and logging workflow in progress."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V49/V49_C.png?rev=quality2",
+     "alt": "Panel C: the correctly scaled reimported vessel with success status and a recorded unit-check lesson."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V49/V49_Failure_Detection_and_Recovery.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A thousand-times unit mismatch is detected on hull import, corrected to metres, and read back while native analysis remains held pending validation.",
+   "durationSeconds": 20
+  },
+  {
+   "id": "V50",
+   "title": "The Complete Engineering AI Workflow",
+   "collection": "knowledge-governance",
+   "task": "Review a design revision and its linked evidence.",
+   "panels": [
+    {
+     "label": "A",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V50/V50_A.png?rev=quality2",
+     "alt": "Panel A: a research-vessel mission brief with requirements, references and success criteria."
+    },
+    {
+     "label": "B",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V50/V50_B.png?rev=quality2",
+     "alt": "Panel B: the full concept, hull, arrangement, systems, analysis, production and scan workflow chain."
+    },
+    {
+     "label": "C",
+     "url": "https://ai-engineering-gallery.engineering-tools-e46f43.workers.dev/V50/V50_C.png?rev=quality2",
+     "alt": "Panel C: a final vessel view, deliverable list and revision history presented as the illustrative project result."
+    }
+   ],
+   "video": "https://vectoros.one/workflow-media/20260913/V50/V50_The_Complete_Engineering_AI_Workflow.mp4",
+   "videoDescription": "Conceptual animation with instrumental music. A final revision candidate updates supported geometry and calculations, but missing linked evidence and native integration remain open rather than being presented as release proof.",
+   "durationSeconds": 20
+  }
+ ]
+}
