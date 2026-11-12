@@ -4,41 +4,15 @@ import Faq from "@/components/Faq";
 import Media from "@/components/Media";
 import Reveal from "@/components/Reveal";
 import Intro from "@/components/Intro";
+import Demo from "@/components/demo/Demo";
 import { Logo } from "@/components/Logo";
-import { ctas, footer, steps, tools } from "@/lib/content";
+import { ctas, footer, tools } from "@/lib/content";
 
 const Arrow = () => (
   <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
     <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
-
-function StepIcon({ i }: { i: number }) {
-  const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  return (
-    <svg viewBox="0 0 48 48" className="size-10 text-fg" aria-hidden="true">
-      {i === 0 && (
-        <g {...common}>
-          <path d="M8 12h32v20H22l-8 7v-7H8z" />
-          <path d="M15 20h18M15 25h11" />
-        </g>
-      )}
-      {i === 1 && (
-        <g {...common}>
-          <rect x="8" y="8" width="32" height="32" rx="3" />
-          <path d="M8 18h32M18 18v22" />
-          <path d="M24 28h10M24 33h6" />
-        </g>
-      )}
-      {i === 2 && (
-        <g {...common}>
-          <path d="M24 6l15 8.5v17L24 40 9 31.5v-17z" />
-          <path d="M9 14.5 24 23l15-8.5M24 23v17" />
-        </g>
-      )}
-    </svg>
-  );
-}
 
 export default function Home() {
   const loop = [...tools, ...tools];
@@ -53,28 +27,8 @@ export default function Home() {
         {/* INTRO: pinned hero + scroll-scrubbed 3D */}
         <Intro />
 
-        {/* ASK → PLAN → BUILD */}
-        <section id="how" className="scroll-mt-24 relative mx-auto max-w-6xl px-6 py-28 md:py-40">
-          <Reveal>
-            <p className="eyebrow">How it works</p>
-            <h2 className="mt-4 max-w-2xl text-balance text-4xl font-semibold tracking-tight md:text-6xl">From an idea to the next step.</h2>
-          </Reveal>
-          <div className="mt-14 grid gap-4 md:grid-cols-3">
-            {steps.map((s, i) => (
-              <Reveal key={s.k} delay={i * 120}>
-                <article className="group relative h-full overflow-hidden rounded-3xl border border-line bg-card p-8 transition-colors hover:border-[#4a4a4f]">
-                  <div className="hairline-grid pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="relative flex items-start justify-between">
-                    <StepIcon i={i} />
-                    <span className="font-mono text-xs text-muted">{s.k}</span>
-                  </div>
-                  <h3 className="relative mt-16 text-3xl font-semibold tracking-tight">{s.title}</h3>
-                  <p className="relative mt-2 text-muted">{s.body}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </section>
+        {/* PRODUCT DEMO: pinned, scroll-scrubbed workspace story */}
+        <Demo />
 
         {/* STORY (scroll-driven 3D) */}
         <Story />

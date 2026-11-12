@@ -24,6 +24,8 @@ type Props = {
   /** Max device pixel ratio. Keeps fill-rate sane on retina / phones. */
   maxDpr?: number;
   label: string;
+  /** Optional gate: when it returns false the loop keeps ticking but skips rendering. */
+  isActive?: () => boolean;
 };
 
 /**
@@ -31,7 +33,9 @@ type Props = {
  * is on screen and the tab is visible. Honours prefers-reduced-motion by
  * drawing a single still frame.
  */
-export default function Stage({ setup, className, fov = 35, maxDpr = 1.75, label }: Props) {
+export default function Stage({ setup, className, fov = 35, maxDpr = 1.75, label, isActive }: Props) {
+  const activeRef = useRef(isActive);
+  activeRef.current = isActive;
   const wrap = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
 
@@ -88,8 +92,10 @@ export default function Stage({ setup, className, fov = 35, maxDpr = 1.75, label
       const dt = Math.min((now - last) / 1000, 1 / 20);
       last = now;
       elapsed += dt;
-      handle.update(elapsed, dt);
-      renderer.render(scene, camera);
+      if (!activeRef.current || activeRef.current()) {
+        handle.update(elapsed, dt);
+        renderer.render(scene, camera);
+      }
       raf = requestAnimationFrame(loop);
     };
 

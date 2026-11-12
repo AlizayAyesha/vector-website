@@ -6,3 +6,4 @@ const Glow = () => <div className="stage-fallback absolute inset-0" />;
 
 export const CoreCanvas = dynamic(() => import("./three/CoreCanvas"), { ssr: false, loading: Glow });
 export const StoryCanvas = dynamic(() => import("./three/StoryCanvas"), { ssr: false, loading: Glow });
+export const DemoCanvas = dynamic(() => import("./three/DemoCanvas"), { ssr: false, loading: Glow });
