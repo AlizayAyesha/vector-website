@@ -61,7 +61,7 @@ export default function SoftwareDirectory({ entries, groups }: { entries: Entry[
       {sections.map(([s, l]) => (
         <section key={s} aria-label={s} className="mt-10">
           <h2 className="text-2xl font-semibold tracking-tight">{s === "Upcoming" ? "Other software" : s}</h2>
-          <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {l.map((e) => (
               <li key={e.name}>
                 <Link href={`/software/${e.slug}`} className="group flex h-full items-center gap-3.5 rounded-2xl border border-line bg-card px-4 py-3.5 transition-colors hover:border-[#4a4a4f] hover:bg-card-2">
