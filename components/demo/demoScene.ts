@@ -6,7 +6,7 @@ import { camAt, type Track } from "./tracks/common";
 import { createHullTrack } from "./tracks/hullTrack";
 import { createFacadeTrack } from "./tracks/facadeTrack";
 import { createMechTrack } from "./tracks/mechTrack";
-import { GRID, gridKey } from "./tracks/meta";
+import { ANCHOR_TEXT, GRID, gridKey } from "./tracks/meta";
 
 export type DemoLabels = { current: Record<string, HTMLElement | SVGElement | null> };
 
@@ -15,15 +15,16 @@ const fmtLen = (m: number) => (m < 1 ? `${Math.round(m * 1000)} mm` : `${m} m`);
 
 export function createDemoScene(progress: { current: number }, labels: DemoLabels) {
   return ({ scene, camera, renderer, pointer, reducedMotion }: SceneContext): SceneHandle => {
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.05;
+    // CAD viewports (Rhino rendered / SOLIDWORKS shaded) read close to neutral, so avoid filmic desaturation.
+    renderer.toneMapping = THREE.NeutralToneMapping;
+    renderer.toneMappingExposure = 1.0;
     const pmrem = new THREE.PMREMGenerator(renderer);
     const env = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
     scene.environment = env;
-    scene.environmentIntensity = 0.55;
+    scene.environmentIntensity = 0.7;
     scene.fog = new THREE.Fog(0x060606, 20, 60);
 
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x0a0a0a, 0.5));
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x50555c, 0.9));
     const key = new THREE.DirectionalLight(0xffffff, 1.6);
     key.position.set(-6, 10, 8);
     scene.add(key);
@@ -37,7 +38,7 @@ export function createDemoScene(progress: { current: number }, labels: DemoLabel
     const gridAnchors: Record<string, THREE.Vector3> = {};
     tracks.forEach((t, i) => {
       const g = GRID[ids[i]];
-      const grid = new THREE.GridHelper(g.size, g.div, 0x3a3a40, 0x18181b);
+      const grid = new THREE.GridHelper(g.size, g.div, 0x8a929a, 0x6b737b);
       const gm = grid.material as THREE.LineBasicMaterial;
       gm.transparent = true;
       gm.opacity = 0.85;
@@ -53,6 +54,7 @@ export function createDemoScene(progress: { current: number }, labels: DemoLabel
     const v = new THREE.Vector3();
     const inv = new THREE.Quaternion();
     let shown = 0;
+    const fogCol = new THREE.Color();
     let lastNear = 0;
     const px = { x: 0, y: 0 };
 
@@ -63,7 +65,7 @@ export function createDemoScene(progress: { current: number }, labels: DemoLabel
       const on = v.z < 1 && Math.abs(v.x) < 1.02 && Math.abs(v.y) < 1.02;
       el.style.transform = `translate(${((v.x + 1) / 2) * w}px, ${((1 - v.y) / 2) * h}px)`;
       el.style.opacity = String(on ? Math.max(0, Math.min(1, vis)) : 0);
-      el.dataset.side = v.x > 0.3 ? "left" : "right";
+      el.dataset.side = v.x > 0.05 ? "left" : "right";
     };
 
     return {
@@ -76,6 +78,25 @@ export function createDemoScene(progress: { current: number }, labels: DemoLabel
         tracks.forEach((t, i) => (t.group.visible = i === ti && p > WIN.in[0] - 0.01));
         tr.update(q, time);
 
+        // viewport look follows the recording (Maxsurf teal, Rhino greys, SOLIDWORKS white/lavender)
+        const look = tr.theme(q);
+        const vp = labels.current.vp as HTMLElement | null | undefined;
+        if (vp) {
+          const top = `#${look.top.getHexString()}`;
+          const bot = `#${look.bottom.getHexString()}`;
+          if (vp.dataset.bg !== top + bot) {
+            vp.style.background = `linear-gradient(180deg, ${top} 0%, ${bot} 100%)`;
+            vp.dataset.bg = top + bot;
+          }
+          const lt = look.light ? "1" : "0";
+          if (vp.dataset.light !== lt) vp.dataset.light = lt;
+        }
+        fogCol.copy(look.top).lerp(look.bottom, 0.5);
+        (scene.fog as THREE.Fog).color.copy(fogCol);
+        const gm = grids[ti].material as THREE.LineBasicMaterial;
+        gm.opacity = look.grid;
+        grids[ti].visible = look.grid > 0.01;
+
         // camera
         const w = renderer.domElement.clientWidth;
         const h = renderer.domElement.clientHeight;
@@ -85,7 +106,7 @@ export function createDemoScene(progress: { current: number }, labels: DemoLabel
         px.x += (pointer.x - px.x) * 0.05;
         px.y += (pointer.y - px.y) * 0.05;
         const th = cam.th + px.x * 0.06 + (reducedMotion ? 0 : Math.sin(time * 0.15) * 0.015);
-        const el = Math.max(0.01, cam.el + px.y * 0.03);
+        const el = Math.max(-0.6, cam.el + px.y * 0.03);
         camera.position.set(cam.target.x + r * Math.cos(el) * Math.sin(th), cam.target.y + r * Math.sin(el), cam.target.z + r * Math.cos(el) * Math.cos(th));
         camera.lookAt(cam.target);
         const near = Math.max(0.004, r * 0.01);
@@ -96,12 +117,37 @@ export function createDemoScene(progress: { current: number }, labels: DemoLabel
           lastNear = near;
         }
         const fog = scene.fog as THREE.Fog;
-        fog.near = r * 1.15;
-        fog.far = r * 3.4;
+        fog.near = r * 2.2;
+        fog.far = r * 6;
         grids[ti].scale.setScalar(1);
 
         // anchors
         for (const k of Object.keys(tr.anchors)) setAnchor(k, tr.anchors[k].pos, tr.anchors[k].vis, w, h);
+        // small screens: the strongest callout is mirrored into a caption panel (floating labels are hidden there)
+        const cap = labels.current.cap as HTMLElement | null | undefined;
+        if (cap) {
+          let best = "";
+          let bv = 0;
+          for (const k of Object.keys(tr.anchors)) {
+            const a = ANCHOR_TEXT[k];
+            if (!a || a.plain) continue;
+            if (tr.anchors[k].vis > bv) {
+              bv = tr.anchors[k].vis;
+              best = k;
+            }
+          }
+          if (cap.dataset.k !== best) {
+            const a = best ? ANCHOR_TEXT[best] : null;
+            const t = cap.querySelector("[data-t]");
+            const sb = cap.querySelector("[data-s]");
+            if (a && t && sb) {
+              t.textContent = a.text;
+              sb.textContent = a.sub ?? "";
+            }
+            cap.dataset.k = best;
+          }
+          cap.style.opacity = String(Math.min(1, bv * 1.2));
+        }
         tracks.forEach((t, i) => {
           if (i === ti) return;
           for (const k of Object.keys(t.anchors)) {
@@ -125,6 +171,7 @@ export function createDemoScene(progress: { current: number }, labels: DemoLabel
           let f = 0;
           for (const s of SWITCH) f = Math.max(f, 1 - Math.abs(p - s) / 0.006);
           fadeEl.style.opacity = String(Math.max(0, Math.min(1, f)));
+          if (f > 0) fadeEl.style.background = `#${fogCol.getHexString()}`;
         }
 
         // HUD: axis gizmo

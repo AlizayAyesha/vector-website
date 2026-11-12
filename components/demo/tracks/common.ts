@@ -16,7 +16,96 @@ export type Track = {
   update: (q: number, time: number) => void;
   /** live numbers for the HUD (e.g. counts) */
   stats?: () => Record<string, string | number>;
+  /** viewport look at q (background, fog, grid), matched to the recording's application viewport */
+  theme: (q: number) => Theme;
 };
+
+/** Viewport look. bg = CSS gradient stops (top, bottom); light = dark overlay text needed. */
+export type Theme = { top: THREE.Color; bottom: THREE.Color; grid: number; light: boolean };
+export type ThemeStop = { q: number; top: string; bottom: string; grid?: number; light?: boolean };
+
+/** Piecewise viewport themes with a short colour blend into each stop. */
+export function themes(stops: ThemeStop[], blend = 0.012) {
+  const cs = stops.map((s) => ({ ...s, t: new THREE.Color(s.top), b: new THREE.Color(s.bottom) }));
+  const out: Theme = { top: new THREE.Color(), bottom: new THREE.Color(), grid: 0, light: false };
+  return (q: number): Theme => {
+    let i = 0;
+    for (let k = 0; k < cs.length; k++) if (q >= cs[k].q) i = k;
+    const cur = cs[i];
+    const prev = cs[Math.max(0, i - 1)];
+    const k = i === 0 ? 1 : Math.min(1, (q - cur.q) / blend);
+    const e = k * k * (3 - 2 * k);
+    out.top.copy(prev.t).lerp(cur.t, e);
+    out.bottom.copy(prev.b).lerp(cur.b, e);
+    out.grid = (prev.grid ?? 0) + ((cur.grid ?? 0) - (prev.grid ?? 0)) * e;
+    out.light = e > 0.5 ? !!cur.light : !!prev.light;
+    return out;
+  };
+}
+
+/** Flat, CAD-viewport style shaded material (Rhino / SOLIDWORKS shaded display). */
+export const flat = (color: number, o: Partial<THREE.MeshStandardMaterialParameters> = {}) =>
+  new THREE.MeshStandardMaterial({ color, metalness: 0.05, roughness: 0.72, ...o });
+
+/** Merge many cylinders a→b into one mesh (fast space frames, rings, ticks). */
+export function tubes(pairs: [THREE.Vector3, THREE.Vector3][], r: number, mat: THREE.Material, seg = 8) {
+  const geos: THREE.BufferGeometry[] = [];
+  const up = new THREE.Vector3(0, 1, 0);
+  const q = new THREE.Quaternion();
+  const m = new THREE.Matrix4();
+  for (const [a, b] of pairs) {
+    const d = b.clone().sub(a);
+    const len = d.length();
+    if (len < 1e-6) continue;
+    const g = new THREE.CylinderGeometry(r, r, len, seg, 1, false);
+    q.setFromUnitVectors(up, d.normalize());
+    m.compose(a.clone().lerp(b, 0.5), q, new THREE.Vector3(1, 1, 1));
+    g.applyMatrix4(m);
+    geos.push(g.index ? g.toNonIndexed() : g);
+  }
+  return new THREE.Mesh(mergeNonIndexed(geos), mat);
+}
+
+/** Concatenate non-indexed geometries (position + normal); order preserved so reveal() builds in sequence. */
+export function mergeNonIndexed(geos: THREE.BufferGeometry[]) {
+  let n = 0;
+  for (const g of geos) n += g.getAttribute("position").count;
+  const pos = new Float32Array(n * 3);
+  const nor = new Float32Array(n * 3);
+  let o = 0;
+  for (const g0 of geos) {
+    const g = g0.index ? g0.toNonIndexed() : g0;
+    if (!g.getAttribute("normal")) g.computeVertexNormals();
+    pos.set(g.getAttribute("position").array as Float32Array, o * 3);
+    nor.set(g.getAttribute("normal").array as Float32Array, o * 3);
+    o += g.getAttribute("position").count;
+    g.dispose();
+  }
+  const out = new THREE.BufferGeometry();
+  out.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+  out.setAttribute("normal", new THREE.BufferAttribute(nor, 3));
+  return out;
+}
+
+/** Box mesh geometry spanning min→max (axis aligned), for merging. */
+export function boxGeo(min: THREE.Vector3, max: THREE.Vector3) {
+  const g = new THREE.BoxGeometry(max.x - min.x, max.y - min.y, max.z - min.z);
+  g.translate((min.x + max.x) / 2, (min.y + max.y) / 2, (min.z + max.z) / 2);
+  return g.toNonIndexed();
+}
+
+/** Lerp a material colour between two hex values. */
+export function tint(mat: THREE.Material, a: number, b: number, k: number) {
+  const m = mat as THREE.MeshStandardMaterial | THREE.LineBasicMaterial;
+  const ud = m.userData as { ca?: THREE.Color; cb?: THREE.Color };
+  if (!ud.ca) {
+    ud.ca = new THREE.Color();
+    ud.cb = new THREE.Color();
+  }
+  ud.ca.setHex(a);
+  ud.cb!.setHex(b);
+  m.color.copy(ud.ca).lerp(ud.cb!, Math.max(0, Math.min(1, k)));
+}
 
 export function camAt(keys: Key[], q: number, out: { target: THREE.Vector3; r: number; th: number; el: number }) {
   let i = 0;

@@ -1,12 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { ctas } from "@/lib/content";
+import { ctas, recordings } from "@/lib/content";
 import { Logo } from "../Logo";
 import { DemoCanvas } from "../Lazy3D";
 import { TRACK_UI, demo } from "./copy";
 import { CHAPTERS, OUTRO, TRACKS, WIN, cardClock, chapterAt, ease, lerp, lin, localQ, pageAt, trackAt, type TrackId } from "./timeline";
-import { ANCHOR_TEXT, GRID, STEPS, gridKey } from "./tracks/meta";
+import { ANCHOR_TEXT, GRID, STEPS, gridKey, qAt } from "./tracks/meta";
 import { ToolLogo } from "../ToolLogo";
 import type { DemoLabels } from "./demoScene";
 
@@ -46,7 +46,7 @@ function DemoStatic() {
             <p className="mt-1 font-mono text-[11px] text-muted">{TRACK_UI[t.id].file}</p>
             <ol className="mt-5 space-y-3">
               {STEPS[t.id].map((s, i) => (
-                <li key={s.title} className="flex gap-3 text-sm">
+                <li key={`${s.title}-${i}`} className="flex gap-3 text-sm">
                   <span className="font-mono text-[11px] text-muted">{String(i + 1).padStart(2, "0")}</span>
                   <span className="text-fg/90">{s.title}</span>
                 </li>
@@ -113,7 +113,7 @@ function DemoPinned() {
       last = now;
       if (el && !document.hidden) {
         const total = el.offsetHeight - window.innerHeight;
-        acc += (total / 115) * dt; // whole demo ≈ 115 s
+        acc += (total / 175) * dt; // whole demo ≈ 175 s (each recording-matched track ≈ 39 s)
         if (acc >= 1) {
           const step = Math.floor(acc);
           acc -= step;
@@ -139,6 +139,14 @@ function DemoPinned() {
     userPaused.current = playing;
     setPlaying((v) => !v);
   };
+  useEffect(() => {
+    const pause = () => {
+      userPaused.current = true;
+      setPlaying(false);
+    };
+    window.addEventListener("vector:demo-pause", pause);
+    return () => window.removeEventListener("vector:demo-pause", pause);
+  }, []);
 
   const isActive = useCallback(() => progress.current > WIN.in[0] - 0.01 && progress.current < 0.985, [progress]);
 
@@ -157,7 +165,7 @@ function DemoPinned() {
   const outro = ease(OUTRO, OUTRO + 0.03, p);
 
   return (
-    <section ref={section} id="demo" className="relative h-[1500vh]" aria-label="Illustrative product demo: hull, façade and mechanical assembly">
+    <section ref={section} id="demo" className="relative h-[2000vh]" aria-label="Illustrative product demo: hull, façade and mechanical assembly">
       <div className="sticky top-0 h-svh overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,#0d0d0e_0%,#000_70%)]" />
 
@@ -373,7 +381,29 @@ function GraphCard({ p }: { p: number }) {
   return (
     <div className="absolute inset-x-0 top-1/2" style={{ opacity: k, transform: `translateY(-50%) scale(${lerp(0.96, 1, ease(0.226, 0.24, p))})` }}>
       <div className="rounded-3xl border border-line bg-[#0b0b0c]/95 p-4 md:p-6">
-        <svg viewBox="0 0 560 300" className="h-auto w-full" role="img" aria-label="Vector OS routes the approved plan to Maxsurf and Rhino; the SOLIDWORKS job is a recorded project">
+        {/* small screens: the same routing as a vertical flow with readable type */}
+        <div className="md:hidden" aria-hidden="true">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-10 items-center gap-1.5 rounded-xl bg-fg px-3 text-[13px] font-bold text-black"><Logo className="size-3.5" />Vector OS</span>
+            <span className="relative h-px flex-1 bg-[#303033]"><span className="absolute inset-y-0 left-0 bg-fg" style={{ width: `${e1 * 100}%` }} /></span>
+            <span className={`rounded-xl border px-3 py-1.5 text-center transition-colors ${e1 >= 1 ? "border-fg" : "border-[#303033] opacity-50"}`}>
+              <span className="block text-[13px] font-semibold">{approved ? "Approved ✓" : "Your approval"}</span>
+              <span className="block font-mono text-[11px] text-muted">before native work</span>
+            </span>
+          </div>
+          <ul className="mt-3 space-y-2 border-l border-[#303033] pl-4">
+            {([["Maxsurf", "hull", "Available", e2], ["Rhino", "façade", "Available", e2], ["SOLIDWORKS", "assembly", "Recorded project", e3]] as [string, string, string, number][]).map(([n, job, st, t]) => (
+              <li key={n} className={`flex items-center justify-between gap-3 rounded-xl border px-3 py-2 transition-opacity ${t > 0 ? "border-line opacity-100" : "border-[#303033] opacity-40"}`}>
+                <span>
+                  <span className="block text-[13px] font-semibold">{n}</span>
+                  <span className="block font-mono text-[11px] text-muted">{job}</span>
+                </span>
+                <span className={`font-mono text-[11px] uppercase ${st === "Available" ? "text-fg" : "text-muted"}`}>{st}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <svg viewBox="0 0 560 300" className="hidden h-auto w-full md:block" role="img" aria-label="Vector OS routes the approved plan to Maxsurf and Rhino; the SOLIDWORKS job is a recorded project">
           {edge("M142 150 H218", 76, e1)}
           {edge("M342 150 C 372 150, 372 56, 398 56", 130, e2)}
           {edge("M342 150 H398", 56, e2)}
@@ -392,7 +422,7 @@ function GraphCard({ p }: { p: number }) {
           {node(460, 150, "Rhino", "AVAILABLE", e2 > 0, <image href="/logos/rhino.svg" x="-54" y="-10" width="20" height="20" style={{ filter: "brightness(0) invert(1)" }} />)}
           {node(460, 244, "SOLIDWORKS", "RECORDED PROJECT", e3 > 0)}
         </svg>
-        <p className="mt-2 text-center text-xs text-muted">Connector status from the Vector OS software directory. SOLIDWORKS appears as a recorded project, not a listed connector.</p>
+        <p className="mt-3 text-center text-[12px] text-muted md:mt-2 md:text-xs">Connector status from the Vector OS software directory. SOLIDWORKS appears as a recorded project, not a listed connector.</p>
       </div>
     </div>
   );
@@ -415,6 +445,15 @@ function Workspace({ p, labels, seek, children }: { p: number; labels: DemoLabel
   steps.forEach((s, i) => {
     if (q >= s.q[0]) si = i;
   });
+  const step = steps[si];
+  const [rec, setRecState] = useState<TrackId | null>(null);
+  const setRec = (id: TrackId | null) => {
+    setRecState(id);
+    if (id) window.dispatchEvent(new Event("vector:demo-pause"));
+  };
+  const recording = rec ? recordings[TRACKS.findIndex((x) => x.id === rec)] : null;
+  // step list window: keep the current step in view (façade and mechanical have 19 and 25 steps)
+  const W0 = Math.max(0, Math.min(steps.length - 7, si - 3));
   const ready = ease(0.9, 0.91, p);
   const setLabel = (k: string) => (el: HTMLElement | SVGElement | null) => {
     labels.current[k] = el;
@@ -446,61 +485,68 @@ function Workspace({ p, labels, seek, children }: { p: number; labels: DemoLabel
           ))}
         </div>
         <div className="ml-auto flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] md:ml-0">
-          {t.id === "hull" && (
-            <>
-              <Badge on={q < 0.16}><ToolLogo name="Maxsurf" className="size-3.5" wordSize="6.5px" /><span className="hidden sm:inline">Maxsurf</span></Badge>
-              <span className="text-muted">→</span>
-              <Badge on={q >= 0.16}><ToolLogo name="Rhino" className="size-3.5" /><span className="hidden sm:inline">Rhino</span></Badge>
-            </>
-          )}
-          {t.id === "facade" && (
-            <Badge on><ToolLogo name="Rhino" className="size-3.5" /><span>Rhino 8</span></Badge>
-          )}
-          {t.id === "mech" && (
-            <Badge on><span>SOLIDWORKS</span><span className="hidden text-muted sm:inline">· recorded project</span></Badge>
-          )}
+          {/* recording label, as shown top-right in each recording */}
+          <Badge on>
+            {t.id === "mech" ? (
+              <ToolLogo name="SOLIDWORKS" className="size-3.5" wordSize="5px" />
+            ) : step.chip.startsWith("Maxsurf") ? (
+              <ToolLogo name="Maxsurf" className="size-3.5" wordSize="6.5px" />
+            ) : step.chip.startsWith("Vector") ? (
+              <Logo className="size-3" />
+            ) : (
+              <ToolLogo name="Rhino" className="size-3.5" />
+            )}
+            <span key={step.chip} className="chapter-swap hidden normal-case tracking-normal sm:inline">{step.chip}</span>
+          </Badge>
         </div>
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col md:flex-row">
         {/* step sidebar */}
         <aside className="relative shrink-0 border-b border-line bg-[#0a0a0b] px-4 py-3 md:w-64 md:border-b-0 md:border-r md:px-6 md:py-6">
-          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">{ui.file}</p>
-          <div className="relative mt-2 h-[78px] md:mt-4 md:h-[176px]">
+          <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted md:text-[10px] md:tracking-[0.14em]">{ui.file}</p>
+          <div className="relative mt-1.5 h-[86px] md:mt-4 md:h-[176px]">
             {steps.map((s, i) => {
               const on = i === si;
               return (
-                <div key={s.title} className="absolute inset-0 transition-all duration-500" style={{ opacity: on ? 1 : 0, transform: `translateY(${on ? 0 : i < si ? -10 : 10}px)` }} aria-hidden={!on}>
+                <div key={`${s.title}-${i}`} className="absolute inset-0 transition-all duration-500" style={{ opacity: on ? 1 : 0, transform: `translateY(${on ? 0 : i < si ? -10 : 10}px)` }} aria-hidden={!on}>
                   <p className="font-mono text-[11px] text-muted">
                     STEP {String(i + 1).padStart(2, "0")} / {String(steps.length).padStart(2, "0")}
                   </p>
-                  <h3 className="mt-1 text-base font-semibold leading-tight tracking-tight md:mt-2.5 md:text-xl">{s.title}</h3>
-                  <p className="mt-1 line-clamp-2 text-[12.5px] leading-snug text-muted md:mt-2.5 md:line-clamp-none md:text-[13px] md:leading-relaxed">{s.body}</p>
+                  <h3 className="mt-1 text-base font-semibold leading-tight tracking-tight md:mt-2.5 md:text-xl">{s.title}.</h3>
+                  <p className="mt-1 line-clamp-2 text-[13px] leading-snug text-muted md:mt-2.5 md:line-clamp-none md:text-[13px] md:leading-relaxed">{s.body}</p>
                 </div>
               );
             })}
           </div>
           <ol className="mt-4 hidden space-y-2 md:block">
-            {steps.map((s, i) => (
-              <li key={s.title} className={`flex items-center gap-3 text-[12.5px] leading-tight transition-colors ${i === si ? "text-fg" : i < si ? "text-muted" : "text-muted/45"}`}>
+            {steps.slice(W0, W0 + 7).map((s, j) => {
+              const i = W0 + j;
+              return (
+              <li key={`${s.title}-${i}`} className={`flex items-center gap-3 text-[12.5px] leading-tight transition-colors ${i === si ? "text-fg" : i < si ? "text-muted" : "text-muted/45"}`}>
                 <span className="relative h-px w-5 shrink-0 overflow-hidden bg-line">
                   <span className="absolute inset-y-0 left-0 bg-fg" style={{ width: `${lin(s.q[0], s.q[1], q) * 100}%` }} />
                 </span>
-                <span className="truncate">{s.title.replace(/\.$/, "")}</span>
+                <span className="truncate">{s.title}</span>
               </li>
-            ))}
+              );
+            })}
           </ol>
+          <button type="button" onClick={() => setRec(t.id)} className="mt-4 hidden items-center gap-2 rounded-full border border-line px-3 py-1.5 text-xs text-fg transition-colors hover:bg-white/5 md:inline-flex">
+            <svg viewBox="0 0 16 16" className="size-3" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" /></svg>
+            Watch the real recording
+          </button>
         </aside>
 
         {/* viewport */}
-        <div className="relative min-h-0 flex-1 overflow-hidden bg-[radial-gradient(ellipse_at_50%_30%,#151517_0%,#060606_75%)]">
+        <div ref={setLabel("vp")} data-light="0" className="demo-vp relative min-h-0 flex-1 overflow-hidden" style={{ background: "linear-gradient(180deg,#3f6464 0%,#3b5f5f 100%)" }}>
           {children}
-          <div ref={setLabel("fade")} className="pointer-events-none absolute inset-0 bg-[#060606] opacity-0" />
+          <div ref={setLabel("fade")} className="pointer-events-none absolute inset-0 bg-[#5a656f] opacity-0" />
 
           {/* anchored labels + grid labels (positioned by the scene) */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
             {Object.entries(ANCHOR_TEXT).map(([k, a]) => (
-              <Anchor key={k} refFn={setLabel(k)} text={a.text} strong={a.strong} below={a.below} />
+              <Anchor key={k} refFn={setLabel(k)} text={a.text} sub={a.sub} strong={a.strong} below={a.below} plain={a.plain} />
             ))}
             {(Object.keys(GRID) as TrackId[]).flatMap((id) =>
               GRID[id].labels.map((l, i) => (
@@ -511,8 +557,13 @@ function Workspace({ p, labels, seek, children }: { p: number; labels: DemoLabel
             )}
           </div>
 
+          {/* view label (SOLIDWORKS recording shows one per shot) */}
+          {step.view && ready < 0.5 && (
+            <span key={step.view} className="chapter-swap absolute left-2 top-2 z-[1] rounded-md bg-white px-2.5 py-1 text-[12px] font-medium md:left-3 md:top-3 md:text-[11px] text-[#1f2328] shadow-sm">{step.view}</span>
+          )}
+
           {/* model tree */}
-          <div className="absolute left-3 top-3 hidden w-48 overflow-hidden rounded-xl border border-line bg-black/70 text-xs backdrop-blur md:block">
+          <div className="absolute left-3 top-12 hidden w-48 overflow-hidden rounded-xl border border-line bg-black/70 text-xs backdrop-blur md:block">
             <p className="flex items-center justify-between border-b border-line px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
               Model tree <span className="tabular-nums">{ui.tree.filter(([, a]) => q >= a).length}/{ui.tree.length}</span>
             </p>
@@ -530,8 +581,8 @@ function Workspace({ p, labels, seek, children }: { p: number; labels: DemoLabel
           </div>
 
           {/* gizmo + view */}
-          <div className="absolute right-3 top-3 flex items-start gap-2" aria-hidden="true">
-            <span className="mt-1 hidden rounded-md border border-line bg-black/60 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-muted sm:inline">Perspective · shaded</span>
+          <div className="absolute right-3 top-3 hidden items-start gap-2 md:flex" aria-hidden="true">
+            <span className="mt-1 hidden rounded-md border border-line bg-black/60 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-muted sm:inline">{t.id === "mech" ? "Shaded with edges" : t.id === "hull" && q < qAt("hull", 29.3) ? "Maxsurf · plan / profile" : "Perspective · rendered"}</span>
             <svg viewBox="0 0 48 48" className="size-12 rounded-full border border-line bg-black/60">
               <circle cx="24" cy="24" r="2" fill="#f4f4f5" />
               {(["x", "y", "z"] as const).map((a) => (
@@ -547,7 +598,7 @@ function Workspace({ p, labels, seek, children }: { p: number; labels: DemoLabel
 
           {/* stats card at the end of each track */}
           <div className="absolute bottom-12 right-3 hidden w-[200px] overflow-hidden md:block rounded-xl border border-line bg-black/75 text-xs backdrop-blur transition-all duration-500 md:bottom-14" style={{ opacity: q > 0.84 && ready < 0.5 ? 1 : 0, transform: `translateY(${q > 0.84 ? 0 : 10}px)` }}>
-            <p className="border-b border-line px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">{t.label} · summary</p>
+            <p className="border-b border-line px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">{ui.summary}</p>
             <dl className="grid grid-cols-2 gap-x-3 gap-y-2 px-3 py-2.5">
               {ui.stats.map(([k, v]) => (
                 <div key={k}>
@@ -556,17 +607,19 @@ function Workspace({ p, labels, seek, children }: { p: number; labels: DemoLabel
                 </div>
               ))}
             </dl>
+            {ui.note && <p className="border-t border-line px-3 py-2 text-[10px] leading-snug text-muted">{ui.note}</p>}
           </div>
 
           {/* 08 ready: summary across the three tracks */}
           <div className="absolute inset-0 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm" style={{ opacity: ready, pointerEvents: "none" }}>
             <div className="w-full max-w-xl rounded-2xl border border-line bg-[#0b0b0c] p-5 md:p-6" style={fade(ready, 14)}>
-              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">Review report · sample data</p>
-              <div className="mt-4 grid grid-cols-3 gap-3">
+              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted md:text-[10px]">Recorded project work · illustrative 3D</p>
+              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
                 {TRACKS.map((tr) => (
                   <div key={tr.id} className="rounded-xl border border-line bg-card p-3">
                     <p className="text-sm font-semibold">{tr.label}</p>
-                    <ul className="mt-2 space-y-1 font-mono text-[10.5px] text-muted">
+                    <p className="mt-0.5 text-[12px] text-muted sm:hidden">{TRACK_UI[tr.id].summary}</p>
+                    <ul className="mt-2 hidden space-y-1 font-mono text-[10.5px] text-muted sm:block">
                       {TRACK_UI[tr.id].stats.slice(0, 3).map(([k, v]) => (
                         <li key={k} className="flex justify-between gap-1"><span className="truncate">{k}</span><span className="text-fg">{v}</span></li>
                       ))}
@@ -574,20 +627,44 @@ function Workspace({ p, labels, seek, children }: { p: number; labels: DemoLabel
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-[13px] text-muted">Checks passed against your references. One fix applied with your approval. You decide what happens next.</p>
+              <p className="mt-4 text-[13px] text-muted">Three recorded workflows, rebuilt shot by shot in 3D. Engineering checks remain separate; you decide what happens next.</p>
             </div>
           </div>
 
+          {/* small-screen caption panel (mirrors the active 3D callout) */}
+          <div ref={setLabel("cap")} className="pointer-events-none absolute inset-x-2 bottom-2 flex gap-2 rounded-lg bg-[#1d1e22]/95 px-3 py-2 opacity-0 shadow-lg md:hidden" aria-hidden="true">
+            <span className="w-0.5 shrink-0 rounded-full bg-white/80" />
+            <span className="min-w-0">
+              <span data-t className="block truncate text-[13px] font-semibold leading-tight text-white" />
+              <span data-s className="mt-0.5 block truncate text-[12px] leading-tight text-[#b4b6bd]" />
+            </span>
+          </div>
+
+          {/* the real recording, on demand */}
+          {recording && (
+            <div className="absolute inset-0 z-20 flex flex-col bg-black/95" role="dialog" aria-label={`Recording: ${recording.title}`}>
+              <div className="flex items-center justify-between gap-3 border-b border-line px-3 py-2 text-xs">
+                <span className="truncate"><span className="font-medium text-fg">{recording.title}</span> <span className="text-muted">· {recording.meta} · {recording.duration}</span></span>
+                <button type="button" onClick={() => setRec(null)} className="rounded-full border border-line px-3 py-1 text-fg hover:bg-white/5">Back to the 3D rebuild</button>
+              </div>
+              <video key={recording.video} src={recording.video} poster={recording.poster} controls autoPlay playsInline className="min-h-0 w-full flex-1 bg-black object-contain" />
+            </div>
+          )}
+
           {/* status line: coordinates + scale bar */}
-          <div className="pointer-events-none absolute bottom-3 left-3 flex items-end gap-4 font-mono text-[10px] text-muted/85" aria-hidden="true">
+          <div className="vp-ink pointer-events-none absolute bottom-3 left-3 hidden items-end gap-4 md:flex font-mono text-[10px] text-muted/85" aria-hidden="true">
             <div>
               <div className="flex items-end gap-1.5">
-                <span ref={setLabel("scale")} className="block h-1.5 border-x border-b border-fg/80" style={{ width: 60 }} />
+                <span ref={setLabel("scale")} className="block h-1.5 border-x border-b border-current" style={{ width: 60 }} />
                 <span ref={setLabel("scaleText")}>1 m</span>
               </div>
             </div>
             <span ref={setLabel("coord")} className="hidden tabular-nums md:inline" />
           </div>
+          <button type="button" onClick={() => setRec(t.id)} aria-label="Watch the real recording" style={{ display: ready > 0.5 ? "none" : undefined }} className="absolute right-2 top-2 z-[2] flex items-center gap-1.5 rounded-full bg-black/75 px-2.5 py-1.5 text-[12px] text-fg md:hidden">
+            <svg viewBox="0 0 16 16" className="size-3" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" /></svg>
+            Recording
+          </button>
           <div className="absolute bottom-3 right-3 hidden gap-1 rounded-lg border border-line bg-black/60 p-1 md:flex" aria-hidden="true">
             {["M3 8h10M8 3v10", "M2 12 8 4l6 8", "M3 3h10v10H3z", "M8 2v12M2 8h12M4 4l8 8"].map((d) => (
               <span key={d} className="flex size-6 items-center justify-center rounded-md text-muted">
@@ -604,41 +681,46 @@ function Workspace({ p, labels, seek, children }: { p: number; labels: DemoLabel
             <span className="ml-auto flex items-center gap-1.5 font-mono text-[10px] text-muted"><span className="live-dot !size-1.5" />{p > 0.9 ? "done" : "working"}</span>
           </p>
           <div className="flex min-h-0 flex-1 flex-col justify-end gap-2.5 overflow-hidden p-3 text-[13px] leading-snug">
-            <Msg at={0.234} until={0.455} p={p}>Plan approved. Reading the faired hull from Maxsurf…</Msg>
-            <Msg at={pageAt(0, 0.17)} until={0.455} p={p}>Hull surface transferred to Rhino. Cutting decks at +1.20, +2.40 and +3.60.</Msg>
-            <Msg at={pageAt(0, 0.46)} until={0.455} p={p}>
-              Building frames and members…
-              <div className="mt-2 h-1 overflow-hidden rounded-full bg-line"><div className="h-full bg-fg" style={{ width: `${lin(0.45, 0.67, q) * 100 * (ti === 0 ? 1 : 0)}%` }} /></div>
-              <p className="mt-1 font-mono text-[10px] text-muted">Frames {ti === 0 ? Math.round(lin(0.45, 0.6, q) * 48) : 48} / 48</p>
-            </Msg>
-            <Msg at={pageAt(0, 0.7)} until={0.455} p={p} flag>
-              <p className="font-medium">Top deck · FR 21–24 have no deck beams.</p>
-              <p className="mt-1 text-muted">Proposed fix: add 4 deck beams to match the arrangement.</p>
+            <Msg at={0.234} until={0.455} p={p}>Build running. Opening the hull in Maxsurf Modeler to review the profile and plan view.</Msg>
+            <Msg at={pageAt(0, qAt("hull", 29.5))} until={0.455} p={p}>Transferred to Rhino. The hull becomes the reference for the next stage.</Msg>
+            <Msg at={pageAt(0, qAt("hull", 37))} until={0.455} p={p} flag>
+              <p className="font-medium">Vector requests a review</p>
+              <p className="mt-1 text-muted">Review the working model before continuing.</p>
               <div className="mt-2 flex gap-1.5">
-                <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${q > 0.745 || ti > 0 ? "bg-fg text-black" : "border border-line"}`}>Approve</span>
-                <span className="rounded-full border border-line px-2.5 py-1 text-[11px] text-muted">Skip</span>
+                <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${q > qAt("hull", 39) || ti > 0 ? "bg-fg text-black" : "border border-line"}`}>Continue</span>
+                <span className="rounded-full border border-line px-2.5 py-1 text-[11px] text-muted">Stop</span>
               </div>
             </Msg>
-            <Msg at={pageAt(0, 0.745)} until={0.455} p={p} user>Approve</Msg>
-            <Msg at={pageAt(0, 0.79)} until={0.455} p={p}>Fixed. Deck beams at every frame. ✓</Msg>
+            <Msg at={pageAt(0, qAt("hull", 39))} until={0.455} p={p} user>Continue</Msg>
+            <Msg at={pageAt(0, qAt("hull", 45))} until={0.455} p={p}>
+              Reference curves set the shape and deck levels. Building decks, frames and members…
+              <div className="mt-2 h-1 overflow-hidden rounded-full bg-line"><div className="h-full bg-fg" style={{ width: `${lin(qAt("hull", 45), qAt("hull", 64), q) * 100 * (ti === 0 ? 1 : 0) + (ti > 0 ? 100 : 0)}%` }} /></div>
+            </Msg>
+            <Msg at={pageAt(0, qAt("hull", 90))} until={0.455} p={p}>Model ready for review. Engineering checks remain separate.</Msg>
 
-            <Msg at={pageAt(1, 0.02)} until={0.69} p={p}>Concept surface received · 12 bays × 5 floors on the curve.</Msg>
-            <Msg at={pageAt(1, 0.3)} until={0.69} p={p}>Glazing placed: 60 vision panels, 60 spandrels.</Msg>
-            <Msg at={pageAt(1, 0.47)} until={0.69} p={p}>Framing done: 13 mullions, 132 transoms. Isolating bay 07, level 3.</Msg>
-            <Msg at={pageAt(1, 0.74)} until={0.69} p={p}>Nominal 28 mm build-up (8 / 12 / 8) matches your façade spec. ✓</Msg>
+            <Msg at={pageAt(1, qAt("facade", 5))} until={0.69} p={p}>Starting with the supplied architectural concept: curved façade runs and setting-out.</Msg>
+            <Msg at={pageAt(1, qAt("facade", 15))} until={0.69} p={p}>Glazing modelled across the façade. Framing next: segmented mullions, between-mullion transoms.</Msg>
+            <Msg at={pageAt(1, qAt("facade", 25))} until={0.69} p={p} flag>
+              <p className="font-medium">Joint construction still pending</p>
+              <p className="mt-1 text-muted">The original notes flag it, so it stays visible in the model.</p>
+            </Msg>
+            <Msg at={pageAt(1, qAt("facade", 82))} until={0.69} p={p}>Nominal build-up: 6 + 1.52 PVB + 6 + 16 air + 10 = 39.52 mm overall.</Msg>
+            <Msg at={pageAt(1, qAt("facade", 103))} until={0.69} p={p}>Layers, stable physical IDs and quantity registers prepared. Connection detailing continues.</Msg>
 
-            <Msg at={pageAt(2, 0.02)} until={0.905} p={p}>Opening the recorded SOLIDWORKS assembly. Checking the imported chassis…</Msg>
-            <Msg at={pageAt(2, 0.27)} until={0.905} p={p}>Mounting profile fully defined · 40 mm tab, Ø 22 bore.</Msg>
-            <Msg at={pageAt(2, 0.43)} until={0.905} p={p}>Bushing seated in the clevis. Clearance OK. ✓</Msg>
-            <Msg at={pageAt(2, 0.7)} until={0.905} p={p}>Wheel stack: tyre → rim → hub → disc → caliper.</Msg>
+            <Msg at={pageAt(2, qAt("mech", 6))} until={0.905} p={p}>Reading the license and displaying the verified source frame in SOLIDWORKS.</Msg>
+            <Msg at={pageAt(2, qAt("mech", 22))} until={0.905} p={p} flag>
+              <p className="font-medium">232 imported solid bodies reported</p>
+              <p className="mt-1 text-muted">These are not newly created components.</p>
+            </Msg>
+            <Msg at={pageAt(2, qAt("mech", 56))} until={0.905} p={p}>Wheel assembly: separating wheel and brake components along the assembly direction.</Msg>
+            <Msg at={pageAt(2, qAt("mech", 94))} until={0.905} p={p}>Back in the complete model: frame, body and rear-wing packaging in context.</Msg>
 
             <Msg at={0.905} p={p}>
               <p className="font-medium">Review report</p>
               <ul className="mt-1.5 space-y-1 font-mono text-[11px] text-muted">
-                <li className="flex justify-between"><span>Hull · frame arrangement</span><span className="text-fg">✓</span></li>
-                <li className="flex justify-between"><span>Façade · build-up</span><span className="text-fg">✓</span></li>
-                <li className="flex justify-between"><span>Mechanical · interfaces</span><span className="text-fg">✓</span></li>
-                <li className="flex justify-between"><span>Fixes applied</span><span className="text-fg">1</span></li>
+                <li className="flex justify-between"><span>Hull · frame geometry</span><span className="text-fg">ready for review</span></li>
+                <li className="flex justify-between"><span>Façade · component model</span><span className="text-fg">documented</span></li>
+                <li className="flex justify-between"><span>Mechanical · assembly</span><span className="text-fg">reviewed</span></li>
               </ul>
               <span className="mt-2 inline-block rounded-full bg-fg px-2.5 py-1 text-[11px] font-semibold text-black">Open report</span>
             </Msg>
@@ -655,19 +737,32 @@ function Msg({ at, until = 2, p, children, user, flag }: { at: number; until?: n
   if (k <= 0 || p >= until) return null;
   return (
     <div className={`rounded-xl px-3 py-2.5 ${user ? "self-end bg-card-2" : flag ? "border border-fg/60 bg-[#121213]" : "border border-line bg-[#101011]"}`} style={fade(k, 8)}>
-      {flag && <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-fg">⚠ Self-check</p>}
+      {flag && <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-fg">Needs your attention</p>}
       {children}
     </div>
   );
 }
 
-function Anchor({ refFn, text, strong, below }: { refFn: (el: HTMLDivElement | null) => void; text: string; strong?: boolean; below?: boolean }) {
+function Anchor({ refFn, text, sub, strong, below, plain }: { refFn: (el: HTMLDivElement | null) => void; text: string; sub?: string; strong?: boolean; below?: boolean; plain?: boolean }) {
+  if (plain)
+    return (
+      <div ref={refFn} className="absolute left-0 top-0 opacity-0">
+        <span className={`absolute -translate-x-1/2 whitespace-nowrap font-mono text-[10px] font-semibold ${below ? "top-1" : "-top-5"} ${text === "Zero pt" ? "text-[#ff5a4f]" : text === "Stbd" ? "text-[#4ade80]" : "text-white"}`}>{text}</span>
+      </div>
+    );
+  // recording-style callout: leader line to a dark card with a white bar, title and sub-line
   return (
     <div ref={refFn} className="absolute left-0 top-0 opacity-0">
       <div className="relative">
-        <span className="absolute -left-1 -top-1 size-2 rounded-full bg-fg shadow-[0_0_10px_#fff]" />
-        <span className="absolute left-0 top-0 h-px w-8 origin-left -rotate-[30deg] bg-fg/70" />
-        <span className={`anchor-label absolute left-7 whitespace-nowrap ${below ? "top-[10px]" : "top-[-26px]"} rounded-md px-2 py-1 font-mono text-[11px] ${strong ? "bg-fg text-black" : "border border-line bg-black/80 text-fg"}`}>{text}</span>
+        <span className="absolute -left-[3px] -top-[3px] size-1.5 rounded-full bg-white ring-1 ring-black/40" />
+        <span className={`anchor-line absolute left-0 top-0 h-px w-10 origin-left bg-white/80 ${below ? "rotate-[25deg]" : "-rotate-[25deg]"}`} />
+        <span className={`anchor-label absolute left-9 ${below ? "top-[14px]" : "top-[-44px]"} flex gap-2 whitespace-nowrap rounded-md bg-[#1d1e22]/95 px-2.5 py-1.5 shadow-lg ${strong ? "ring-1 ring-white/50" : ""}`}>
+          <span className="w-0.5 shrink-0 rounded-full bg-white/80" />
+          <span>
+            <span className="block text-[11.5px] font-semibold leading-tight text-white">{text}</span>
+            {sub && <span className="mt-0.5 block text-[10px] leading-tight text-[#b4b6bd]">{sub}</span>}
+          </span>
+        </span>
       </div>
     </div>
   );
