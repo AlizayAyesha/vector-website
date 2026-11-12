@@ -5,8 +5,21 @@ import Media from "@/components/Media";
 import Reveal from "@/components/Reveal";
 import Intro from "@/components/Intro";
 import Demo from "@/components/demo/Demo";
-import { Logo } from "@/components/Logo";
-import { ctas, footer, tools } from "@/lib/content";
+import Footer from "@/components/Footer";
+import SampleWorkspace from "@/components/SampleWorkspace";
+import AutoTour from "@/components/AutoTour";
+import Link from "next/link";
+import { ctas, tools } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = {
+  ...pageMeta({
+    title: "AI workspace for CAD and engineering · Vector OS",
+    description: "Vector OS is an AI workspace for CAD and engineering. Explore Design and Project modes, recorded workflows and beta connector availability.",
+    path: "/",
+  }),
+  title: { absolute: "AI workspace for CAD and engineering · Vector OS" },
+};
 import { ToolLogo } from "@/components/ToolLogo";
 
 const Arrow = () => (
@@ -31,6 +44,36 @@ export default function Home() {
         {/* PRODUCT DEMO: pinned, scroll-scrubbed workspace story */}
         <Demo />
 
+        {/* SAMPLE WORKSPACE (interactive, scripted) */}
+        <section id="workspace" className="scroll-mt-24 relative mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">Sample workspace</p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Design, projects and your tools. Together.</h2>
+          </Reveal>
+          <Reveal className="mt-12" delay={100}>
+            <SampleWorkspace />
+          </Reveal>
+        </section>
+
+        {/* HOW IT WORKS */}
+        <section id="how" className="scroll-mt-24 relative mx-auto max-w-6xl px-6 pb-24 md:pb-32">
+          <Reveal className="flex flex-wrap items-end justify-between gap-6">
+            <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">From an idea to the next step.</h2>
+            <Link href="/product" className="btn-ghost">How it works <Arrow /></Link>
+          </Reveal>
+          <ol className="mt-12 grid gap-4 md:grid-cols-3">
+            {[["01", "Ask", "Understand your project."], ["02", "Plan", "Review the proposed change."], ["03", "Build", "Inspect the result in your tools."]].map(([n, h, t], i) => (
+              <li key={n}>
+                <Reveal delay={i * 90} className="h-full rounded-3xl border border-line bg-card p-7">
+                  <span className="font-mono text-sm text-muted">{n}</span>
+                  <h3 className="mt-10 text-2xl font-semibold tracking-tight">{h}</h3>
+                  <p className="mt-2 text-muted">{t}</p>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         {/* STORY (scroll-driven 3D) */}
         <Story />
 
@@ -41,9 +84,9 @@ export default function Home() {
               <p className="eyebrow">Recorded projects</p>
               <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">See the work.</h2>
             </div>
-            <a href={ctas.gallery} className="btn-ghost">
+            <Link href={ctas.gallery} className="btn-ghost">
               All examples <Arrow />
-            </a>
+            </Link>
           </Reveal>
           <Reveal className="mt-12" delay={100}>
             <Media />
@@ -60,9 +103,10 @@ export default function Home() {
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Keep your workflow.</h2>
                 <p className="mt-4 max-w-md text-muted">Explore software and check connection status.</p>
               </div>
-              <a href={ctas.software} className="btn-ghost">
-                Browse all software <Arrow />
-              </a>
+              <div className="flex flex-wrap gap-2">
+                <Link href="/ai" className="btn-ghost">AI workflows for your software <Arrow /></Link>
+                <Link href={ctas.software} className="btn-ghost">Browse all software <Arrow /></Link>
+              </div>
             </Reveal>
           </div>
 
@@ -111,15 +155,15 @@ export default function Home() {
               <a href={ctas.bookDemo} className="btn-primary btn-lg">
                 Book a demo <Arrow />
               </a>
-              <a href={ctas.joinBeta} className="btn-ghost btn-lg">
-                Join the beta
+              <a href={ctas.openWorkspace} className="btn-ghost btn-lg">
+                Open workspace <Arrow />
               </a>
             </div>
             <p className="mt-6 text-sm text-muted">
-              Windows 10/11 · 64-bit beta. macOS is not available.{" "}
-              <a href={ctas.emailUpdates} className="underline decoration-line underline-offset-4 hover:text-fg">
+              <Link href={ctas.joinBeta} className="underline decoration-line underline-offset-4 hover:text-fg">Join the beta</Link> · Windows 10/11 · 64-bit beta. macOS is not available.{" "}
+              <Link href={ctas.emailUpdates} className="underline decoration-line underline-offset-4 hover:text-fg">
                 Get email updates
-              </a>
+              </Link>
             </p>
           </Reveal>
         </section>
@@ -136,40 +180,8 @@ export default function Home() {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="border-t border-line">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-[2fr_1fr_1fr_1fr]">
-          <div>
-            <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight">
-              <Logo className="size-5" /> Vector OS
-            </a>
-            <p className="mt-3 text-muted">{footer.tagline}</p>
-          </div>
-          {footer.cols.map((c) => (
-            <div key={c.h}>
-              <p className="text-sm font-medium">{c.h}</p>
-              <ul className="mt-4 space-y-2.5">
-                {c.links.map(([label, href]) => (
-                  <li key={label}>
-                    <a href={href} className="text-sm text-muted transition-colors hover:text-fg">
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-6 text-xs text-muted">
-          <span>© 2026 Vector OS</span>
-          <span className="max-w-xl">Rhino, Grasshopper, Blender, Revit, Autodesk Dynamo, Maxsurf and SOLIDWORKS are trademarks of their respective owners. Logos and names indicate compatibility only and do not imply endorsement.</span>
-        </div>
-        <div className="pointer-events-none select-none overflow-hidden px-6" aria-hidden="true">
-          <p className="mx-auto max-w-6xl translate-y-[18%] bg-gradient-to-b from-white/[0.09] to-transparent bg-clip-text text-[22vw] font-semibold leading-none tracking-[-0.06em] text-transparent">
-            Vector
-          </p>
-        </div>
-      </footer>
+      <Footer />
+      <AutoTour />
     </>
   );
 }
