@@ -1160,12 +1160,5 @@
   "title": "Update Vector OS and connectors",
   "h1": "Update Vector OS and connectors",
   "description": "Check eligibility, finish uncertain work and verify the new app or connector after a safe restart."
- },
- {
-  "path": "/waitlist",
-  "kind": "page",
-  "title": "Release updates and beta news",
-  "h1": "Stay in the loop.",
-  "description": "Follow Vector OS release updates and beta news. Email updates are optional; check the current signup availability and privacy information."
  }
 ]

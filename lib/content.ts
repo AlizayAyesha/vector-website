@@ -5,18 +5,76 @@
 import { CALENDLY, LIVE, SIGN_IN } from "./site";
 export { LIVE };
 
-export const nav = [
-  { label: "Software", href: "/software" },
-  { label: "Examples", href: "/gallery" },
-  { label: "Pricing", href: "/pricing" },
+export type NavLink = { label: string; href: string; note?: string; status?: string };
+export type NavGroup = { label: string; href: string; columns: { h: string; links: NavLink[] }[] };
+
+/** Main navigation. Every link points at a real page in this site (see content/routes.json). */
+export const nav: NavGroup[] = [
+  {
+    label: "Product",
+    href: "/product",
+    columns: [
+      {
+        h: "Vector OS",
+        links: [
+          { label: "What is Vector OS?", href: "/product", note: "Task modes, workspaces and beta access" },
+          { label: "Design and Project modes", href: "/product/workspace-modes", note: "Compare the workspace layouts" },
+          { label: "Windows beta", href: "/download", note: "Windows 10/11 · 64-bit" },
+          { label: "Release notes", href: "/releases", note: "Changes and build information" },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Software",
+    href: "/software",
+    columns: [
+      {
+        h: "Connectors",
+        links: [
+          { label: "Rhino", href: "/software/rhino", status: "Available" },
+          { label: "Revit", href: "/software/revit", status: "Available" },
+          { label: "Blender", href: "/software/blender", status: "Available" },
+          { label: "Maxsurf Complete", href: "/software/maxsurf", status: "Available" },
+          { label: "Grasshopper", href: "/ai/grasshopper", status: "In development" },
+          { label: "Autodesk Dynamo", href: "/ai/dynamo", status: "In development" },
+        ],
+      },
+      {
+        h: "Explore",
+        links: [
+          { label: "Software directory", href: "/software", note: "Every listed tool and its status" },
+          { label: "AI workflows", href: "/ai", note: "Workflow planning by host" },
+          { label: "Connect AI to CAD", href: "/ai/connect-ai-to-cad", note: "Availability, builds and approval" },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Resources",
+    href: "/tutorials",
+    columns: [
+      {
+        h: "Learn",
+        links: [
+          { label: "Examples", href: "/gallery", note: "Recorded projects and concept studies" },
+          { label: "Guides", href: "/tutorials", note: "Install, connect and first results" },
+          { label: "Support", href: "/support", note: "Diagnostics and help" },
+        ],
+      },
+    ],
+  },
 ];
+
+/** Plain links shown after the dropdowns. */
+export const navLinks: NavLink[] = [{ label: "Pricing", href: "/pricing" }];
 
 export const ctas = {
   // Opens Vector's real Calendly scheduler in a dialog (see components/BookDemo.tsx); the href is the no-JS fallback.
   bookDemo: CALENDLY,
   joinBeta: "/download",
-  emailUpdates: "/waitlist",
-  openWorkspace: "/#workspace",
+  // Opens the email-updates dialog (components/SubscribeDialog.tsx). The old /waitlist page redirects here.
+  emailUpdates: "#email-updates",
   gallery: "/gallery",
   software: "/software",
   signIn: SIGN_IN,
@@ -101,8 +159,8 @@ export const tools = [
 export const faq = [
   {
     q: "Can I try it on this website?",
-    a: "Yes. The interactive sample is scripted. Work in an engineering application requires the installed Vector OS app and an available connector.",
-  }, // live
+    a: "The demo on this page is illustrative and uses sample data; the recordings show real project work. Work in an engineering application requires the installed Vector OS app and an available connector.",
+  }, // live, adjusted: the scripted website sample is no longer on this page
   {
     q: "Which software can I connect?",
     a: "Check the software directory and download page for the current build and supported hosts. A directory listing does not mean a connector is available.",
@@ -123,19 +181,26 @@ export const faq = [
 
 export const footer = {
   tagline: "Engineering, connected.", // live
+  about: "An AI workspace for CAD and engineering. Plan, build and review in your tools.", // live (hero)
+  platform: "Windows 10/11 · 64-bit beta. macOS is not available.", // live (/download)
+  legal: [
+    ["Privacy", "/privacy"],
+    ["Terms", "/terms"],
+  ] as [string, string][],
   cols: [
     {
-      h: "Explore",
+      h: "Product",
       links: [
-        ["Product", "/product"],
+        ["What is Vector OS?", "/product"],
+        ["Design and Project modes", "/product/workspace-modes"],
+        ["Software directory", "/software"],
         ["AI workflows", "/ai"],
-        ["Software", "/software"],
-        ["Examples", "/gallery"],
       ],
     },
     {
       h: "Resources",
       links: [
+        ["Examples", "/gallery"],
         ["Pricing", "/pricing"],
         ["Guides", "/tutorials"],
         ["Support", "/support"],
@@ -146,9 +211,9 @@ export const footer = {
       h: "Vector OS",
       links: [
         ["Join the beta", "/download"],
-        ["Email updates", "/waitlist"],
-        ["Privacy", "/privacy"],
-        ["Terms", "/terms"],
+        ["Email updates", "#email-updates"],
+        ["Book a demo", CALENDLY],
+        ["Sign in", SIGN_IN],
       ],
     },
   ],

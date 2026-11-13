@@ -1,19 +1,90 @@
 @import "tailwindcss";
 
 @theme {
+  /* Design tokens. Dark is the default (matches the Vector desktop app); [data-theme="light"] overrides below. */
   --color-bg: #000000;
   --color-fg: #f4f4f5;
+  --color-fg-2: #d4d4d8;
   --color-muted: #a1a1aa;
   --color-card: #101010;
   --color-card-2: #1b1b1b;
   --color-line: #303033;
+  --color-line-strong: #4a4a4f;
   --color-secondary: #202022;
+  --color-inset: #000000;
+  --color-on-fg: #000000;
+  --color-band: #050505;
+  --color-tint: #0d1424;
+  --color-tint-line: #2a3a5e;
   --font-sans: var(--font-inter), "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, monospace;
 }
 
 :root {
   color-scheme: dark;
+  --glass-bg: rgb(16 16 16 / 0.55);
+  --glass-strong-bg: rgb(12 12 12 / 0.78);
+  --glass-border: rgb(255 255 255 / 0.08);
+  --glass-hi: rgb(255 255 255 / 0.06);
+  --glass-shadow: 0 10px 40px -10px rgb(0 0 0 / 0.8);
+  --grid-ink: rgb(255 255 255 / 0.04);
+}
+
+/* Light theme: same layout and components, inverted surfaces. Toggled from the nav, saved in localStorage ("vector-theme"). */
+html[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #ffffff;
+  --color-fg: #0b0b0d;
+  --color-fg-2: #3f3f46;
+  --color-muted: #5f5f6a;
+  --color-card: #f6f6f7;
+  --color-card-2: #ececef;
+  --color-line: #e1e1e5;
+  --color-line-strong: #b9b9c0;
+  --color-secondary: #efeff1;
+  --color-inset: #ffffff;
+  --color-on-fg: #ffffff;
+  --color-band: #f7f7f8;
+  --color-tint: #f2f6ff;
+  --color-tint-line: #c5d3f3;
+  --glass-bg: rgb(255 255 255 / 0.7);
+  --glass-strong-bg: rgb(255 255 255 / 0.88);
+  --glass-border: rgb(0 0 0 / 0.08);
+  --glass-hi: rgb(255 255 255 / 0.6);
+  --glass-shadow: 0 10px 40px -16px rgb(0 0 0 / 0.18);
+  --grid-ink: rgb(0 0 0 / 0.045);
+  --mark-filter: brightness(0);
+}
+
+/* Product stages (WebGL intro, pinned demo, recorded media) always render as the dark desktop app,
+   in either theme, so the scenes matched to Vector's recordings keep their exact look. */
+@layer base {
+  .theme-dark {
+    color-scheme: dark;
+    --color-bg: #000000;
+    --color-fg: #f4f4f5;
+    --color-fg-2: #d4d4d8;
+    --color-muted: #a1a1aa;
+    --color-card: #101010;
+    --color-card-2: #1b1b1b;
+    --color-line: #303033;
+    --color-line-strong: #4a4a4f;
+    --color-secondary: #202022;
+    --color-inset: #000000;
+    --color-on-fg: #000000;
+    --color-band: #050505;
+    --color-tint: #0d1424;
+    --color-tint-line: #2a3a5e;
+    --glass-bg: rgb(16 16 16 / 0.55);
+    --glass-strong-bg: rgb(12 12 12 / 0.78);
+    --glass-border: rgb(255 255 255 / 0.08);
+    --glass-hi: rgb(255 255 255 / 0.06);
+    --glass-shadow: 0 10px 40px -10px rgb(0 0 0 / 0.8);
+    --grid-ink: rgb(255 255 255 / 0.04);
+    --mark-filter: initial;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
 }
 
 html {
@@ -30,21 +101,26 @@ body {
 }
 
 ::selection {
-  background: #f4f4f5;
-  color: #000;
+  background: var(--color-fg);
+  color: var(--color-on-fg);
+}
+
+html,
+body {
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 @layer components {
   .glass {
-    background: rgb(16 16 16 / 0.55);
-    border: 1px solid rgb(255 255 255 / 0.08);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+    box-shadow: inset 0 1px 0 var(--glass-hi);
   }
   .glass-strong {
-    background: rgb(12 12 12 / 0.78);
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 10px 40px -10px rgb(0 0 0 / 0.8);
+    background: var(--glass-strong-bg);
+    box-shadow: inset 0 1px 0 var(--glass-hi), var(--glass-shadow);
   }
   .btn-primary {
     display: inline-flex;
@@ -52,14 +128,14 @@ body {
     gap: 0.5rem;
     border-radius: 9999px;
     background: var(--color-fg);
-    color: #000;
+    color: var(--color-on-fg);
     padding: 0.55rem 1.1rem;
     font-size: 0.875rem;
     font-weight: 600;
-    transition: transform 0.2s, background 0.2s;
+    transition: transform 0.2s, background 0.2s, opacity 0.2s;
   }
   .btn-primary:hover {
-    background: #fff;
+    opacity: 0.9;
     transform: translateY(-1px);
   }
   .btn-ghost {
@@ -75,8 +151,67 @@ body {
     transition: background 0.2s, border-color 0.2s;
   }
   .btn-ghost:hover {
-    background: rgb(255 255 255 / 0.05);
-    border-color: #4a4a4f;
+    background: color-mix(in srgb, var(--color-fg) 5%, transparent);
+    border-color: var(--color-line-strong);
+  }
+  .btn-primary:focus-visible,
+  .btn-ghost:focus-visible {
+    outline: 2px solid var(--color-fg);
+    outline-offset: 2px;
+  }
+  /* Segmented tabs, modelled on the desktop app's Plan / Build switch. */
+  .seg {
+    display: inline-flex;
+    gap: 2px;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-card);
+    padding: 3px;
+  }
+  .seg > button,
+  .seg > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 0.55rem;
+    padding: 0.38rem 0.8rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+  }
+  .seg > button:hover,
+  .seg > a:hover {
+    color: var(--color-fg);
+  }
+  .seg > [aria-selected="true"],
+  .seg > [aria-current="page"],
+  .seg > [aria-pressed="true"] {
+    background: var(--color-card-2);
+    color: var(--color-fg);
+    box-shadow: inset 0 0 0 1px var(--color-line);
+  }
+  .field {
+    height: 2.5rem;
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-inset);
+    padding: 0 0.875rem;
+    font-size: 0.875rem;
+    color: var(--color-fg);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field::placeholder {
+    color: var(--color-muted);
+  }
+  .field:focus {
+    border-color: color-mix(in srgb, var(--color-fg) 50%, transparent);
+  }
+  .field[aria-invalid="true"] {
+    border-color: #ef4444;
   }
   .btn-lg {
     padding: 0.85rem 1.5rem;
@@ -95,8 +230,8 @@ body {
   }
   .hairline-grid {
     background-image:
-      linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+      linear-gradient(to right, var(--grid-ink) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-ink) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 }
@@ -304,7 +439,7 @@ body {
 }
 .prose-v .lede,
 .prose-v .lede p {
-  color: #d4d4d8;
+  color: var(--color-fg-2);
   font-size: 1.15rem;
   line-height: 1.6;
   max-width: 44rem;
@@ -312,7 +447,7 @@ body {
 .prose-v a:not([class]) {
   color: var(--color-fg);
   text-decoration: underline;
-  text-decoration-color: #52525b;
+  text-decoration-color: var(--color-line-strong);
   text-underline-offset: 4px;
   transition: text-decoration-color 0.2s;
 }
@@ -334,7 +469,7 @@ body {
   margin: 0.35rem 0;
 }
 .prose-v li::marker {
-  color: #52525b;
+  color: var(--color-line-strong);
 }
 .prose-v ul:has(> li > a.btn-ghost),
 .prose-v ul:has(> li > a.btn-primary) {
@@ -435,12 +570,12 @@ body {
 }
 .prose-v .actions a:first-child {
   background: var(--color-fg);
-  color: #000;
+  color: var(--color-on-fg);
   border-color: transparent;
   font-weight: 600;
 }
 .prose-v .actions a:first-child:hover {
-  background: #fff;
+  opacity: 0.9;
 }
 .prose-v .actions a,
 .prose-v a.btn-ghost,
@@ -530,3 +665,36 @@ body {
 /* long tokens (hashes, filenames) must wrap on small screens */
 .prose-v { overflow-wrap: anywhere; }
 .prose-v dl, .prose-v dl > div { min-width: 0; max-width: 100%; }
+
+/* dialogs: subtle entrance */
+dialog[open].dlg {
+  animation: dlg-in 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+dialog.dlg::backdrop {
+  background: rgb(0 0 0 / 0.7);
+  backdrop-filter: blur(4px);
+}
+@keyframes dlg-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+}
+html[data-modal] {
+  overflow: hidden;
+}
+.menu-in {
+  animation: menu-in 0.16s ease-out;
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

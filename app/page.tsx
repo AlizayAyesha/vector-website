@@ -6,7 +6,6 @@ import Reveal from "@/components/Reveal";
 import Intro from "@/components/Intro";
 import Demo from "@/components/demo/Demo";
 import Footer from "@/components/Footer";
-import SampleWorkspace from "@/components/SampleWorkspace";
 import AutoTour from "@/components/AutoTour";
 import Link from "next/link";
 import { ctas, tools } from "@/lib/content";
@@ -32,7 +31,7 @@ export default function Home() {
   const loop = [...tools, ...tools];
   return (
     <>
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-fg focus:px-4 focus:py-2 focus:text-black">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-fg focus:px-4 focus:py-2 focus:text-on-fg">
         Skip to content
       </a>
       <Nav />
@@ -44,19 +43,8 @@ export default function Home() {
         {/* PRODUCT DEMO: pinned, scroll-scrubbed workspace story */}
         <Demo />
 
-        {/* SAMPLE WORKSPACE (interactive, scripted) */}
-        <section id="workspace" className="scroll-mt-24 relative mx-auto max-w-6xl px-6 py-24 md:py-32">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">Sample workspace</p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Design, projects and your tools. Together.</h2>
-          </Reveal>
-          <Reveal className="mt-12" delay={100}>
-            <SampleWorkspace />
-          </Reveal>
-        </section>
-
         {/* HOW IT WORKS */}
-        <section id="how" className="scroll-mt-24 relative mx-auto max-w-6xl px-6 pb-24 md:pb-32">
+        <section id="how" className="scroll-mt-24 relative mx-auto max-w-6xl px-6 py-24 md:py-32">
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">From an idea to the next step.</h2>
             <Link href="/product" className="btn-ghost">How it works <Arrow /></Link>
@@ -88,14 +76,14 @@ export default function Home() {
               All examples <Arrow />
             </Link>
           </Reveal>
-          <Reveal className="mt-12" delay={100}>
+          <Reveal className="theme-dark mt-12 bg-transparent" delay={100}>
             <Media />
           </Reveal>
           <p className="mt-5 text-sm text-muted">Recorded projects. Check the available build for current capabilities.</p>
         </section>
 
         {/* TOOLS */}
-        <section id="tools" className="scroll-mt-24 relative border-y border-line bg-[#050505] py-24 md:py-32">
+        <section id="tools" className="scroll-mt-24 relative border-y border-line bg-band py-24 md:py-32">
           <div className="mx-auto max-w-6xl px-6">
             <Reveal className="flex flex-wrap items-end justify-between gap-6">
               <div>
@@ -120,17 +108,17 @@ export default function Home() {
                     className="flex min-w-[16rem] items-center justify-between gap-6 rounded-2xl border border-line bg-card px-6 py-5 transition-colors hover:bg-card-2"
                   >
                     <span className="flex items-center gap-3.5">
-                      <span className="flex size-10 items-center justify-center rounded-xl border border-line bg-black">
+                      <span className="flex size-10 items-center justify-center rounded-xl border border-line bg-inset">
                         <ToolLogo name={t.name} className="size-6" wordSize="10px" />
                       </span>
                       <span className="text-lg font-medium tracking-tight">{t.name}</span>
                     </span>
                     <span
                       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs ${
-                        t.status === "Available" ? "bg-fg text-black" : "border border-dashed border-line text-muted"
+                        t.status === "Available" ? "bg-fg text-on-fg" : "border border-dashed border-line text-muted"
                       }`}
                     >
-                      <span className={`size-1.5 rounded-full ${t.status === "Available" ? "bg-black" : "bg-muted"}`} />
+                      <span className={`size-1.5 rounded-full ${t.status === "Available" ? "bg-on-fg" : "bg-muted"}`} />
                       {t.status}
                     </span>
                   </a>
@@ -146,7 +134,7 @@ export default function Home() {
         {/* CTA */}
         <section id="start" className="scroll-mt-24 relative overflow-hidden px-6 py-32 md:py-44">
           <div className="hairline-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,#000_20%,transparent_70%)]" />
-          <div className="pointer-events-none absolute left-1/2 top-1/2 size-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.04] blur-3xl" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 size-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-fg/[0.04] blur-3xl" />
           <Reveal className="relative mx-auto max-w-3xl text-center">
             <p className="eyebrow">Step inside</p>
             <h2 className="mt-5 text-balance text-5xl font-semibold tracking-[-0.03em] md:text-7xl">Make yourself at home.</h2>
@@ -155,15 +143,15 @@ export default function Home() {
               <a href={ctas.bookDemo} className="btn-primary btn-lg">
                 Book a demo <Arrow />
               </a>
-              <a href={ctas.openWorkspace} className="btn-ghost btn-lg">
-                Open workspace <Arrow />
+              <a href={ctas.joinBeta} className="btn-ghost btn-lg">
+                Join the beta <Arrow />
               </a>
             </div>
             <p className="mt-6 text-sm text-muted">
-              <Link href={ctas.joinBeta} className="underline decoration-line underline-offset-4 hover:text-fg">Join the beta</Link> · Windows 10/11 · 64-bit beta. macOS is not available.{" "}
-              <Link href={ctas.emailUpdates} className="underline decoration-line underline-offset-4 hover:text-fg">
+              Windows 10/11 · 64-bit beta. macOS is not available.{" "}
+              <a href={ctas.emailUpdates} className="underline decoration-line underline-offset-4 hover:text-fg">
                 Get email updates
-              </Link>
+              </a>
             </p>
           </Reveal>
         </section>

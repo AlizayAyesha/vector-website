@@ -7,73 +7,135 @@ type Entry = { name: string; slug: string; company: string; groups: string[]; st
 
 const STATUS_ORDER = ["Available", "In development", "Upcoming"];
 
+const STATUS_LABEL: Record<string, string> = { Available: "Available", "In development": "In development", Upcoming: "Upcoming" };
+
+function Pill({ status }: { status: string }) {
+  return (
+    <span className={`shrink-0 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] ${status === "Available" ? "bg-fg text-on-fg" : status === "In development" ? "border border-line-strong text-fg" : "border border-dashed border-line text-muted"}`}>
+      {STATUS_LABEL[status] || status}
+    </span>
+  );
+}
+
+function Mark({ e, size = "sm" }: { e: Entry; size?: "sm" | "lg" }) {
+  const box = size === "lg" ? "size-11 rounded-xl" : "size-8 rounded-lg";
+  return (
+    <span className={`flex ${box} shrink-0 items-center justify-center border border-line bg-[#e9e9eb]`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={e.logo} alt="" width={24} height={24} loading="lazy" className={size === "lg" ? "size-6 object-contain" : "size-5 object-contain"} />
+    </span>
+  );
+}
+
+/* Laid out like the desktop app's Connections screen: search + status filter, category tabs,
+   the connectors that work today, then the catalogue grouped by vendor. */
 export default function SoftwareDirectory({ entries, groups }: { entries: Entry[]; groups: string[] }) {
   const [q, setQ] = useState("");
-  const [company, setCompany] = useState("");
   const [group, setGroup] = useState("");
   const [status, setStatus] = useState("");
-  const companies = useMemo(() => [...new Set(entries.map((e) => e.company).filter(Boolean))].sort((a, b) => a.localeCompare(b)), [entries]);
 
   const list = useMemo(() => {
     const s = q.trim().toLowerCase();
     return entries.filter(
       (e) =>
         (!s || e.name.toLowerCase().includes(s) || e.company.toLowerCase().includes(s)) &&
-        (!company || e.company === company) &&
         (!group || e.groups.includes(group)) &&
         (!status || e.status === status),
     );
-  }, [entries, q, company, group, status]);
+  }, [entries, q, group, status]);
 
-  const counts = STATUS_ORDER.map((s) => [s, entries.filter((e) => e.status === s).length] as const);
-  const sections = STATUS_ORDER.map((s) => [s, list.filter((e) => e.status === s)] as const).filter(([, l]) => l.length);
-  const dirty = q || company || group || status;
+  const groupCount = (g: string) => entries.filter((e) => !g || e.groups.includes(g)).length;
+  const available = list.filter((e) => e.status === "Available");
+  const vendors = useMemo(() => {
+    const m = new Map<string, Entry[]>();
+    for (const e of list) {
+      const k = e.company || "Other";
+      m.set(k, [...(m.get(k) || []), e]);
+    }
+    return [...m.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+  }, [list]);
+  const dirty = q || group || status;
 
   return (
     <div className="mt-12">
-      <div className="flex flex-wrap items-center gap-2 text-sm text-muted">
-        <span className="text-fg">{entries.length} software entries</span>
-        {counts.map(([s, n]) => (
-          <span key={s} className="flex items-center gap-1.5 rounded-full border border-line px-2.5 py-0.5 text-xs">
-            <span className={`size-1.5 rounded-full ${s === "Available" ? "bg-fg" : s === "In development" ? "bg-muted" : "bg-line"}`} />
-            {n} {s}
-          </span>
-        ))}
-        <span className="ml-auto text-xs">Connection capabilities vary by Vector OS build.</span>
+      <div role="search" className="flex flex-col gap-2 sm:flex-row">
+        <label className="relative flex-1">
+          <span className="sr-only">Search software</span>
+          <svg viewBox="0 0 16 16" className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5" /><path d="m10.5 10.5 3 3" /></svg>
+          <input id="sw-q" type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search software or companies" className="field pl-10" />
+        </label>
+        <div className="sm:w-52">
+          <Select label="Status" value={status} onChange={setStatus} all="All statuses" options={STATUS_ORDER} />
+        </div>
       </div>
 
-      <div role="search" className="mt-5 grid gap-2 rounded-2xl border border-line bg-card p-2 md:grid-cols-[2fr_1fr_1fr_1fr]">
-        <label className="sr-only" htmlFor="sw-q">Find your software</label>
-        <input id="sw-q" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Find your software" className="h-10 rounded-xl border border-line bg-black px-3.5 text-sm text-fg outline-none placeholder:text-muted focus:border-fg/50" />
-        <Select label="Company" value={company} onChange={setCompany} all="All companies" options={companies} />
-        <Select label="Discipline" value={group} onChange={setGroup} all="All disciplines" options={groups} />
-        <Select label="Status" value={status} onChange={setStatus} all="All statuses" options={STATUS_ORDER} />
+      {/* category tabs, as in the desktop Connections screen */}
+      <div className="no-scrollbar -mx-6 mt-4 overflow-x-auto px-6 lg:mx-0 lg:px-0">
+        <div role="tablist" aria-label="Category" className="flex w-max gap-1 border-b border-line">
+          {(["", ...groups] as string[]).map((g) => (
+            <button
+              key={g || "all"}
+              type="button"
+              role="tab"
+              aria-selected={group === g}
+              onClick={() => setGroup(g)}
+              className={`-mb-px flex items-center gap-1.5 whitespace-nowrap border-b-2 px-3 py-2.5 text-sm transition-colors ${group === g ? "border-fg text-fg" : "border-transparent text-muted hover:text-fg"}`}
+            >
+              {g || "All"}
+              <span className="font-mono text-[10px] text-muted">{groupCount(g)}</span>
+            </button>
+          ))}
+        </div>
       </div>
+
       <div className="mt-3 flex min-h-6 items-center gap-3 text-xs text-muted" aria-live="polite">
-        {list.length} shown
+        {list.length} of {entries.length} shown · connection capabilities vary by Vector OS build
         {dirty && (
-          <button type="button" onClick={() => { setQ(""); setCompany(""); setGroup(""); setStatus(""); }} className="underline underline-offset-4 hover:text-fg">
+          <button type="button" onClick={() => { setQ(""); setGroup(""); setStatus(""); }} className="underline underline-offset-4 hover:text-fg">
             Clear filters
           </button>
         )}
       </div>
 
-      {sections.map(([s, l]) => (
-        <section key={s} aria-label={s} className="mt-10">
-          <h2 className="text-2xl font-semibold tracking-tight">{s === "Upcoming" ? "Other software" : s}</h2>
-          <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {l.map((e) => (
+      {available.length > 0 && (
+        <section aria-label="Available connectors" className="mt-8 rounded-3xl border border-line bg-card p-5 md:p-6">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="text-lg font-semibold tracking-tight">Available connectors</h2>
+            <p className="text-xs text-muted">Work with Vector OS today</p>
+          </div>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {available.map((e) => (
               <li key={e.name}>
-                <Link href={`/software/${e.slug}`} className="group flex h-full items-center gap-3.5 rounded-2xl border border-line bg-card px-4 py-3.5 transition-colors hover:border-[#4a4a4f] hover:bg-card-2">
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-line bg-[#e9e9eb]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={e.logo} alt="" width={24} height={24} loading="lazy" className="size-6 object-contain" />
-                  </span>
+                <Link href={`/software/${e.slug}`} className="flex h-full items-center gap-3 rounded-2xl border border-line bg-bg px-3.5 py-3 transition-colors hover:border-line-strong">
+                  <Mark e={e} size="lg" />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-medium text-fg">{e.name}</span>
-                    <span className="block truncate text-xs text-muted">{[e.company, e.groups[0]].filter(Boolean).join(" · ")}</span>
+                    <span className="block truncate text-xs text-muted">{e.company}</span>
                   </span>
-                  <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] ${e.status === "Available" ? "bg-fg text-black" : "border border-dashed border-line text-muted"}`}>{e.status}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {list.length > 0 && <h2 className="mt-12 text-2xl font-semibold tracking-tight">Software catalogue</h2>}
+      {vendors.map(([v, l]) => (
+        <section key={v} aria-label={v} className="mt-7">
+          <h3 className="flex items-baseline gap-2 text-sm font-medium text-fg">
+            {v}
+            <span className="font-mono text-[10px] text-muted">{l.length}</span>
+          </h3>
+          <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+            {l.map((e) => (
+              <li key={e.name}>
+                <Link href={`/software/${e.slug}`} className="flex h-full items-center gap-3 rounded-xl border border-line bg-card px-3 py-2.5 transition-colors hover:border-line-strong hover:bg-card-2">
+                  <Mark e={e} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-medium text-fg">{e.name}</span>
+                    <span className="block truncate text-[11px] text-muted">{e.groups[0]}</span>
+                  </span>
+                  <Pill status={e.status} />
                 </Link>
               </li>
             ))}
@@ -93,7 +155,7 @@ function Select({ label, value, onChange, all, options }: { label: string; value
   return (
     <label className="relative">
       <span className="sr-only">{label}</span>
-      <select value={value} onChange={(e) => onChange(e.target.value)} className="h-10 w-full appearance-none rounded-xl border border-line bg-black px-3.5 pr-8 text-sm text-fg outline-none focus:border-fg/50">
+      <select value={value} onChange={(e) => onChange(e.target.value)} className="field appearance-none pr-8">
         <option value="">{all}</option>
         {options.map((o) => (
           <option key={o} value={o}>{o}</option>

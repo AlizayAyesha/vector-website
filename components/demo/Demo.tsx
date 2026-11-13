@@ -30,7 +30,8 @@ export default function Demo() {
 /* ---------- reduced-motion fallback: static track cards ---------- */
 function DemoStatic() {
   return (
-    <section id="demo" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28" aria-label="Product demo">
+    <section id="demo" className="theme-dark scroll-mt-24" aria-label="Product demo">
+      <div className="mx-auto max-w-6xl px-6 py-28">
       <p className="eyebrow">Illustrative demo · sample data</p>
       <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight md:text-6xl">Three projects, step by step.</h2>
       <p className="mt-4 max-w-2xl text-muted">Ask, plan, check your references and connect your tools. Then each job is built in place, checked and reviewed.</p>
@@ -59,6 +60,7 @@ function DemoStatic() {
         <p className="mr-4 text-2xl font-semibold tracking-tight">{demo.outro}</p>
         <a href={ctas.bookDemo} className="btn-primary">Book a demo</a>
         <a href="#work" className="btn-ghost">Keep watching</a>
+      </div>
       </div>
     </section>
   );
@@ -111,7 +113,8 @@ function DemoPinned() {
       const el = section.current;
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
-      if (el && !document.hidden) {
+      // paused while a dialog (booking, email updates, search) holds the page
+      if (el && !document.hidden && !document.documentElement.dataset.modal) {
         const total = el.offsetHeight - window.innerHeight;
         acc += (total / 175) * dt; // whole demo ≈ 175 s (each recording-matched track ≈ 39 s)
         if (acc >= 1) {
@@ -165,7 +168,7 @@ function DemoPinned() {
   const outro = ease(OUTRO, OUTRO + 0.03, p);
 
   return (
-    <section ref={section} id="demo" className="relative h-[2000vh]" aria-label="Illustrative product demo: hull, façade and mechanical assembly">
+    <section ref={section} id="demo" className="theme-dark relative h-[2000vh]" aria-label="Illustrative product demo: hull, façade and mechanical assembly">
       <div className="sticky top-0 h-svh overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,#0d0d0e_0%,#000_70%)]" />
 
@@ -246,32 +249,120 @@ function DemoPinned() {
   );
 }
 
-/* ---------- 01 + 02: chat with typewriter + plan checklist ---------- */
+/* ---------- 01 + 02: the Vector desktop workspace (chrome, Plan / Build switch and copy taken from Vector's recordings) ---------- */
+const RECORDED_PROJECTS = ["From hull to structural geometry", "Façade component workflow", "Component detail to assembly review"]; // gallery.json titles
+
+function RailIcon({ d, on }: { d: string; on?: boolean }) {
+  return (
+    <span className={`flex size-8 items-center justify-center rounded-lg ${on ? "bg-card-2 text-fg" : "text-muted"}`}>
+      <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d={d} /></svg>
+    </span>
+  );
+}
+
+/* Rebuilt from the Vector OS desktop app: icon rail · Workspace sidebar (projects, All / Unread / Working) · agent pane */
+function AppChrome({ title, build, running, children }: { title: string; build: boolean; running?: boolean; children: ReactNode }) {
+  return (
+    <div className="flex overflow-hidden rounded-2xl border border-line bg-[#0b0b0c]/95 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]">
+      <nav className="hidden w-12 shrink-0 flex-col items-center gap-1.5 border-r border-line bg-black/40 py-3 md:flex" aria-hidden="true">
+        <span className="mb-2 flex size-8 items-center justify-center rounded-lg bg-fg text-black"><Logo className="size-3.5" /></span>
+        <RailIcon on d="M2.5 3.5h11v9h-11zM6 3.5v9" />
+        <RailIcon d="M5.5 5.5 8 3l2.5 2.5M8 3v7M3 10.5v2h10v-2" />
+        <RailIcon d="M6 2.5v3M10 2.5v3M4.5 5.5h7v3a3.5 3.5 0 0 1-7 0zM8 12v1.5" />
+        <span className="mt-auto"><RailIcon d="M8 5.8a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4zM8 1.8v1.7M8 12.5v1.7M1.8 8h1.7M12.5 8h1.7" /></span>
+      </nav>
+      <aside className="hidden w-[224px] shrink-0 flex-col border-r border-line md:flex" aria-hidden="true">
+        <div className="flex items-center justify-between px-4 pb-2 pt-3.5">
+          <span className="text-[13px] font-semibold text-fg">Workspace</span>
+          <svg viewBox="0 0 16 16" className="size-4 text-muted" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="1.5" y="2.5" width="13" height="11" rx="2" /><path d="M6 2.5v11" /></svg>
+        </div>
+        <div className="mx-3 flex items-center justify-between rounded-lg border border-line px-2.5 py-1.5 text-[12px] text-fg/90">
+          <span>+ New project</span><span className="font-mono text-[10px] text-muted">Ctrl+N</span>
+        </div>
+        <div className="mx-3 mt-3 flex gap-0.5 rounded-lg border border-line bg-black/40 p-0.5 text-[11px]">
+          {["All", "Unread", "Working"].map((t, i) => (
+            <span key={t} className={`flex-1 rounded-md px-2 py-1 text-center ${i === 0 ? "bg-card-2 text-fg" : "text-muted"}`}>{t}</span>
+          ))}
+        </div>
+        <p className="px-4 pb-1.5 pt-4 text-[10.5px] font-medium uppercase tracking-[0.12em] text-muted">Projects</p>
+        <ul className="space-y-0.5 px-2 pb-3 text-[12.5px]">
+          {RECORDED_PROJECTS.map((n, i) => (
+            <li key={n} className={`flex items-center gap-2 rounded-lg px-2 py-1.5 ${i === 0 ? "bg-card-2 text-fg" : "text-muted"}`}>
+              <span className={`size-1.5 shrink-0 rounded-full ${running ? "animate-pulse bg-fg" : i === 0 ? "bg-fg/60" : "bg-line-strong"}`} />
+              <span className="min-w-0 truncate">{n}</span>
+            </li>
+          ))}
+        </ul>
+      </aside>
+      <div className="min-w-0 flex-1">
+      {/* title bar: sidebar toggle · Workspace / project · window controls */}
+      <div className="flex items-center gap-2.5 border-b border-line px-4 py-2.5 text-[13px]">
+        <svg viewBox="0 0 16 16" className="size-4 text-muted" fill="none" stroke="currentColor" strokeWidth="1.3" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2" /><path d="M6 2.5v11" /></svg>
+        <span className="font-medium text-fg">Workspace</span>
+        <span className="text-muted">/</span>
+        <span className="min-w-0 truncate text-fg/85">{title}</span>
+        <span className="ml-auto flex items-center gap-3 text-muted" aria-hidden="true">
+          <svg viewBox="0 0 12 12" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M2 6h8" /></svg>
+          <svg viewBox="0 0 12 12" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="2.5" y="2.5" width="7" height="7" /></svg>
+          <svg viewBox="0 0 12 12" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="m2.5 2.5 7 7m0-7-7 7" /></svg>
+        </span>
+      </div>
+      {/* toolbar: Plan / Build segmented switch · Full access · more */}
+      <div className="flex items-center justify-between gap-3 px-4 pt-3">
+        <div className="flex gap-0.5 rounded-lg border border-line bg-black/40 p-0.5 text-[12px]">
+          <span className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 transition-colors duration-300 ${!build ? "bg-card-2 text-fg" : "text-muted"}`}>
+            <span aria-hidden="true">✦</span> Plan
+          </span>
+          <span className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 transition-colors duration-300 ${build ? "bg-card-2 text-fg" : "text-muted"}`}>
+            <span aria-hidden="true">⌘</span> Build {build && <span className="size-1 rounded-full bg-fg" />}
+          </span>
+        </div>
+        <div className="flex items-center gap-2.5 text-[12px] text-muted">
+          <span className="relative h-4 w-7 rounded-full bg-fg/80" aria-hidden="true"><span className="absolute right-0.5 top-0.5 size-3 rounded-full bg-[#0b0b0c]" /></span>
+          <span className="hidden sm:inline">Full access</span>
+          <span className="tracking-[0.2em]" aria-hidden="true">•••</span>
+        </div>
+      </div>
+      {running && (
+        <p className="flex items-center gap-2 px-4 pt-2.5 text-[12px] text-muted"><span className="size-1.5 animate-pulse rounded-full bg-fg" />Build running</p>
+      )}
+      {children}
+      </div>
+    </div>
+  );
+}
+
 function ChatCard({ p }: { p: number }) {
   const k = vis(0, 0.165, p);
   const typingUser = p > 0.004 && p < 0.04;
   const thinking = p >= 0.04 && p < 0.046;
   const reply = tw(demo.reply, 0.046, 0.072, p);
+  const empty = 1 - ease(0.002, 0.01, p);
+  const build = p > 0.152;
   return (
-    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2" style={{ opacity: k }}>
-      <div className="overflow-hidden rounded-3xl border border-line bg-[#0b0b0c]/95 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]">
-        <div className="flex items-center justify-between border-b border-line px-5 py-3.5">
-          <div className="flex items-center gap-2 text-sm font-medium">
-            <Logo className="size-4" /> Vector OS
-            <span className="text-muted">/ {demo.project}</span>
-          </div>
-          <span className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted">Project</span>
-        </div>
-        <div className="space-y-4 px-5 py-5 text-[14px] leading-relaxed md:text-[15px]">
-          <div className="flex justify-end">
-            <p className="max-w-[85%] rounded-2xl rounded-br-md bg-card-2 px-4 py-2.5 text-fg">
-              {tw(demo.prompt, 0.004, 0.04, p)}
-              {typingUser && <span className="caret" />}
-            </p>
-          </div>
-          <div className="flex gap-3" style={{ opacity: p > 0.04 ? 1 : 0 }}>
-            <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-fg text-black"><Logo className="size-3" /></span>
-            <div className="min-w-0 flex-1">
+    <div className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 md:w-[min(880px,94vw)]" style={{ opacity: k }}>
+      <AppChrome title={demo.project} build={build} running={build}>
+        {/* like the app's conversation pane: newest content stays in view when the window is short (phones) */}
+        <div className="relative flex min-h-[150px] max-h-[calc(100svh-340px)] flex-col justify-end overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,#000_18px)] px-4 pb-4 pt-4 text-[13.5px] leading-relaxed md:max-h-[min(440px,calc(100svh-400px))] md:px-5 md:text-[15px]">
+          {/* empty state, as the app opens */}
+          {empty > 0 && (
+            <div className="pointer-events-none absolute inset-x-0 top-6 text-center" style={{ opacity: empty }}>
+              <p className="text-[clamp(1.4rem,3vw,1.9rem)] font-medium tracking-tight text-fg">What are we working on?</p>
+              <p className="mt-1.5 text-sm text-muted">Talk it through in Plan. Make it happen in Build.</p>
+            </div>
+          )}
+          <div className="space-y-4" style={{ opacity: 1 - empty }}>
+            <div className="flex justify-end">
+              <p className="max-w-[85%] rounded-2xl rounded-br-md bg-card-2 px-4 py-2.5 text-fg">
+                {tw(demo.prompt, 0.004, 0.04, p)}
+                {typingUser && <span className="caret" />}
+              </p>
+            </div>
+            <div className="rounded-xl border border-line bg-black/30 px-4 py-3" style={{ opacity: p > 0.04 ? 1 : 0 }}>
+              <p className="mb-1.5 flex items-center gap-2 text-[12px] font-medium text-fg">
+                <span className="flex size-5 items-center justify-center rounded-md border border-line"><Logo className="size-2.5" /></span>
+                Vector
+              </p>
               {thinking ? (
                 <span className="dots text-muted" aria-label="Thinking"><i /><i /><i /></span>
               ) : (
@@ -280,7 +371,14 @@ function ChatCard({ p }: { p: number }) {
                   {p >= 0.046 && p < 0.072 && <span className="caret" />}
                 </p>
               )}
-              <ul className="mt-3 space-y-2">
+            </div>
+            {/* "Active steps" card, as in the desktop app */}
+            <div className="rounded-xl border border-line bg-black/30 px-4 py-3" style={{ ...fade(ease(0.072, 0.078, p), 6), display: p > 0.072 ? "block" : "none" }}>
+              <p className="mb-2 flex items-center justify-between text-[12px] font-medium text-fg">
+                Active steps
+                <span className="font-mono text-[11px] text-muted">{demo.plan.filter((_, i) => p > 0.105 + i * 0.009).length}/{demo.plan.length}</span>
+              </p>
+              <ul className="space-y-2">
                 {demo.plan.map((item, i) => {
                   const show = ease(0.074 + i * 0.011, 0.082 + i * 0.011, p);
                   const done = p > 0.105 + i * 0.009;
@@ -297,16 +395,21 @@ function ChatCard({ p }: { p: number }) {
                   );
                 })}
               </ul>
-              <div className="mt-4 flex gap-2" style={{ ...fade(ease(0.14, 0.148, p), 6), display: p > 0.14 ? "flex" : "none" }}>
-                <span className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors duration-300 ${p > 0.152 ? "bg-fg text-black" : "border border-line text-fg"}`}>
-                  {p > 0.152 ? "Plan approved ✓" : "Approve plan"}
+            </div>
+            {/* "Ready to build?" hand-off, as in the recording */}
+            <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-line px-4 py-3" style={{ ...fade(ease(0.14, 0.148, p), 6), display: p > 0.14 ? "flex" : "none" }}>
+              <span className="text-[13px] font-medium">{build ? "Plan carried over into Build" : "Ready to build?"}</span>
+              <span className="flex gap-2">
+                <span className="rounded-lg border border-line px-3 py-1.5 text-xs text-muted">Prepare my plan</span>
+                <span className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors duration-300 ${build ? "bg-fg text-black" : "border border-line text-fg"}`}>
+                  {build ? "In Build ✓" : "Proceed to Build ↗"}
                 </span>
-                <span className="rounded-full border border-line px-3.5 py-1.5 text-xs text-muted">Edit</span>
-              </div>
+              </span>
             </div>
           </div>
         </div>
-      </div>
+        <div className="mx-4 mb-4 hidden rounded-xl border border-line px-3.5 py-2.5 text-[13px] text-muted/80 sm:block md:mx-5">Describe what to build...</div>
+      </AppChrome>
     </div>
   );
 }

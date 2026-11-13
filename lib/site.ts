@@ -27,6 +27,13 @@ export const SIGN_IN = "https://vectorproject.vercel.app/sign-in";
 /** Live waitlist form. Its /api/waitlist does not send CORS headers, so we link to the form instead of posting cross-origin. */
 export const WAITLIST_FORM = "https://vectoros.one/waitlist#join";
 
+/**
+ * Optional endpoint for the email-updates dialog. Leave unset (default): the dialog validates the address and
+ * hands off to WAITLIST_FORM. Set NEXT_PUBLIC_SUBSCRIBE_ENDPOINT only to a Vector-owned URL that accepts
+ * POST {"email": "..."} from this origin (CORS) and returns 2xx on success.
+ */
+export const SUBSCRIBE_ENDPOINT = process.env.NEXT_PUBLIC_SUBSCRIBE_ENDPOINT || "";
+
 /** Project contact used by vectoros.one for beta, support and sales emails. */
 export const CONTACT_EMAIL = "office@sh3ikhmabz.com";
 
