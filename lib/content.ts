@@ -35,7 +35,7 @@ export const nav: NavGroup[] = [
           { label: "Rhino", href: "/software/rhino", status: "Available" },
           { label: "Revit", href: "/software/revit", status: "Available" },
           { label: "Blender", href: "/software/blender", status: "Available" },
-          { label: "Maxsurf Complete", href: "/software/maxsurf", status: "Available" },
+          { label: "Maxsurf", href: "/software/maxsurf", status: "Available" },
           { label: "Grasshopper", href: "/ai/grasshopper", status: "In development" },
           { label: "Autodesk Dynamo", href: "/ai/dynamo", status: "In development" },
         ],
@@ -151,7 +151,7 @@ export const tools = [
   { name: "Rhino", status: "Available", href: "/software/rhino" },
   { name: "Blender", status: "Available", href: "/ai/blender" },
   { name: "Revit", status: "Available", href: "/software/revit" },
-  { name: "Maxsurf Complete", status: "Available", href: "/ai/maxsurf" },
+  { name: "Maxsurf", status: "Available", href: "/ai/maxsurf" },
   { name: "Grasshopper", status: "In development", href: "/ai/grasshopper" },
   { name: "Autodesk Dynamo", status: "In development", href: "/ai/dynamo" },
 ] as const;

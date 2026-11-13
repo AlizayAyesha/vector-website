@@ -4,7 +4,7 @@
   "kind": "ai",
   "title": "AI for CAD and engineering workflows",
   "h1": "AI for CAD and engineering workflows",
-  "description": "Explore AI workflow planning for Rhino, Revit, Grasshopper, Autodesk Dynamo, Blender and Maxsurf Complete, with clear Vector OS connector status."
+  "description": "Explore AI workflow planning for Rhino, Revit, Grasshopper, Autodesk Dynamo, Blender and Maxsurf, with clear Vector OS connector status."
  },
  {
   "path": "/ai/blender",
@@ -37,8 +37,8 @@
  {
   "path": "/ai/maxsurf",
   "kind": "ai",
-  "title": "AI for Maxsurf Complete",
-  "h1": "AI for Maxsurf Complete",
+  "title": "AI for Maxsurf",
+  "h1": "AI for Maxsurf",
   "description": "Frame vessel-design questions around hull geometry, loading assumptions and reviewed analysis inputs. Beta connector availability depends on your build."
  },
  {
@@ -506,9 +506,9 @@
  {
   "path": "/software/maxsurf",
   "kind": "software",
-  "title": "Maxsurf Complete workflows and connector status",
-  "h1": "Maxsurf Complete",
-  "description": "Explore Maxsurf Complete workflow ideas in Vector OS. The connector is available in the beta; module support and host versions depend on your build."
+  "title": "Maxsurf workflows and connector status",
+  "h1": "Maxsurf",
+  "description": "Explore Maxsurf workflow ideas in Vector OS. The connector is available in the beta; module support and host versions depend on your build."
  },
  {
   "path": "/software/maxwell",
