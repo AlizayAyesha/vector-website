@@ -7,6 +7,7 @@ type Rec = (typeof data.recordings)[number];
 type Study = (typeof data.studies)[number];
 type Sel = { kind: "recording"; item: Rec } | { kind: "study"; item: Study } | null;
 
+/** "Collections" in vectoros.one's data are shown as "Use cases" (see PR notes). */
 const colName = (id: string) => data.collections.find((c) => c.id === id)?.name ?? id;
 
 export default function Gallery() {
@@ -38,12 +39,34 @@ export default function Gallery() {
 
   return (
     <div className="mt-12">
-      <div role="search" aria-label="Examples library" className="grid gap-2 rounded-2xl border border-line bg-card p-2 md:grid-cols-[2fr_1fr_1fr]">
-        <label className="sr-only" htmlFor="g-q">Find an example</label>
-        <input id="g-q" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Find an example" className="h-10 rounded-xl border border-line bg-black px-3.5 text-sm text-fg outline-none placeholder:text-muted focus:border-fg/50" />
-        <Pick label="Type" value={type} onChange={(v) => setType(v as typeof type)} options={[["", "All examples"], ["recordings", "Recorded projects"], ["studies", "Concept studies"]]} />
-        <Pick label="Collection" value={col} onChange={setCol} options={[["", "All collections"], ...data.collections.map((c) => [c.id, c.name] as [string, string])]} />
+      {/* desktop-app style tabs (like Plan / Build) replace the old dropdown filter bar */}
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div className="no-scrollbar -mx-6 overflow-x-auto px-6 md:mx-0 md:px-0">
+        <div role="tablist" aria-label="Example type" className="seg">
+          {([["", "All examples"], ["recordings", "Recorded projects"], ["studies", "Concept studies"]] as const).map(([v, l]) => (
+            <button key={v} type="button" role="tab" aria-selected={type === v} onClick={() => setType(v)}>
+              {l}
+            </button>
+          ))}
+        </div>
+        </div>
+        <div role="search" aria-label="Examples library" className="relative md:w-72">
+          <label className="sr-only" htmlFor="g-q">Find an example</label>
+          <svg viewBox="0 0 16 16" className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5" /><path d="m10.5 10.5 3 3" /></svg>
+          <input id="g-q" type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Find an example" className="field pl-9" />
+        </div>
       </div>
+      {type !== "recordings" && (
+        <div className="no-scrollbar -mx-6 mt-3 overflow-x-auto px-6">
+          <div role="tablist" aria-label="Use case" className="flex w-max gap-1.5">
+            {([["", "All use cases"], ...data.collections.map((c) => [c.id, c.name] as [string, string])] as [string, string][]).map(([v, l]) => (
+              <button key={v} type="button" role="tab" aria-selected={col === v} onClick={() => setCol(v)} className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${col === v ? "border-fg bg-fg text-on-fg" : "border-line text-muted hover:text-fg"}`}>
+                {l}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="mt-3 flex items-center gap-3 text-xs text-muted" aria-live="polite">
         {filtered ? `${recs.length} recordings · ${studies.length} concept studies` : `${data.recordings.length} recordings · ${data.studies.length} concept studies`}
         {filtered && (
@@ -59,8 +82,8 @@ export default function Gallery() {
           <ul className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {recs.map((r) => (
               <li key={r.id}>
-                <button type="button" onClick={() => setSel({ kind: "recording", item: r })} className="group block w-full overflow-hidden rounded-3xl border border-line bg-card text-left transition-colors hover:border-[#4a4a4f]">
-                  <span className="relative block aspect-[16/10] overflow-hidden bg-black">
+                <button type="button" onClick={() => setSel({ kind: "recording", item: r })} className="group block w-full overflow-hidden rounded-3xl border border-line bg-card text-left transition-colors hover:border-line-strong">
+                  <span className="theme-dark relative block aspect-[16/10] overflow-hidden bg-black">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={r.poster} alt="" loading="lazy" className="size-full object-cover opacity-85 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-100" />
                     <span className="glass absolute left-1/2 top-1/2 flex size-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition group-hover:scale-110">
@@ -87,7 +110,7 @@ export default function Gallery() {
           <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shown.map((x) => (
               <li key={x.id}>
-                <button type="button" onClick={() => setSel({ kind: "study", item: x })} className="group block w-full overflow-hidden rounded-3xl border border-line bg-card text-left transition-colors hover:border-[#4a4a4f]">
+                <button type="button" onClick={() => setSel({ kind: "study", item: x })} className="group block w-full overflow-hidden rounded-3xl border border-line bg-card text-left transition-colors hover:border-line-strong">
                   <span className="block aspect-video overflow-hidden bg-black">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={x.panels[1]?.url ?? x.panels[0].url} alt={x.panels[1]?.alt ?? ""} loading="lazy" referrerPolicy="no-referrer" className="size-full object-cover opacity-90 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-100" />
@@ -113,18 +136,6 @@ export default function Gallery() {
   );
 }
 
-function Pick({ label, value, onChange, options }: { label: string; value: string; onChange: (v: string) => void; options: [string, string][] }) {
-  return (
-    <label className="relative">
-      <span className="sr-only">{label}</span>
-      <select value={value} onChange={(e) => onChange(e.target.value)} className="h-10 w-full appearance-none rounded-xl border border-line bg-black px-3.5 pr-8 text-sm text-fg outline-none focus:border-fg/50">
-        {options.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
-      </select>
-      <svg viewBox="0 0 16 16" className="pointer-events-none absolute right-3 top-1/2 size-3.5 -translate-y-1/2 text-muted" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="m4 6 4 4 4-4" /></svg>
-    </label>
-  );
-}
-
 function Viewer({ sel, close }: { sel: Sel; close: () => void }) {
   const d = useRef<HTMLDialogElement>(null);
   const [panel, setPanel] = useState("video");
@@ -137,7 +148,7 @@ function Viewer({ sel, close }: { sel: Sel; close: () => void }) {
   }, [sel]);
   const title = sel?.item.title ?? "";
   return (
-    <dialog ref={d} onClose={close} onClick={(e) => e.target === d.current && close()} aria-label={title} className="m-auto w-[min(1100px,94vw)] max-w-none overflow-hidden rounded-3xl border border-line bg-card p-0 text-fg backdrop:bg-black/80 backdrop:backdrop-blur-sm">
+    <dialog ref={d} onClose={close} onClick={(e) => e.target === d.current && close()} aria-label={title} className="dlg m-auto w-[min(1100px,94vw)] max-w-none overflow-hidden rounded-3xl border border-line bg-card p-0 text-fg backdrop:bg-black/80 backdrop:backdrop-blur-sm">
       {sel && (
         <div>
           <div className="flex items-start justify-between gap-4 border-b border-line px-5 py-4">
@@ -146,7 +157,7 @@ function Viewer({ sel, close }: { sel: Sel; close: () => void }) {
               <p className="mt-1 text-lg font-semibold tracking-tight">{title}</p>
               <p className="text-sm text-muted">{sel.kind === "recording" ? sel.item.tools : sel.item.task}</p>
             </div>
-            <button type="button" onClick={close} className="inline-flex size-9 shrink-0 items-center justify-center rounded-full text-muted hover:bg-white/5 hover:text-fg" aria-label="Close">
+            <button type="button" onClick={close} className="inline-flex size-9 shrink-0 items-center justify-center rounded-full text-muted hover:bg-fg/5 hover:text-fg" aria-label="Close">
               <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
             </button>
           </div>
@@ -165,7 +176,7 @@ function Viewer({ sel, close }: { sel: Sel; close: () => void }) {
               <>
                 <div className="flex flex-wrap gap-1.5">
                   {["video", ...sel.item.panels.map((p) => p.label)].map((p) => (
-                    <button key={p} type="button" onClick={() => setPanel(p)} className={`rounded-full px-3 py-1 text-xs ${panel === p ? "bg-fg text-black" : "border border-line text-muted hover:text-fg"}`}>
+                    <button key={p} type="button" onClick={() => setPanel(p)} className={`rounded-full px-3 py-1 text-xs ${panel === p ? "bg-fg text-on-fg" : "border border-line text-muted hover:text-fg"}`}>
                       {p === "video" ? "Video" : `Panel ${p}`}
                     </button>
                   ))}

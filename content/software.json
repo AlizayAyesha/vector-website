@@ -842,7 +842,7 @@
   {
    "slug": "maxsurf",
    "name": "Maxsurf",
-   "title": "Maxsurf Complete",
+   "title": "Maxsurf",
    "company": "Bentley Systems",
    "status": "Available",
    "groups": [
@@ -2514,7 +2514,7 @@
    "description": "MATLAB supports numerical computing, data analysis, algorithm development and engineering visualisation."
   },
   {
-   "name": "Maxsurf Complete",
+   "name": "Maxsurf",
    "slug": "maxsurf",
    "company": "Bentley Systems",
    "groups": [

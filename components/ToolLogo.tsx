@@ -1,4 +1,4 @@
-/* Monochrome tool marks. Official SVGs are recoloured to white only (see public/logos/SOURCES.md);
+/* Monochrome tool marks. Official SVGs are recoloured to white (black in the light theme, via --mark-filter) only (see public/logos/SOURCES.md);
    tools without an obtainable official SVG use a plain wordmark tile. Marks indicate compatibility only. */
 const FILES: Record<string, { src: string; filter: string }> = {
   Rhino: { src: "/logos/rhino.svg", filter: "brightness(0) invert(1)" },
@@ -14,7 +14,7 @@ export function ToolLogo({ name, className = "size-6", dark = false, wordSize = 
   if (f) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={f.src} alt="" aria-hidden="true" draggable={false} className={`${className} shrink-0 object-contain`} style={{ filter: dark ? "brightness(0)" : f.filter }} />
+      <img src={f.src} alt="" aria-hidden="true" draggable={false} className={`${className} tool-mark shrink-0 object-contain`} style={{ filter: dark ? "brightness(0)" : `var(--mark-filter, ${f.filter})` }} />
     );
   }
   // wordmark tile (no official SVG used)

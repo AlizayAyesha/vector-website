@@ -1,11 +1,10 @@
 import { notFound } from "next/navigation";
 import PageShell, { Prose } from "@/components/PageShell";
-import WaitlistJoin from "@/components/WaitlistJoin";
 import { allRoutes, getPage } from "@/lib/pages";
 import { pageMeta } from "@/lib/seo";
 
 // Routes with their own components; everything else in content/pages renders here.
-const CUSTOM = new Set(["/", "/pricing", "/gallery", "/software"]);
+const CUSTOM = new Set(["/", "/pricing", "/gallery", "/software", "/download"]);
 
 export const dynamicParams = false;
 
@@ -30,12 +29,7 @@ export default async function Page({ params }: Props) {
   if (!page) notFound();
   return (
     <PageShell>
-      {page.html.split(/<div data-embed="waitlist"><\/div>/).map((part, i) => (
-        <div key={i}>
-          {i > 0 && <WaitlistJoin />}
-          <Prose html={part} />
-        </div>
-      ))}
+      <Prose html={page.html} />
     </PageShell>
   );
 }

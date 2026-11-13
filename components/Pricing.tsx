@@ -3,82 +3,92 @@
 import Link from "next/link";
 import { useState } from "react";
 import data from "@/content/pricing.json";
+import { CALENDLY } from "@/lib/site";
 
-type Plan = (typeof data.plans)[number] & { capacity?: string; recommended?: boolean; checkout?: string };
+type Plan = (typeof data.plans)[number] & { capacity?: string; recommended?: boolean; checkout?: string; for?: string };
 type Billing = "monthly" | "quarterly" | "yearly";
+type Audience = "personal" | "business";
 const plans = data.plans as Plan[];
+const byId = (id: string) => plans.find((p) => p.id === id)!;
 const MONTHS: Record<Billing, number> = { monthly: 1, quarterly: 3, yearly: 12 };
 const usd = (n: number, cents = false) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: cents || n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+const BILLING_LABEL: Record<Billing, string> = { monthly: "Monthly", quarterly: "Quarterly", yearly: "Yearly" };
+const SAVE: Partial<Record<Billing, string>> = { quarterly: "−5%", yearly: "−10%" };
 
+/** Personal = Vector's "individuals" group; Business = its "professionals" group plus Enterprise (shown as On-Premises Deployment). */
+const CARDS: Record<Audience, string[]> = { personal: ["free", "go", "plus"], business: ["pro", "ultra", "enterprise"] };
+const HIGHLIGHT: Record<Audience, string> = { personal: "plus", business: "pro" };
+
+const Icon = ({ i }: { i: number }) => {
+  const d = ["M3 8.5 6.5 12 13 4.5", "M8 2.5v11M2.5 8h11", "M3 4h10M3 8h10M3 12h6", "M8 2 13.5 5v6L8 14 2.5 11V5z", "M5 3.5h6l2.5 4.5-2.5 4.5H5L2.5 8z", "M2.5 12.5 6 9l2.5 2.5 5-5.5"][i % 6];
+  return (
+    <svg viewBox="0 0 16 16" className="mt-0.5 size-4 shrink-0 text-muted" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
+  );
+};
+
+/**
+ * Pricing, laid out like a subscription upgrade screen: centred title, Personal / Business switch,
+ * three equal cards (name, headline, subtitle, CTA, price, features), fine print underneath.
+ * Every price, interval, allowance, feature and Stripe link comes from vectoros.one's plan catalogue
+ * (content/pricing.json). Quarterly / yearly prices appear only where the catalogue has them.
+ */
 export default function Pricing() {
-  const [aud, setAud] = useState<"individuals" | "professionals">("individuals");
+  const [aud, setAud] = useState<Audience>("personal");
   const [billing, setBilling] = useState<Billing>("monthly");
   const [cap, setCap] = useState("pro");
-  const [open, setOpen] = useState<string | null>(null);
-  const options: Billing[] = aud === "individuals" ? ["monthly", "quarterly", "yearly"] : ["monthly", "quarterly"];
+  const options: Billing[] = aud === "personal" ? ["monthly", "quarterly", "yearly"] : ["monthly", "quarterly"];
   const bill: Billing = options.includes(billing) ? billing : "monthly";
   const h = data.header;
 
-  const cards = aud === "individuals" ? ["free", "go", "plus"] : ["pro", "ultra", "enterprise"];
-
   return (
     <div>
-      <header className="max-w-3xl">
+      <header className="mx-auto max-w-3xl text-center">
         <p className="eyebrow">{h.eyebrow}</p>
-        <h1 className="mt-4 text-balance text-5xl font-semibold tracking-[-0.035em] md:text-7xl">{h.title}</h1>
-        <p className="mt-5 text-lg text-[#d4d4d8]">{h.sub}</p>
-        <p className="mt-2 text-sm text-muted">{h.note}</p>
+        <h1 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.035em] md:text-6xl">{h.title}</h1>
+        <p className="mt-4 text-lg text-fg-2">{h.sub}</p>
       </header>
 
-      <div className="mt-10 flex flex-wrap items-end justify-between gap-4">
-        <div role="tablist" aria-label="Audience" className="flex gap-1 rounded-full border border-line bg-card p-1">
-          {(["individuals", "professionals"] as const).map((a) => (
-            <button key={a} role="tab" type="button" aria-selected={aud === a} onClick={() => setAud(a)} className={`rounded-full px-4 py-1.5 text-sm font-medium capitalize transition-colors ${aud === a ? "bg-fg text-black" : "text-muted hover:text-fg"}`}>
-              {a}
+      <div className="mt-8 flex flex-col items-center gap-3">
+        <div role="tablist" aria-label="Plan group" className="seg rounded-full! p-1">
+          {data.audiences.map((a) => (
+            <button key={a.id} role="tab" type="button" id={`tab-${a.id}`} aria-controls="plans" aria-selected={aud === a.id} onClick={() => setAud(a.id as Audience)} className="rounded-full! px-5!">
+              {a.label}
             </button>
           ))}
         </div>
-        <label className="flex items-center gap-3 text-sm">
-          <span className="text-muted">Billing</span>
-          <span className="relative">
-            <select value={bill} onChange={(e) => setBilling(e.target.value as Billing)} className="h-9 appearance-none rounded-full border border-line bg-card pl-4 pr-9 text-sm text-fg outline-none focus:border-fg/50">
-              {options.map((o) => (
-                <option key={o} value={o}>{o === "monthly" ? "Monthly" : o === "quarterly" ? "Quarterly · save 5%" : "Yearly · save 10%"}</option>
-              ))}
-            </select>
-            <svg viewBox="0 0 16 16" className="pointer-events-none absolute right-3 top-1/2 size-3.5 -translate-y-1/2 text-muted" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="m4 6 4 4 4-4" /></svg>
-          </span>
-        </label>
-      </div>
-      <p className="mt-4 text-xs text-muted">{h.unit} · {data.billingNotes[bill]}</p>
-      {aud === "professionals" && <p className="mt-1 text-xs text-muted">{data.professionalsNote}</p>}
-
-      <div className="mt-8 grid gap-4 lg:grid-cols-3">
-        {cards.map((card) => {
-          const plan = card === "pro" ? plans.find((p) => p.id === cap)! : plans.find((p) => p.id === card)!;
-          return <Card key={card} plan={plan} bill={bill} setBilling={setBilling} cap={cap} setCap={setCap} open={open === card} toggle={() => setOpen(open === card ? null : card)} />;
-        })}
+        <div role="radiogroup" aria-label="Billing period" className="flex items-center gap-1 text-xs">
+          {options.map((o) => (
+            <button key={o} type="button" role="radio" aria-checked={bill === o} onClick={() => setBilling(o)} className={`flex items-center gap-1.5 rounded-full px-3 py-1 transition-colors ${bill === o ? "bg-card-2 text-fg" : "text-muted hover:text-fg"}`}>
+              {BILLING_LABEL[o]}
+              {SAVE[o] && <span className="text-[10px] font-semibold text-muted">{SAVE[o]}</span>}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {aud === "professionals" && (
-        <section className="mt-12 rounded-3xl border border-line bg-card p-6 md:p-8" aria-labelledby="ent">
-          <h2 id="ent" className="text-2xl font-semibold tracking-tight">{data.enterprise.title}</h2>
-          <p className="mt-3 max-w-2xl text-muted">{data.enterprise.body}</p>
-          <dl className="mt-6 grid gap-3 sm:grid-cols-3">
-            {data.enterprise.contracts.map((c) => (
-              <div key={c} className="rounded-2xl border border-line bg-black p-4">
-                <dt className="text-sm text-muted">{c}</dt>
-                <dd className="mt-1 text-lg font-semibold">Custom Quote</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="mt-5 text-sm text-muted">{data.enterprise.terms}</p>
-          <a href={`mailto:${data.enterprise.email}`} className="btn-ghost mt-6">Open sales email</a>
-          <p className="mt-3 max-w-2xl text-xs text-muted">{data.enterprise.emailNote}</p>
-        </section>
-      )}
+      <div id="plans" role="tabpanel" aria-labelledby={`tab-${aud}`} className="mx-auto mt-10 grid max-w-6xl gap-4 lg:grid-cols-3">
+        {CARDS[aud].map((id) =>
+          id === "enterprise" ? (
+            <EnterpriseCard key={id} />
+          ) : (
+            <Card key={id} plan={id === "pro" ? byId(cap) : byId(id)} bill={bill} setBilling={setBilling} cap={cap} setCap={setCap} highlight={HIGHLIGHT[aud] === id} />
+          ),
+        )}
+      </div>
 
-      <section className="mt-20 grid gap-10 md:grid-cols-[1fr_2fr]" aria-labelledby="faq-h">
+      {/* fine print */}
+      <div className="mx-auto mt-6 max-w-6xl space-y-1.5 text-center text-xs text-muted">
+        <p>{h.unit} · {data.billingNotes[bill]}</p>
+        <p>{aud === "personal" ? "Online checkout through Stripe is available for monthly plans. No sign-in required." : `${data.professionalsNote} ${data.enterprise.terms}`}</p>
+        {aud === "business" && (
+          <p>
+            {byId("enterprise").for}{" "}
+            <a href={CALENDLY} className="text-fg underline decoration-line underline-offset-4 hover:decoration-fg">Book a demo</a>
+          </p>
+        )}
+      </div>
+
+      <section className="mt-24 grid gap-10 md:grid-cols-[1fr_2fr]" aria-labelledby="faq-h">
         <h2 id="faq-h" className="text-3xl font-semibold tracking-tight md:text-4xl">Usage, billing and frequently asked questions</h2>
         <div className="divide-y divide-line border-y border-line">
           {data.faq.map((f) => (
@@ -96,98 +106,105 @@ export default function Pricing() {
   );
 }
 
-function Card({ plan, bill, setBilling, cap, setCap, open, toggle }: { plan: Plan; bill: Billing; setBilling: (b: Billing) => void; cap: string; setCap: (c: string) => void; open: boolean; toggle: () => void }) {
+function Shell({ highlight, children }: { highlight?: boolean; children: React.ReactNode }) {
+  return (
+    <article className={`relative flex flex-col rounded-3xl border p-6 md:p-7 ${highlight ? "border-tint-line bg-tint" : "border-line bg-card"}`}>
+      {children}
+    </article>
+  );
+}
+
+function Card({ plan, bill, setBilling, cap, setCap, highlight }: { plan: Plan; bill: Billing; setBilling: (b: Billing) => void; cap: string; setCap: (c: string) => void; highlight: boolean }) {
   const isPro = plan.card === "pro";
-  const available = plan.monthly === 0 || plan.monthly === null || (plan.intervals as string[]).includes(bill);
+  const free = plan.monthly === 0;
+  const available = free || (plan.intervals as string[]).includes(bill);
   const upfront = bill === "monthly" ? plan.monthly : (plan.upfront as Record<string, number>)[bill];
   const perMonth = plan.monthly && upfront ? upfront / MONTHS[bill] : plan.monthly;
-  const free = plan.monthly === 0;
-  const ent = plan.monthly === null;
+  const name = isPro ? "Pro" : plan.name;
 
   return (
-    <article className={`relative flex flex-col rounded-3xl border p-6 ${plan.recommended ? "border-fg/60 bg-card-2" : "border-line bg-card"}`}>
-      <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">{plan.recommended ? "Recommended" : plan.label}</p>
-      <h2 className="mt-2 text-2xl font-semibold tracking-tight">{isPro ? "Pro" : plan.name}</h2>
-      <p className="mt-1 text-sm text-muted">{plan.tagline}</p>
-
-      {isPro && (
-        <div className="mt-4">
-          <p className="text-xs text-muted">Choose your Pro capacity</p>
-          <div role="radiogroup" aria-label="Pro capacity" className="mt-2 flex gap-1 rounded-full border border-line bg-black p-1">
+    <Shell highlight={highlight}>
+      <div className="flex min-h-8 items-start justify-between gap-3">
+        <h2 className="text-xl font-semibold tracking-tight">{name}</h2>
+        {isPro ? (
+          <div role="radiogroup" aria-label="Pro capacity" className="flex gap-0.5 rounded-full border border-line bg-inset p-0.5">
             {plans.filter((p) => p.card === "pro").map((p) => (
-              <button key={p.id} type="button" role="radio" aria-checked={cap === p.id} onClick={() => setCap(p.id)} className={`flex-1 rounded-full px-3 py-1 text-xs font-medium transition-colors ${cap === p.id ? "bg-fg text-black" : "text-muted hover:text-fg"}`}>
+              <button key={p.id} type="button" role="radio" aria-checked={cap === p.id} onClick={() => setCap(p.id)} className={`rounded-full px-2.5 py-0.5 text-[11px] font-medium transition-colors ${cap === p.id ? "bg-fg text-on-fg" : "text-muted hover:text-fg"}`}>
                 {p.capacity}
               </button>
             ))}
           </div>
-        </div>
-      )}
+        ) : plan.recommended ? (
+          <span className="rounded-full border border-tint-line px-2.5 py-0.5 text-[11px] font-medium text-fg">Recommended</span>
+        ) : null}
+      </div>
+      <p className="mt-3 text-lg font-semibold leading-snug tracking-tight text-fg">{plan.tagline}</p>
+      <p className="mt-1.5 min-h-10 text-sm text-muted">{plan.supporting}</p>
 
-      <div className="mt-6 min-h-[5.5rem]">
-        {ent ? (
+      <div className="mt-5">
+        {free ? (
+          <Link href={data.freeCta.href} className="btn-ghost w-full justify-center">{data.freeCta.label}</Link>
+        ) : available && bill === "monthly" && plan.checkout ? (
+          <a href={plan.checkout} className={`${highlight ? "btn-primary" : "btn-ghost"} w-full justify-center`} rel="noopener">Get {plan.name}</a>
+        ) : (
+          <button type="button" onClick={() => setBilling("monthly")} className="btn-ghost w-full justify-center">{available ? "Subscribe monthly" : "Show monthly price"}</button>
+        )}
+      </div>
+
+      <div className="mt-6">
+        {!available ? (
           <>
-            <p className="text-4xl font-semibold tracking-tight">Custom Pricing</p>
-            <p className="mt-2 text-sm text-muted">Contract terms by agreement.</p>
-          </>
-        ) : !available ? (
-          <>
-            <p className="text-4xl font-semibold tracking-tight">Not available</p>
-            <p className="mt-2 text-sm text-muted">{bill === "quarterly" ? "Quarterly" : "Yearly"} billing is not available for {plan.name}. Choose Monthly billing.</p>
+            <p className="text-3xl font-semibold tracking-tight">Monthly only</p>
+            <p className="mt-1 text-xs text-muted">{BILLING_LABEL[bill]} billing is not offered for {plan.name}.</p>
           </>
         ) : (
           <>
             <p className="flex items-baseline gap-1.5">
-              <span className="text-5xl font-semibold tracking-tight tabular-nums">{usd(perMonth ?? 0)}</span>
-              <span className="text-sm text-muted">/ month</span>
+              <span className="text-4xl font-semibold tracking-tight tabular-nums">{usd(perMonth ?? 0)}</span>
+              <span className="text-sm text-muted">USD / month</span>
             </p>
-            <p className="mt-2 text-sm text-muted">
-              {free ? "No subscription required." : bill === "monthly" ? `Billed ${usd(upfront!, true)} monthly.` : `Billed ${usd(upfront!, true)} ${bill}. Save ${bill === "quarterly" ? 5 : 10}%.`}
+            <p className="mt-1 text-xs text-muted">
+              {free ? "\u00a0" : bill === "monthly" ? `Billed ${usd(upfront!, true)} monthly.` : `Billed ${usd(upfront!, true)} ${bill}. Save ${bill === "quarterly" ? 5 : 10}%.`}
             </p>
           </>
         )}
       </div>
-      <p className="mt-2 border-t border-line pt-4 text-sm font-medium text-fg">{plan.edits}</p>
 
+      <ul className="mt-6 space-y-2.5 border-t border-line pt-5 text-sm">
+        <li className="flex gap-2.5 font-medium text-fg"><Icon i={5} />{plan.edits}</li>
+        {plan.features.map((f, i) => (
+          <li key={f} className="flex gap-2.5 text-fg-2"><Icon i={i} />{f}</li>
+        ))}
+      </ul>
+    </Shell>
+  );
+}
+
+function EnterpriseCard() {
+  const ent = byId("enterprise");
+  const e = data.enterprise;
+  return (
+    <Shell>
+      <div className="flex min-h-8 items-start justify-between gap-3">
+        <h2 className="text-xl font-semibold tracking-tight">{e.offerTitle}</h2>
+        <span className="shrink-0 whitespace-nowrap rounded-full border border-line px-2.5 py-0.5 text-[11px] font-medium text-muted">{ent.label}</span>
+      </div>
+      <p className="mt-3 text-lg font-semibold leading-snug tracking-tight text-fg">{ent.tagline}</p>
+      <p className="mt-1.5 min-h-10 text-sm text-muted">{ent.supporting}</p>
+      <div className="mt-5">
+        <a href={`mailto:${e.email}`} className="btn-ghost w-full justify-center">Contact sales</a>
+      </div>
       <div className="mt-6">
-        {free ? (
-          <>
-            <Link href={data.freeCta.href} className="btn-ghost w-full justify-center">{data.freeCta.label}</Link>
-            <p className="mt-2 text-xs text-muted">{data.freeCta.note}</p>
-          </>
-        ) : ent ? (
-          <>
-            <a href={`mailto:${data.enterprise.email}`} className="btn-ghost w-full justify-center">Contact sales</a>
-            <p className="mt-2 text-xs text-muted">Opens your email app. No enquiry is submitted here.</p>
-          </>
-        ) : bill === "monthly" && plan.checkout ? (
-          <>
-            <a href={plan.checkout} className={`${plan.recommended ? "btn-primary" : "btn-ghost"} w-full justify-center`} rel="noopener">Subscribe monthly</a>
-            <p className="mt-2 text-xs text-muted">Renews monthly until canceled. Use your checkout email for subscription support.</p>
-          </>
-        ) : (
-          <>
-            <button type="button" onClick={() => setBilling("monthly")} className="btn-ghost w-full justify-center">Choose monthly billing</button>
-            <p className="mt-2 text-xs text-muted">Online checkout is available for monthly plans.</p>
-          </>
-        )}
+        <p className="text-4xl font-semibold tracking-tight">Contact sales</p>
+        <p className="mt-1 text-xs text-muted">Pricing by agreement · {e.contracts.join(", ").replace(/ contract/g, "").toLowerCase()} contracts</p>
       </div>
-
-      <button type="button" onClick={toggle} aria-expanded={open} className="mt-5 flex items-center gap-1.5 self-start text-sm text-muted underline-offset-4 hover:text-fg hover:underline">
-        Explore {isPro ? "Pro" : plan.name} details
-        <span className={`transition-transform ${open ? "rotate-180" : ""}`} aria-hidden="true">↓</span>
-      </button>
-      {open && (
-        <div className="mt-4 border-t border-line pt-4 text-sm">
-          <p className="text-muted">{plan.description}</p>
-          {"for" in plan && plan.for ? <p className="mt-2 text-muted">{plan.for as string}</p> : null}
-          <ul className="mt-3 space-y-1.5">
-            {plan.features.map((f) => (
-              <li key={f} className="flex gap-2 text-fg/90"><span className="text-muted">—</span>{f}</li>
-            ))}
-          </ul>
-          <p className="mt-3 text-xs text-muted">{plan.supporting}</p>
-        </div>
-      )}
-    </article>
+      <ul className="mt-6 space-y-2.5 border-t border-line pt-5 text-sm">
+        <li className="flex gap-2.5 font-medium text-fg"><Icon i={5} />{ent.edits}</li>
+        {ent.features.slice(1).map((f, i) => (
+          <li key={f} className="flex gap-2.5 text-fg-2"><Icon i={i} />{f}</li>
+        ))}
+      </ul>
+      <p className="mt-auto pt-5 text-[11px] text-muted">Opens your email app. No enquiry is submitted or saved on this website.</p>
+    </Shell>
   );
 }

@@ -73,7 +73,7 @@ export default function Intro() {
   }, [progress]);
 
   return (
-    <section ref={wrap} id="top" className="relative h-[480vh]" aria-label="Introduction">
+    <section ref={wrap} id="top" className="theme-dark relative h-[480vh]" aria-label="Introduction">
       <div className="sticky top-0 h-svh overflow-hidden">
         {/* 3D */}
         <div className="absolute inset-0">
@@ -116,8 +116,9 @@ export default function Intro() {
           ))}
         </div>
 
-        {/* HERO copy */}
+        {/* HERO copy (a soft scrim keeps the headline and sub-line legible over the part) */}
         <div ref={heroRef} className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center will-change-transform">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[34rem] w-[min(58rem,120vw)] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,rgba(0,0,0,0.82),rgba(0,0,0,0.55)_55%,transparent)]" aria-hidden="true" />
           <p className="hero-in mb-7 flex items-center gap-2.5 text-sm font-medium text-muted" style={{ ["--d" as string]: "0ms" }}>
             <span className="live-dot" aria-hidden="true" />
             {hero.eyebrow}
@@ -145,6 +146,11 @@ export default function Intro() {
               See the work
             </a>
           </div>
+          <p className="hero-in mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-muted" style={{ ["--d" as string]: "1000ms" }}>
+            <span>Windows 10/11 beta</span>
+            <span aria-hidden="true" className="text-line">|</span>
+            <span>{tools.filter((t) => t.status === "Available").map((t) => t.name).join(", ").replace(/, ([^,]*)$/, " and $1")} available</span>
+          </p>
         </div>
 
         {/* scroll-scrubbed statements */}

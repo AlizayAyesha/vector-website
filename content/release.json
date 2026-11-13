@@ -1,0 +1,23 @@
+{
+ "source": "vectoros.one/download (Historical beta reference), captured 12 Nov 2026",
+ "status": "Historical beta reference",
+ "statusNote": "Reference information only. This is not a current qualified release or installer offer.",
+ "version": "2.0.0-beta.611bf918bfc6",
+ "releaseDate": null,
+ "system": "Windows 10/11 x64",
+ "host": "Standalone Vector OS desktop; optional Rhino connector",
+ "referenceHost": "Rhino 8.21.25188.17001 was named as the tested connector host in the reference.",
+ "runtime": "Microsoft Edge WebView2 Runtime required",
+ "notes": [
+  "Unsigned development-build reference.",
+  "Finite installation, startup and quit checks were recorded.",
+  "Connector recovery, native execution, clean-PC lifecycle and current account/provider readiness were not accepted here."
+ ],
+ "verification": {
+  "_comment": "Internal integrity data. Not rendered on the public download page; keep it in sync with the supplied build.",
+  "filename": "Vector-2.0.0-beta.611bf918bfc6-Windows-x64.exe",
+  "sha256": "9ea14dbc022e64d1455e09450d768439d4d6b9745a0326db62d6483053343ab3",
+  "bytes": 38065152,
+  "sourceRevision": "611bf918bfc6255bcb4477706ba42c879db5a937"
+ }
+}

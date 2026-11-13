@@ -19,7 +19,7 @@ export default function Faq() {
                 aria-expanded={isOpen}
                 aria-controls={`${base}-a${i}`}
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-6 py-6 text-left text-lg font-medium tracking-tight transition-colors hover:text-white md:text-xl"
+                className="flex w-full items-center justify-between gap-6 py-6 text-left text-lg font-medium tracking-tight transition-colors hover:text-fg md:text-xl"
               >
                 {f.q}
                 <span className={`relative size-4 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`} aria-hidden="true">
