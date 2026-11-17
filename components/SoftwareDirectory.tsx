@@ -109,7 +109,7 @@ export default function SoftwareDirectory({ entries, groups }: { entries: Entry[
                 <Link href={`/software/${e.slug}`} className="flex h-full items-center gap-3 rounded-2xl border border-line bg-bg px-3.5 py-3 transition-colors hover:border-line-strong">
                   <Mark e={e} size="lg" />
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate font-medium text-fg">{e.name}</span>
+                    <span className="block font-medium leading-snug text-fg [overflow-wrap:anywhere]">{e.name}</span>
                     <span className="block truncate text-xs text-muted">{e.company}</span>
                   </span>
                 </Link>
@@ -132,7 +132,7 @@ export default function SoftwareDirectory({ entries, groups }: { entries: Entry[
                 <Link href={`/software/${e.slug}`} className="flex h-full items-center gap-3 rounded-xl border border-line bg-card px-3 py-2.5 transition-colors hover:border-line-strong hover:bg-card-2">
                   <Mark e={e} />
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-medium text-fg">{e.name}</span>
+                    <span className="block text-sm font-medium leading-snug text-fg [overflow-wrap:anywhere]">{e.name}</span>
                     <span className="block truncate text-[11px] text-muted">{e.groups[0]}</span>
                   </span>
                   <Pill status={e.status} />
