@@ -1,3 +1,5 @@
+import { AUTH_CONFIGURED } from "./auth-config";
+
 /**
  * Site-wide configuration. One switch controls search-engine visibility:
  *
@@ -21,8 +23,8 @@ export const LIVE = "https://vectoros.one";
 /** Vector's real scheduler (from vectoros.one's "Book a demo" dialog). */
 export const CALENDLY = "https://calendly.com/sh3ikhmabz/go-invite-only-exchange";
 
-/** Live sign-in (vectoros.one/sign-in redirects here). */
-export const SIGN_IN = "https://vectorproject.vercel.app/sign-in";
+/** Sign-in: this site's /login when Supabase is configured (lib/auth.ts), otherwise Vector's live sign-in (vectoros.one/sign-in redirects there). */
+export const SIGN_IN = AUTH_CONFIGURED ? "/login" : "https://vectorproject.vercel.app/sign-in";
 
 /** Live waitlist form. Its /api/waitlist does not send CORS headers, so we link to the form instead of posting cross-origin. */
 export const WAITLIST_FORM = "https://vectoros.one/waitlist#join";

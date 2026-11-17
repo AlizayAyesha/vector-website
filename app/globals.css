@@ -698,3 +698,8 @@ html[data-modal] {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Checkout modal entrance */
+@keyframes vfade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes vrise { from { opacity: 0; transform: translateY(10px) scale(.985) } to { opacity: 1; transform: none } }
+@media (prefers-reduced-motion: reduce) { [class*="animate-[v"] { animation: none !important } }

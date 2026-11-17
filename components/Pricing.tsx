@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import data from "@/content/pricing.json";
 import { CALENDLY } from "@/lib/site";
+import { useSession } from "@/lib/auth";
+import { CHECKOUT_UI_ENABLED, loginPath, upgradePath } from "@/lib/billing";
 
 type Plan = (typeof data.plans)[number] & { capacity?: string; recommended?: boolean; checkout?: string; for?: string };
 type Billing = "monthly" | "quarterly" | "yearly";
@@ -79,7 +81,7 @@ export default function Pricing() {
       {/* fine print */}
       <div className="mx-auto mt-6 max-w-6xl space-y-1.5 text-center text-xs text-muted">
         <p>{h.unit} · {data.billingNotes[bill]}</p>
-        <p>{aud === "personal" ? "Online checkout through Stripe is available for monthly plans. No sign-in required." : `${data.professionalsNote} ${data.enterprise.terms}`}</p>
+        <p>{aud === "personal" ? (CHECKOUT_UI_ENABLED ? "Secure checkout through Stripe. Sign in to subscribe." : "Online checkout through Stripe is available for monthly plans. No sign-in required.") : `${data.professionalsNote} ${data.enterprise.terms}`}</p>
         {aud === "business" && (
           <p>
             {byId("enterprise").for}{" "}
@@ -144,6 +146,8 @@ function Card({ plan, bill, setBilling, cap, setCap, highlight }: { plan: Plan; 
       <div className="mt-5">
         {free ? (
           <Link href={data.freeCta.href} className="btn-ghost w-full justify-center">{data.freeCta.label}</Link>
+        ) : CHECKOUT_UI_ENABLED && available ? (
+          <CheckoutLink plan={plan} bill={bill} highlight={highlight} />
         ) : available && bill === "monthly" && plan.checkout ? (
           <a href={plan.checkout} className={`${highlight ? "btn-primary" : "btn-ghost"} w-full justify-center`} rel="noopener">Get {plan.name}</a>
         ) : (
@@ -177,6 +181,16 @@ function Card({ plan, bill, setBilling, cap, setCap, highlight }: { plan: Plan; 
         ))}
       </ul>
     </Shell>
+  );
+}
+
+/** Embedded-checkout entry: signed out → /login?next=/upgrade?plan=…; signed in → /upgrade?plan=… (plan review). */
+function CheckoutLink({ plan, bill, highlight }: { plan: Plan; bill: Billing; highlight: boolean }) {
+  const session = useSession();
+  const target = upgradePath(plan.id, bill);
+  const href = session.status === "signed-in" ? target : loginPath(target);
+  return (
+    <Link href={href} className={`${highlight ? "btn-primary" : "btn-ghost"} w-full justify-center`}>Get {plan.name}</Link>
   );
 }
 
