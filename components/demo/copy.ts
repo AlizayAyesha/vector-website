@@ -6,7 +6,7 @@ import { qAt } from "./tracks/meta";
 // component-assembly project. All numbers are sample data.
 
 export const demo = {
-  project: "Three projects",
+  project: "Three recorded projects",
   prompt: "Take three jobs from brief to model: the ship block from our Maxsurf hull, the curved façade in Rhino, and the race-car assembly review in SOLIDWORKS.",
   reply: "Here's the plan. I'll read your rules first and ask before anything changes in your files.",
   plan: [

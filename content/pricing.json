@@ -23,7 +23,9 @@
   ],
   "terms": "Enterprise billing and discounts are negotiated individually. Standard plan discounts do not apply. Potential contract capabilities require feasibility review and a written agreement.",
   "emailNote": "Opens your email application using the existing project contact. Include your work email, company, company size, engineering discipline, software, estimated seats and workflow requirements. No enquiry is automatically submitted or saved on this website.",
-  "email": "office@sh3ikhmabz.com"
+  "email": "office@sh3ikhmabz.com",
+  "offerTitle": "On-Premises Deployment",
+  "_offerTitleComment": "Replaces the former “Custom” price label (client request, Nov 2026). Seats, usage, integrations, deployment and support are scoped through an individual agreement."
  },
  "freeCta": {
   "label": "Get Vector OS",
@@ -268,6 +270,16 @@
   {
    "q": "How do Enterprise arrangements work?",
    "a": "Contact the existing project sales email to discuss your organization. Usage, seats, integrations, security, deployment and support are scoped individually. Potential capabilities require a written commercial and technical agreement; they are not included by default."
+  }
+ ],
+ "audiences": [
+  {
+   "id": "personal",
+   "label": "Personal"
+  },
+  {
+   "id": "business",
+   "label": "Business"
   }
  ]
 }

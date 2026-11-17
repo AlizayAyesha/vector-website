@@ -14,7 +14,7 @@ export default function GalleryPage() {
       <header className="max-w-3xl">
         <p className="eyebrow">See the work</p>
         <h1 className="mt-4 text-5xl font-semibold tracking-[-0.035em] md:text-7xl">Examples</h1>
-        <p className="mt-5 text-lg text-[#d4d4d8]">Recorded projects and ideas to explore.</p>
+        <p className="mt-5 text-lg text-fg-2">Recorded projects and ideas to explore.</p>
       </header>
       <Suspense>
         <Gallery />

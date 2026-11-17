@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import BookDemoDialog from "@/components/BookDemo";
+import SubscribeDialog from "@/components/SubscribeDialog";
+import SiteSearch from "@/components/SiteSearch";
 import { CANONICAL_ORIGIN, INDEXABLE, SITE_URL, THEME_COLOR } from "@/lib/site";
 import { OG_IMAGE } from "@/lib/seo";
 import "./globals.css";
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: THEME_COLOR,
-  colorScheme: "dark",
+  colorScheme: "dark light",
   width: "device-width",
   initialScale: 1,
 };
@@ -76,13 +78,21 @@ const jsonLd = {
   ],
 };
 
+/** Applies the saved theme before first paint (dark by default, as in the desktop app). */
+const themeScript = `try{var t=localStorage.getItem("vector-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;else document.documentElement.dataset.theme="dark"}catch(e){document.documentElement.dataset.theme="dark"}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" className={inter.variable} data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body suppressHydrationWarning>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
         {children}
         <BookDemoDialog />
+        <SubscribeDialog />
+        <SiteSearch />
       </body>
     </html>
   );

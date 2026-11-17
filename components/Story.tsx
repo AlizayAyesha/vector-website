@@ -35,7 +35,7 @@ export default function Story() {
   }, [progress]);
 
   return (
-    <section ref={section} id="story" className="relative h-[320vh]" aria-label="How Vector OS approaches a part">
+    <section ref={section} id="story" className="theme-dark relative h-[320vh]" aria-label="How Vector OS approaches a part">
       <div className="sticky top-0 flex h-svh items-center overflow-hidden">
         <div className="absolute inset-0">
           <StoryCanvas progress={progress} />

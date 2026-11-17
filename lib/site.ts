@@ -1,3 +1,5 @@
+import { AUTH_CONFIGURED } from "./auth-config";
+
 /**
  * Site-wide configuration. One switch controls search-engine visibility:
  *
@@ -21,11 +23,18 @@ export const LIVE = "https://vectoros.one";
 /** Vector's real scheduler (from vectoros.one's "Book a demo" dialog). */
 export const CALENDLY = "https://calendly.com/sh3ikhmabz/go-invite-only-exchange";
 
-/** Live sign-in (vectoros.one/sign-in redirects here). */
-export const SIGN_IN = "https://vectorproject.vercel.app/sign-in";
+/** Sign-in: this site's /login when Supabase is configured (lib/auth.ts), otherwise Vector's live sign-in (vectoros.one/sign-in redirects there). */
+export const SIGN_IN = AUTH_CONFIGURED ? "/login" : "https://vectorproject.vercel.app/sign-in";
 
 /** Live waitlist form. Its /api/waitlist does not send CORS headers, so we link to the form instead of posting cross-origin. */
 export const WAITLIST_FORM = "https://vectoros.one/waitlist#join";
+
+/**
+ * Optional endpoint for the email-updates dialog. Leave unset (default): the dialog validates the address and
+ * hands off to WAITLIST_FORM. Set NEXT_PUBLIC_SUBSCRIBE_ENDPOINT only to a Vector-owned URL that accepts
+ * POST {"email": "..."} from this origin (CORS) and returns 2xx on success.
+ */
+export const SUBSCRIBE_ENDPOINT = process.env.NEXT_PUBLIC_SUBSCRIBE_ENDPOINT || "";
 
 /** Project contact used by vectoros.one for beta, support and sales emails. */
 export const CONTACT_EMAIL = "office@sh3ikhmabz.com";
