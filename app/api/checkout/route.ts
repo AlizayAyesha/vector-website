@@ -28,7 +28,7 @@ export async function POST(req: Request) {
   const origin = req.headers.get("origin");
   if (!origin || origin !== new URL(req.url).origin) return json({ error: "Please start checkout from this website", code: "SAME_ORIGIN_REQUIRED" }, 403);
 
-  const user = await currentUser();
+  const user = await currentUser(req);
   if (!user) return json({ error: "Sign in to continue", code: "UNAUTHENTICATED" }, 401);
   if (!user.email) return json({ error: "Your account has no verified email address", code: "NO_EMAIL" }, 400);
 

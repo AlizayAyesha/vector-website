@@ -14,7 +14,8 @@
  */
 import { useEffect, useState } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { AUTH_CONFIGURED, SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL } from "./auth-config";
+import { AUTH_CONFIGURED, AUTH_MODE, SUPABASE_CONFIGURED, SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL } from "./auth-config";
+import { call, str } from "./vector-session";
 
 export type OAuthProvider = "google" | "github" | "apple" | "azure";
 
@@ -140,11 +141,51 @@ class SupabaseAuth implements AuthAdapter {
   }
 }
 
+/** Thrown by getSession() when the identity backend does not exist in this environment. */
+export class AuthUnavailable extends Error {}
+
+/**
+ * Vector 2.0 session API adapter (NEXT_PUBLIC_VECTOR_AUTH_MODE=vector-api). The login page talks to the email-code
+ * and Google endpoints directly (components/auth/VectorApiLogin.tsx); this adapter covers session reads and logout.
+ * `/current` returns {session_id, user_id, expires_at, mfa}; it carries no email, so `email` stays null.
+ */
+class VectorApiAuth implements AuthAdapter {
+  readonly name = "vector-api";
+  async getSession() {
+    const r = await call("current", { method: "GET" });
+    if (r.ok) {
+      const id = str(r.data.user_id);
+      if (!id) return null;
+      return { user: { id, email: str(r.data.email), role: r.data.role === "admin" ? ("admin" as const) : ("user" as const), createdAt: null, lastSignInAt: null }, accessToken: "" };
+    }
+    if (r.status === 401 || r.status === 403) return null;
+    throw new AuthUnavailable();
+  }
+  onChange() {
+    return () => {};
+  }
+  async enabledProviders() {
+    return { oauth: ["google" as OAuthProvider], sso: false, email: true };
+  }
+  async signInWithEmail(): Promise<void> {
+    throw new Error("Use the email-code flow on /login.");
+  }
+  async signInWithOAuth(): Promise<void> {
+    throw new Error("Use Google on /login.");
+  }
+  async signInWithSSO(): Promise<void> {
+    throw new Error("Single sign-on is not offered.");
+  }
+  async signOut() {
+    await fetch("/api/auth/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
+  }
+}
+
 let instance: AuthAdapter | null = null;
 /** The configured adapter, or null when this environment has no identity provider. */
 export function getAuth(): AuthAdapter | null {
   if (!AUTH_CONFIGURED) return null;
-  instance ??= new SupabaseAuth();
+  instance ??= AUTH_MODE === "vector-api" ? new VectorApiAuth() : SUPABASE_CONFIGURED ? new SupabaseAuth() : null;
   return instance;
 }
 
@@ -165,7 +206,7 @@ export function useSession(): SessionState {
     auth
       .getSession()
       .then((s) => alive && setState(s ? { status: "signed-in", session: s } : { status: "signed-out" }))
-      .catch(() => alive && setState({ status: "error", message: "Your session could not be checked. Try again." }));
+      .catch((e) => alive && setState(e instanceof AuthUnavailable ? { status: "unconfigured" } : { status: "error", message: "Your session could not be checked. Try again." }));
     const off = auth.onChange((s) => alive && setState(s ? { status: "signed-in", session: s } : { status: "signed-out" }));
     return () => {
       alive = false;

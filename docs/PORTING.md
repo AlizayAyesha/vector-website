@@ -5,6 +5,40 @@ Branch `phase-2-website-revisions` of `AlizayAyesha/vector-website`. Written 17 
 and its `codex/*` branches, all read only). Everything here is UI and server scaffolding that **never fakes success**:
 without credentials every screen shows its "not configured / not connected" state.
 
+## 0. Sign-in mode for the real repo: `vector-api`
+
+Set `NEXT_PUBLIC_VECTOR_AUTH_MODE=vector-api` when this login is ported into Vector 2.0 `apps/web`. That mode talks
+only to Vector's own same-origin session API (JSON + cookies, CSRF in `x-vector-csrf`) and is the one to ship.
+The Supabase mode stays only as the fallback for this standalone site.
+
+| Step | Call | UI |
+| --- | --- | --- |
+| Page load (background) | `POST /api/vector/v1/session/context {return_path}` → `csrf`; `GET` same → `channel, email_started, resend_in_seconds, return_path` | Restores "Check your email" after a reload |
+| Continue with email | `POST …/login-begin {method:'email_otp', email, name?}` | 200 `code_sent` (csrf replaced) → code step; 202 send_unconfirmed → code step + notice; 429 → "Try again in Ns"; 400/503 → message + recovery |
+| 6-digit code | `POST …/verify-email {code}` | 200 `completed` → `return_path`; 200 `consent_required` → `next` (/dashboard/onboarding); 400 remaining attempts; 410 expired + one-click resend; 429 countdown; 409 `name_required` → name field → login-begin again |
+| Resend | `POST …/resend-email {}` | Live countdown from `resend_in_seconds` / `retry_after_seconds` / `resend_after` |
+| Google | `POST …/google-start {}` → `window.location = location` | Button shows "Redirecting…"; callback lands on returnTo |
+| Session / logout | `GET …/session/current` (no email; 401 = signed out); `POST /api/auth/logout` | Dashboard shell, checkout route (`currentUser(req)` forwards cookies) |
+
+Errors use `{request_id, state, error:{code, message, retryable, recovery}}`; the card shows `message` + `recovery`.
+`/login?error=` (or `/sign-in?error=`) codes are mapped to friendly copy in `lib/vector-session.ts` (`SIGN_IN_ERRORS`).
+`returnTo` (or `next`) is validated client-side the same way as the API: same-origin path ≤120 chars, no `%`, `#` or
+`//`; only `/pricing` and `/upgrade` may carry a plain query such as `?plan=pro&period=yearly`.
+With no backend (non-JSON/404) the card says "Sign-in is not configured in this environment".
+
+**Flags / deploy needed for this to work in production:**
+- Web: `NEXT_PUBLIC_VECTOR_AUTH_MODE=vector-api`.
+- API: `VECTOR_WEBSITE_EMAIL_SIGN_IN=supabase-otp` (enables the email-code endpoints), **plus an API deploy** that
+  contains the auth branch below. Until then login-begin answers 503 `unavailable` and the card shows that message.
+- Auth branch: `auth/shared-login-fix` @ **cf0a0319** ("auth: website email sign-in via Supabase OTP + faster Google
+  landing", 17 Nov 2026 19:15 PKT, local checkout G:\Vector-auth-fix, not pushed yet). Server limits there:
+  6 sends/IP and 4/email per 10 min, 20 verifies/IP, 60 s resend.
+
+Files: `lib/auth-config.ts` (mode switch), `lib/vector-session.ts` (API client, returnTo rule, error copy),
+`components/auth/VectorApiLogin.tsx` (card), `lib/auth.ts` (`VectorApiAuth` adapter), `lib/auth-server.ts`.
+Test: `scripts/test-auth-contract.mjs` holds a dev-only mock of the API (never imported by the app) and drives the
+real UI through every state; run it against a `NEXT_PUBLIC_VECTOR_AUTH_MODE=vector-api` build.
+
 ## 1. What was added
 
 | Area | Files | Behaviour |
@@ -91,6 +125,15 @@ Quarterly prices must be Stripe prices with `interval=month, interval_count=3`; 
 - Configured-build check (dummy Supabase URL/key + dummy `pk_test_`): pricing buttons route to `/login?next=%2Fupgrade%3Fplan%3D…`, signed-out `/upgrade` redirects to login, email validation and the send-failure error state render.
 
 **Not run (needs credentials):** real sign-in, Payment Element rendering, a test-mode subscription payment, a real Stripe webhook delivery. Needs Vector's Supabase publishable key + redirect URL allow-listed for this site's origin, a Stripe **test** secret + publishable key, test price ids, and a test webhook secret.
+
+### vector-api login contract test (17 Nov 2026)
+`NEXT_PUBLIC_VECTOR_AUTH_MODE=vector-api pnpm build && npx next start -p 3202`, then
+`TARGET=http://127.0.0.1:3202 node scripts/test-auth-contract.mjs` → 15/15: render + 0 console errors, 360 px fit,
+code_sent step (6 boxes, one-time-code, numeric), invalid_code + remaining attempts, paste + auto-submit → completed
+redirect (`/pricing?plan=pro&period=yearly` kept), unsafe returnTo → /dashboard, code_expired + one-click resend,
+rate-limited live countdown, resend countdown → code_sent, name_required → name → completes, consent_required →
+/dashboard/onboarding, Google "Redirecting…" → returned location, reload restores code step, `?error=` copy,
+no backend → "Sign-in is not configured in this environment".
 
 ### Google sign-in note
 Vector 2.0 does **not** call `supabase.auth.signInWithOAuth` in the browser. Its BFF (`POST /api/vector/v1/session/login-begin {method:"google"}` /

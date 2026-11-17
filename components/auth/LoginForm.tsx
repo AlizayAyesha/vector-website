@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { getAuth, NOT_CONFIGURED, safeNext, useSession, type OAuthProvider } from "@/lib/auth";
+import { getAuth, NOT_CONFIGURED, useSession, type OAuthProvider } from "@/lib/auth";
 import { ProviderIcon, PROVIDER_LABEL } from "./ProviderIcons";
+import { safeReturnTo, SIGN_IN_ERRORS } from "@/lib/vector-session";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 type Phase = "idle" | "sending" | "sent" | "redirecting";
@@ -16,7 +17,7 @@ type Phase = "idle" | "sending" | "sent" | "redirecting";
 export default function LoginForm() {
   const params = useSearchParams();
   const signup = params.get("mode") === "signup";
-  const next = safeNext(params.get("next"));
+  const next = safeReturnTo(params.get("returnTo") ?? params.get("next"));
   const callbackError = params.get("error");
   const auth = getAuth();
   const session = useSession();
@@ -25,7 +26,7 @@ export default function LoginForm() {
   const [touched, setTouched] = useState(false);
   const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState<string | null>(
-    callbackError ? "That sign-in link could not be verified. Request a new one and open it in this browser." : null,
+    callbackError ? SIGN_IN_ERRORS[callbackError] || SIGN_IN_ERRORS.unavailable : null,
   );
   const inputRef = useRef<HTMLInputElement>(null);
 

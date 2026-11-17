@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { AUTH_CONFIGURED } from "@/lib/auth-config";
+import { SUPABASE_CONFIGURED } from "@/lib/auth-config";
 import { createClient } from "@/lib/supabase/server";
 
 export const runtime = "nodejs";
@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     if (next !== "/dashboard") to.searchParams.set("next", next);
     return NextResponse.redirect(to, { headers: HEADERS });
   };
-  if (!AUTH_CONFIGURED) return fail();
+  if (!SUPABASE_CONFIGURED) return fail();
   const code = request.nextUrl.searchParams.get("code");
   if (!code || code.length > 2048) return fail();
   try {
