@@ -8,11 +8,10 @@ import { ProviderIcon, PROVIDER_LABEL } from "./ProviderIcons";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 type Phase = "idle" | "sending" | "sent" | "redirecting";
-type Providers = { oauth: OAuthProvider[]; sso: boolean; email: boolean };
 
 /**
- * Sign-in / sign-up, modelled on the client's reference flow: heading, provider icon row (only providers the
- * identity project has enabled), "or", one email field, outlined "Continue with email".
+ * Sign-in / sign-up, modelled on the client's reference flow: heading, "Continue with Google" (Vector's provider),
+ * "or", one email field, outlined "Continue with email".
  */
 export default function LoginForm() {
   const params = useSearchParams();
@@ -26,24 +25,9 @@ export default function LoginForm() {
   const [touched, setTouched] = useState(false);
   const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState<string | null>(
-    !auth ? NOT_CONFIGURED : callbackError ? "That sign-in link could not be verified. Request a new one and open it in this browser." : null,
+    callbackError ? "That sign-in link could not be verified. Request a new one and open it in this browser." : null,
   );
-  const [providers, setProviders] = useState<Providers | null>(null);
-  const [ssoOpen, setSsoOpen] = useState(false);
-  const [ssoDomain, setSsoDomain] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (!auth) return;
-    let alive = true;
-    auth
-      .enabledProviders()
-      .then((p) => alive && setProviders(p))
-      .catch(() => alive && setProviders({ oauth: [], sso: false, email: true }));
-    return () => {
-      alive = false;
-    };
-  }, [auth]);
 
   // Already signed in: continue to the destination.
   useEffect(() => {
@@ -51,7 +35,7 @@ export default function LoginForm() {
   }, [session.status, next]);
 
   const invalid = touched && !EMAIL_RE.test(email.trim());
-  const disabled = !auth || phase === "sending" || phase === "redirecting";
+  const disabled = phase === "sending" || phase === "redirecting";
 
   async function submitEmail(e: React.FormEvent) {
     e.preventDefault();
@@ -92,23 +76,7 @@ export default function LoginForm() {
     }
   }
 
-  async function sso(e: React.FormEvent) {
-    e.preventDefault();
-    if (!auth) return setError(NOT_CONFIGURED);
-    const d = ssoDomain.trim().toLowerCase();
-    if (!/^[a-z0-9.-]+\.[a-z]{2,}$/.test(d)) return setError("Enter your company's email domain, for example company.com.");
-    setPhase("redirecting");
-    setError(null);
-    try {
-      await auth.signInWithSSO(d, next);
-    } catch {
-      setPhase("idle");
-      setError("Single sign-on is not set up for that domain.");
-    }
-  }
-
   const switchHref = `/login?${new URLSearchParams({ ...(signup ? {} : { mode: "signup" }), ...(next !== "/dashboard" ? { next } : {}) }).toString()}`;
-  const tiles: (OAuthProvider | "sso")[] = providers ? [...providers.oauth, ...(providers.sso ? (["sso"] as const) : [])] : [];
 
   if (phase === "sent") {
     return (
@@ -137,46 +105,21 @@ export default function LoginForm() {
         </p>
       )}
 
-      {auth && providers === null && (
-        <div className="mt-8 flex justify-center gap-2" aria-hidden="true">
-          {[0, 1, 2].map((i) => (
-            <span key={i} className="size-11 animate-pulse rounded-lg bg-card-2" />
-          ))}
-        </div>
-      )}
+      {/* Google is Vector's sign-in provider (Vector 2.0 SignIn.jsx); always shown. Without Supabase config the click reports it honestly. */}
+      <button
+        type="button"
+        onClick={() => oauth("google")}
+        disabled={phase === "sending" || phase === "redirecting"}
+        className="mt-8 inline-flex h-11 w-full items-center justify-center gap-2.5 rounded-lg border border-line bg-card-2 text-sm font-medium text-fg transition-colors hover:border-line-strong hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {phase === "redirecting" ? <span className="size-4 animate-spin rounded-full border-2 border-current border-r-transparent" aria-hidden="true" /> : <ProviderIcon id="google" />}
+        {phase === "redirecting" ? "Opening Google…" : "Continue with Google"}
+      </button>
+      <div className="my-6 flex items-center gap-3 text-xs text-muted" aria-hidden="true">
+        <span className="h-px flex-1 bg-line" /> or <span className="h-px flex-1 bg-line" />
+      </div>
 
-      {tiles.length > 0 && (
-        <>
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
-            {tiles.map((t) => (
-              <button
-                key={t}
-                type="button"
-                disabled={disabled}
-                onClick={() => (t === "sso" ? setSsoOpen((v) => !v) : oauth(t))}
-                aria-label={`Continue with ${PROVIDER_LABEL[t]}`}
-                title={`Continue with ${PROVIDER_LABEL[t]}`}
-                aria-expanded={t === "sso" ? ssoOpen : undefined}
-                className="grid size-11 place-items-center rounded-lg border border-line bg-card-2 text-fg transition-colors hover:border-line-strong hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                <ProviderIcon id={t} />
-              </button>
-            ))}
-          </div>
-          {ssoOpen && (
-            <form onSubmit={sso} className="mt-3 flex gap-2">
-              <label htmlFor="sso-domain" className="sr-only">Company domain</label>
-              <input id="sso-domain" className="field rounded-lg!" placeholder="company.com" value={ssoDomain} onChange={(e) => setSsoDomain(e.target.value)} disabled={disabled} />
-              <button type="submit" className="btn-ghost shrink-0 rounded-lg!" disabled={disabled}>Continue</button>
-            </form>
-          )}
-          <div className="my-6 flex items-center gap-3 text-xs text-muted" aria-hidden="true">
-            <span className="h-px flex-1 bg-line" /> or <span className="h-px flex-1 bg-line" />
-          </div>
-        </>
-      )}
-
-      <form onSubmit={submitEmail} noValidate className={tiles.length ? "" : "mt-8"}>
+      <form onSubmit={submitEmail} noValidate>
         <label htmlFor="email" className="sr-only">Your email address</label>
         <input
           ref={inputRef}

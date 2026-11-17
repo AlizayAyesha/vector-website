@@ -119,7 +119,13 @@ class SupabaseAuth implements AuthAdapter {
   }
   async signInWithOAuth(provider: OAuthProvider, next: string) {
     const c = await this.client();
-    const { error } = await c.auth.signInWithOAuth({ provider, options: { redirectTo: callbackUrl(next) } });
+    // Google: same Supabase authorize request the Vector 2.0 server builds (services/api/src/identity/
+    // supabase-google-pkce.mjs, validated in apps/web/components/auth/SignIn.jsx): provider=google, redirect_to=
+    // <origin>/auth/callback, PKCE code_challenge_method=s256, optional prompt=select_account, no extra scopes.
+    const { error } = await c.auth.signInWithOAuth({
+      provider,
+      options: { redirectTo: callbackUrl(next), ...(provider === "google" ? { queryParams: { prompt: "select_account" } } : {}) },
+    });
     if (error) throw new Error(error.message);
   }
   async signInWithSSO(domain: string, next: string) {

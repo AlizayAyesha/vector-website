@@ -10,7 +10,7 @@ without credentials every screen shows its "not configured / not connected" stat
 | Area | Files | Behaviour |
 | --- | --- | --- |
 | Auth adapter | `lib/auth.ts`, `lib/auth-config.ts`, `lib/supabase/{client,server}.ts`, `lib/auth-server.ts` | `AuthAdapter` interface + Supabase implementation (`@supabase/ssr`, cookie session, PKCE). Enabled only when `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` are set; otherwise `getAuth()` is `null` |
-| Login | `app/login/page.tsx`, `components/auth/*` | "Welcome to Vector", provider icon row (only providers Supabase reports enabled at `/auth/v1/settings`), "or", email field, "Continue with email" (magic link via `signInWithOtp`), sign-up mode, Terms/Privacy. Validation, loading, sent, error states. Dark + light |
+| Login | `app/login/page.tsx`, `components/auth/*` | "Welcome to Vector", always-visible "Continue with Google" (Vector's only OAuth provider; `signInWithOAuth({ provider: "google", options: { redirectTo: <origin>/auth/callback?next=…, queryParams: { prompt: "select_account" } } })`, i.e. the same authorize request as Vector 2.0: provider=google, redirect_to=/auth/callback, PKCE s256, optional prompt=select_account, no extra scopes; without Supabase config the click shows "Sign-in is not configured in this environment"), "or", email field, "Continue with email" (magic link via `signInWithOtp`), sign-up mode, Terms/Privacy. Validation, loading, sent, error states. Dark + light |
 | Callback | `app/auth/callback/route.ts` | Exchanges the PKCE `code`, redirects to a same-site `next` only (open-redirect safe); failures go to `/login?error=callback` |
 | Plan review | `app/upgrade/page.tsx`, `components/checkout/UpgradeView.tsx` | `/upgrade?plan=<id>[&interval=]`; signed-out → `/login?next=/upgrade?plan=<id>`; "Get <Plan>" opens the modal |
 | Checkout modal | `components/checkout/CheckoutModal.tsx` | Fade-in dark modal, back arrow, billing-period cards (selected = blue border; only periods the catalogue has), Stripe Payment Element (Stripe renders Apple Pay / Google Pay / card / Link) + Address Element (billing), summary with "Due today" and solid white "Subscribe & Pay". Not configured → honest notice + the plan's live Payment Link (monthly) |
@@ -91,3 +91,11 @@ Quarterly prices must be Stripe prices with `interval=month, interval_count=3`; 
 - Configured-build check (dummy Supabase URL/key + dummy `pk_test_`): pricing buttons route to `/login?next=%2Fupgrade%3Fplan%3D…`, signed-out `/upgrade` redirects to login, email validation and the send-failure error state render.
 
 **Not run (needs credentials):** real sign-in, Payment Element rendering, a test-mode subscription payment, a real Stripe webhook delivery. Needs Vector's Supabase publishable key + redirect URL allow-listed for this site's origin, a Stripe **test** secret + publishable key, test price ids, and a test webhook secret.
+
+### Google sign-in note
+Vector 2.0 does **not** call `supabase.auth.signInWithOAuth` in the browser. Its BFF (`POST /api/vector/v1/session/login-begin {method:"google"}` /
+`google-start`) builds the Supabase authorize URL server-side (`services/api/src/identity/supabase-google-pkce.mjs`, receipt
+`docs/delivery/identity/GOOGLE_SUPABASE_PKCE_20261114/RECEIPT.md`) and `components/auth/SignIn.jsx` only accepts a redirect to
+`<project>.supabase.co/auth/v1/authorize` with exactly `provider=google`, `redirect_to=<site>/auth/callback?attempt_id&state`,
+`code_challenge`, `code_challenge_method=s256` and optionally `prompt=select_account`. When porting, wire the button to that BFF action
+instead of the browser SDK call used here.
