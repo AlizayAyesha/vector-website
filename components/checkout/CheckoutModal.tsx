@@ -99,7 +99,7 @@ function Body({ plan, interval, onInterval, live = false, status }: { plan: Paid
 function Layout({ plan, interval, onInterval, payment, action, error }: { plan: PaidPlan; interval: Interval; onInterval: (i: Interval) => void; payment: React.ReactNode; action: React.ReactNode; error?: string | null }) {
   const amount = plan.amountCents[interval]!;
   return (
-    <div className="grid md:grid-cols-[1.35fr_1fr]">
+    <div className="grid md:grid-cols-[1.5fr_1fr]">
       <div className="space-y-6 p-5 md:border-r md:border-line md:p-6">
         <fieldset>
           <legend className="mb-2.5 text-sm font-medium">Billing period</legend>
@@ -110,11 +110,11 @@ function Layout({ plan, interval, onInterval, payment, action, error }: { plan: 
               return (
                 <label key={i} className={`relative cursor-pointer rounded-xl border p-3.5 transition-colors ${on ? "border-[#3b82f6] bg-[#3b82f6]/[0.06] ring-1 ring-[#3b82f6]" : "border-line hover:border-line-strong"}`}>
                   <input type="radio" name="interval" value={i} checked={on} onChange={() => onInterval(i)} className="sr-only" />
-                  <span className="flex items-center justify-between gap-2 text-sm font-medium">
+                  <span className="flex items-center justify-between gap-1.5 text-sm font-medium">
                     {INTERVAL_LABEL[i]}
-                    {INTERVAL_SAVING[i] && <span className="rounded-full bg-card-2 px-1.5 py-0.5 text-[10px] font-semibold text-fg-2">Save {INTERVAL_SAVING[i]}%</span>}
+                    {INTERVAL_SAVING[i] && <span className="whitespace-nowrap rounded-full bg-card-2 px-1.5 py-0.5 text-[10px] font-semibold text-fg-2">Save {INTERVAL_SAVING[i]}%</span>}
                   </span>
-                  <span className="mt-1.5 block text-lg font-semibold tabular-nums">{usd(a)}<span className="text-xs font-normal text-muted"> / {PERIOD_WORD[i]}</span></span>
+                  <span className="mt-1.5 block whitespace-nowrap text-lg font-semibold tabular-nums">{usd(a)}<span className="text-xs font-normal text-muted"> / {PERIOD_WORD[i]}</span></span>
                   <span className="block text-xs text-muted tabular-nums">{i === "monthly" ? "Billed monthly" : `${usd(Math.round(a / INTERVAL_MONTHS[i]))} / month, billed upfront`}</span>
                 </label>
               );
@@ -131,7 +131,6 @@ function Layout({ plan, interval, onInterval, payment, action, error }: { plan: 
         <p className="mt-0.5 text-sm text-fg-2">{plan.edits}</p>
         <dl className="mt-6 space-y-3 border-t border-line pt-5 text-sm">
           <div className="flex justify-between gap-4"><dt className="text-muted">{plan.name} · {INTERVAL_LABEL[interval].toLowerCase()}</dt><dd className="tabular-nums">{usd(amount)}</dd></div>
-          <div className="flex justify-between gap-4"><dt className="text-muted">Tax</dt><dd className="text-muted">Calculated by Stripe if applicable</dd></div>
           <div className="flex justify-between gap-4 border-t border-line pt-3 text-base font-semibold"><dt>Due today</dt><dd className="tabular-nums">{usd(amount)}</dd></div>
         </dl>
         {error && <p role="alert" className="mt-4 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm">{error}</p>}
